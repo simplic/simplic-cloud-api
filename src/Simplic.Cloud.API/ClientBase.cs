@@ -112,7 +112,7 @@ namespace Simplic.Cloud.API
             }
             catch (Exception ex)
             {
-                throw new ApiException("Unexpected error in post.", api, controller, action, System.Net.HttpStatusCode.InternalServerError, ex);
+                throw new ApiException("Unexpected error in post.", api, controller, action, System.Net.HttpStatusCode.ServiceUnavailable, ex);
             }
         }
         
