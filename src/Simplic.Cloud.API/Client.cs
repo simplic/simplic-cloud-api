@@ -16,7 +16,7 @@ namespace Simplic.Cloud.API
         }
 
         /// <summary>
-        /// Initialize client with different url. <see cref="ClientBase.Url"/>
+        /// Initialize client with different url. <see cref="ClientBase.DefaultUrl"/>
         /// </summary>
         /// <param name="url">Unique url</param>
         public Client(string url) : base(url)
@@ -28,9 +28,10 @@ namespace Simplic.Cloud.API
         /// Initialize client and inherit the authentication
         /// </summary>
         /// <param name="client">Client instance</param>
-        public Client(Client client)
+        public Client(Client client) 
+            : base(client)
         {
-            JWT = client?.JWT;
+            
         }
 
         /// <summary>
@@ -38,11 +39,11 @@ namespace Simplic.Cloud.API
         /// </summary>
         /// <param name="email">User account mail address</param>
         /// <param name="password">User account password</param>
-        /// <returns>Instance of <see cref="LoginModelResult"/> if login was successful</returns>
+        /// <returns>Instance of <see cref="LoginResult"/> if login was successful</returns>
         /// <exception cref="ApiException">If the login process fails</exception>
-        public async Task<LoginModelResult> LoginAsync(string email, string password)
+        public async Task<LoginResult> LoginAsync(string email, string password)
         {
-            var result = await PostAsync<LoginModelResult, LoginModel>("", "user", "login", new LoginModel
+            var result = await PostAsync<LoginResult, LoginRequest>("", "user", "login", new LoginRequest
             {
                 EMail = email,
                 Password = password

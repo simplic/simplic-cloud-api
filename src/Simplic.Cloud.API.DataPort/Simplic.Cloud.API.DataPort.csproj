@@ -44,5 +44,11 @@
     <Compile Include="DataPortClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Simplic.Cloud.API\Simplic.Cloud.API.csproj">
+      <Project>{a2cf02ac-4c6f-4fe5-bcbb-3c9cb6d1bfca}</Project>
+      <Name>Simplic.Cloud.API</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,13 +1,29 @@
 ﻿namespace Simplic.Cloud.API
 {
-    public class LoginModel
+    /// <summary>
+    /// Represents the login request
+    /// </summary>
+    public class LoginRequest
     {
+        /// <summary>
+        /// Gets or sets the user mail address
+        /// </summary>
         public string EMail { get; set; }
+
+        /// <summary>
+        /// Gets or sets the user password
+        /// </summary>
         public string Password { get; set; }
     }
 
-    public class LoginModelResult
+    /// <summary>
+    /// Represents the login result
+    /// </summary>
+    public class LoginResult
     {
+        /// <summary>
+        /// Gets or sets the json web token (jwt ~user session)
+        /// </summary>
         public string JWT { get; set; }
     }
 }

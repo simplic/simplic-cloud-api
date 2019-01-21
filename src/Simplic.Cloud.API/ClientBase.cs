@@ -12,8 +12,7 @@ namespace Simplic.Cloud.API
     /// </summary>
     public abstract class ClientBase : IDisposable
     {
-        public const string Url = "https://dataport.simplic.io/api";
-        private string url = Url;
+        public const string DefaultUrl = "https://dataport.simplic.io/api";
 
         /// <summary>
         /// Initialize client base
@@ -30,7 +29,20 @@ namespace Simplic.Cloud.API
         public ClientBase(string url)
             : this()
         {
-            this.url = url;
+            this.Url = url;
+        }
+
+        /// <summary>
+        /// Initialize new client base and copy important information
+        /// </summary>
+        /// <param name="clientBase">Client base instance</param>
+        /// <exception cref="ArgumentNullException">Null check for <see cref="ClientBase"/> argument.</exception>
+        public ClientBase(ClientBase clientBase)
+        {
+            if (clientBase == null) throw new ArgumentNullException(nameof(clientBase));
+
+            JWT = clientBase.JWT;
+            Url = clientBase.Url;
         }
 
         /// <summary>
@@ -40,8 +52,7 @@ namespace Simplic.Cloud.API
         {
             HttpClient.Dispose();
         }
-
-
+        
         /// <summary>
         /// Create url
         /// </summary>
@@ -52,7 +63,7 @@ namespace Simplic.Cloud.API
         private string GetUrl(string api, string controller, string action)
         {
             var urlBuilder = new StringBuilder();
-            urlBuilder.Append(url);
+            urlBuilder.Append(Url);
 
             if (!string.IsNullOrWhiteSpace(api))
                 urlBuilder.Append($"/{api}");
@@ -104,7 +115,7 @@ namespace Simplic.Cloud.API
                 throw new ApiException("Unexpected error in post.", api, controller, action, System.Net.HttpStatusCode.InternalServerError, ex);
             }
         }
-
+        
         /// <summary>
         /// Gets the http client instance
         /// </summary>
@@ -114,5 +125,10 @@ namespace Simplic.Cloud.API
         /// Gets or sets the current jwt
         /// </summary>
         protected string JWT { get; set; }
+
+        /// <summary>
+        /// Gets the client url
+        /// </summary>
+        public string Url { get; protected set; } = DefaultUrl;
     }
 }
