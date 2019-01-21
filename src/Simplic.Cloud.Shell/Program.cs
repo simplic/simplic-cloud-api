@@ -1,6 +1,7 @@
 ﻿using CommandLine;
 using Simplic.Cloud.API;
 using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Threading.Tasks;
 using static Colorful.Console;
@@ -27,13 +28,14 @@ namespace Simplic.Cloud.Shell
             {
                 WriteLine("No arguments passed.", Color.Red);
                 return 1;
+
             }
 
-            if (args[0] == "login")
-                return Parser.Default.ParseArguments<Login>(args)
-                  .MapResult(
-                    (Login opts) => Login(opts),
-                    errs => 1);
+            Parser.Default.ParseArguments<Login>(args)
+                   .WithParsed(o =>
+                   {
+                       Login(o);
+                   });
 
             return 0;
         }
@@ -42,8 +44,7 @@ namespace Simplic.Cloud.Shell
         /// Login into cloud account
         /// </summary>
         /// <param name="login">Login object</param>
-        /// <returns>Application exit code</returns>
-        private static int Login(Login login)
+        private static void Login(Login login)
         {
             WriteLine($"Login to simplic cloud... {login.EMail}");
 
@@ -62,11 +63,7 @@ namespace Simplic.Cloud.Shell
                 WriteLine($"Login failed: {ex.Message}", Color.Red);
                 if(ex.InnerException != null)
                     WriteLine($"Login failed details: {ex.InnerException.Message}", Color.Red);
-
-                return 1;
             }
-
-            return 0;
         }
     }
 }
