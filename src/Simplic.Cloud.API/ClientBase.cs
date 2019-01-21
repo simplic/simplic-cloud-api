@@ -95,7 +95,7 @@ namespace Simplic.Cloud.API
                 {
                     HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", JWT);
                 }
-                Debugger.Launch();
+
                 var methodUrl = GetUrl(api, controller, action);
 
                 var response = await HttpClient.PostAsJsonAsync<I>(methodUrl, model);
@@ -122,9 +122,10 @@ namespace Simplic.Cloud.API
         protected HttpClient HttpClient { get; }
 
         /// <summary>
-        /// Gets or sets the current jwt
+        /// Gets or sets the current jwt. Get is protected for security reason. However, the getter can be accesses by
+        /// using reflection.
         /// </summary>
-        protected string JWT { get; set; }
+        public string JWT { protected get; set; }
 
         /// <summary>
         /// Gets the client url
