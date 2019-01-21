@@ -13,9 +13,9 @@ namespace Simplic.Cloud.Shell
         {
             WriteLine(new string('-', System.Console.BufferWidth - 1));
             Write("Simplic Cloud Shell ");
-            Write("1.0.0.0 ", System.Drawing.Color.Green);
+            Write($"{General.Version} ", Color.Green);
             WriteLine($" @ {DateTime.Now.Year} SIMPLIC GmbH");
-            WriteLine(new string('-', System.Console.BufferWidth - 1));
+            WriteLine(new string('-', Console.BufferWidth - 1));
 
             Parser.Default.ParseArguments<Options>(args)
                    .WithParsed(o =>
