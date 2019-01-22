@@ -1,8 +1,10 @@
 ﻿using CommandLine;
 using Simplic.Cloud.API;
+using Simplic.Cloud.API.DataPort;
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Threading.Tasks;
 using static Colorful.Console;
 
@@ -56,6 +58,14 @@ namespace Simplic.Cloud.Shell
                 {
                     var result = await client.LoginAsync(login.EMail, login.Password);
                     WriteLine($"Login successful. JWT: {result.JWT}", Color.Green);
+                    WriteLine($" > Organization id: {result.OrganizationId}");
+
+                    var dataPortClient = new DataPortClient(client);
+                    await dataPortClient.EnqueueFile(File.ReadAllBytes(@"C:\Users\beggers.SPIEGELBURG\Downloads\_e6a1975e-d648-45d7-9ec1-cc8c5f638240_request.xml"), "TPSDLS01/tisys2");
+
+                    // Get result queue content
+                    var content123 = await dataPortClient.GetResultQueueItems();
+
                 }).GetAwaiter().GetResult();
             }
             catch (Exception ex)

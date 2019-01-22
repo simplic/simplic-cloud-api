@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -29,6 +32,7 @@ namespace Simplic.Cloud.API
         public ClientBase(string url)
             : this()
         {
+            HttpClient = new HttpClient();
             this.Url = url;
         }
 
@@ -41,6 +45,7 @@ namespace Simplic.Cloud.API
         {
             if (clientBase == null) throw new ArgumentNullException(nameof(clientBase));
 
+            HttpClient = new HttpClient();
             JWT = clientBase.JWT;
             Url = clientBase.Url;
         }
@@ -52,7 +57,7 @@ namespace Simplic.Cloud.API
         {
             HttpClient.Dispose();
         }
-        
+
         /// <summary>
         /// Create url
         /// </summary>
@@ -115,7 +120,90 @@ namespace Simplic.Cloud.API
                 throw new ApiException("Unexpected error in post.", api, controller, action, System.Net.HttpStatusCode.ServiceUnavailable, ex);
             }
         }
-        
+
+        /// <summary>
+        /// Post async
+        /// </summary>
+        /// <typeparam name="R">Return type</typeparam>
+        /// <typeparam name="I">Model type</typeparam>
+        /// <param name="api">Api path</param>
+        /// <param name="controller">Controller</param>
+        /// <param name="action">Action</param>
+        /// <param name="model">Model to post</param>
+        /// <returns>Return model</returns>
+        protected async Task<T> GetAsync<T>(string api, string controller, string action, IDictionary<string, string> parameter)
+        {
+            try
+            {
+                if (!string.IsNullOrWhiteSpace(JWT))
+                {
+                    HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", JWT);
+                }
+
+                var methodUrl = GetUrl(api, controller, action);
+                if (parameter != null)
+                {
+                    // TODO: Add to URL
+                }
+
+                var response = await HttpClient.GetAsync(methodUrl);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    // Get json and parse
+                    return await response.Content.ReadAsAsync<T>();
+                }
+                else
+                {
+                    throw new ApiException("Error in get.", api, controller, action, response.StatusCode);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new ApiException("Unexpected error in get.", api, controller, action, System.Net.HttpStatusCode.ServiceUnavailable, ex);
+            }
+        }
+
+        protected async Task PostMultipartAsync(string api, string controller, string action, byte[] blob, IDictionary<string, string> formData)
+        {
+            try
+            {
+                if (!string.IsNullOrWhiteSpace(JWT))
+                {
+                    HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", JWT);
+                }
+
+                var methodUrl = GetUrl(api, controller, action);
+
+                var requestContent = new MultipartFormDataContent();
+                var fileContent = new ByteArrayContent(blob);
+                fileContent.Headers.ContentType = MediaTypeHeaderValue.Parse("application/xml");
+                requestContent.Add(fileContent, "FileInJsonFormat", "file");
+
+                if (formData != null)
+                {
+                    Debugger.Launch();
+                    foreach (var data in formData)
+                    {
+                        var content = new StringContent(data.Value, Encoding.UTF8, "application/json");
+                        requestContent.Add(content, data.Key);
+                    }
+                }
+
+                var response = await HttpClient.PostAsync(methodUrl, requestContent);
+                var responseBody = await response.Content.ReadAsStringAsync();
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    throw new ApiException($"Error in multipart post: {responseBody}", api, controller, action, response.StatusCode);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new ApiException("Unexpected error in multipart post.", api, controller, action, HttpStatusCode.ServiceUnavailable, ex);
+            }
+        }
+
         /// <summary>
         /// Gets the http client instance
         /// </summary>

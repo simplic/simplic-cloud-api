@@ -64,6 +64,10 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Simplic.Cloud.API.DataPort\Simplic.Cloud.API.DataPort.csproj">
+      <Project>{519D07A5-5BF1-4CDD-B950-F579C710EE81}</Project>
+      <Name>Simplic.Cloud.API.DataPort</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Simplic.Cloud.API\Simplic.Cloud.API.csproj">
       <Project>{A2CF02AC-4C6F-4FE5-BCBB-3C9CB6D1BFCA}</Project>
       <Name>Simplic.Cloud.API</Name>

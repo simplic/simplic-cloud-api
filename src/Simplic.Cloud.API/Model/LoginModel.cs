@@ -1,4 +1,6 @@
-﻿namespace Simplic.Cloud.API
+﻿using System;
+
+namespace Simplic.Cloud.API
 {
     /// <summary>
     /// Represents the login request
@@ -21,6 +23,11 @@
     /// </summary>
     public class LoginResult
     {
+        /// <summary>
+        /// Gets or the organization id
+        /// </summary>
+        public Guid OrganizationId { get; set; }
+
         /// <summary>
         /// Gets or sets the json web token (jwt ~user session)
         /// </summary>
