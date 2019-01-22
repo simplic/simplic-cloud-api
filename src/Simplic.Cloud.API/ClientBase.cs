@@ -136,9 +136,7 @@ namespace Simplic.Cloud.API
             try
             {
                 if (!string.IsNullOrWhiteSpace(JWT))
-                {
                     HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", JWT);
-                }
 
                 var methodUrl = GetUrl(api, controller, action);
                 if (parameter != null)
@@ -169,9 +167,7 @@ namespace Simplic.Cloud.API
             try
             {
                 if (!string.IsNullOrWhiteSpace(JWT))
-                {
                     HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", JWT);
-                }
 
                 var methodUrl = GetUrl(api, controller, action);
 
