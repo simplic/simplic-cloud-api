@@ -21,7 +21,7 @@ namespace Simplic.Cloud.API
     /// <summary>
     /// Represents the login result
     /// </summary>
-    public class LoginResult
+    public class User
     {
         /// <summary>
         /// Gets or the organization id

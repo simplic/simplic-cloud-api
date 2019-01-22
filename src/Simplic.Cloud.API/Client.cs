@@ -39,19 +39,17 @@ namespace Simplic.Cloud.API
         /// </summary>
         /// <param name="email">User account mail address</param>
         /// <param name="password">User account password</param>
-        /// <returns>Instance of <see cref="LoginResult"/> if login was successful</returns>
+        /// <returns>Instance of <see cref="User"/> if login was successful</returns>
         /// <exception cref="ApiException">If the login process fails</exception>
-        public async Task<LoginResult> LoginAsync(string email, string password)
+        public async Task<User> LoginAsync(string email, string password)
         {
-            var result = await PostAsync<LoginResult, LoginRequest>("", "user", "login", new LoginRequest
+            User = await PostAsync<User, LoginRequest>("", "user", "login", new LoginRequest
             {
                 EMail = email,
                 Password = password
             });
-
-            JWT = result.JWT;
-
-            return result;
+            
+            return User;
         }
     }
 }

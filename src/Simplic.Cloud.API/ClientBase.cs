@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -46,8 +47,8 @@ namespace Simplic.Cloud.API
             if (clientBase == null) throw new ArgumentNullException(nameof(clientBase));
 
             HttpClient = new HttpClient();
-            JWT = clientBase.JWT;
-            Url = clientBase.Url;
+            User = clientBase.User;
+            Url = clientBase.User?.JWT;
         }
 
         /// <summary>
@@ -85,21 +86,19 @@ namespace Simplic.Cloud.API
         /// <summary>
         /// Post async
         /// </summary>
-        /// <typeparam name="R">Return type</typeparam>
+        /// <typeparam name="T">Return type</typeparam>
         /// <typeparam name="I">Model type</typeparam>
         /// <param name="api">Api path</param>
         /// <param name="controller">Controller</param>
         /// <param name="action">Action</param>
         /// <param name="model">Model to post</param>
         /// <returns>Return model</returns>
-        protected async Task<R> PostAsync<R, I>(string api, string controller, string action, I model)
+        protected async Task<T> PostAsync<T, I>(string api, string controller, string action, I model)
         {
             try
             {
-                if (!string.IsNullOrWhiteSpace(JWT))
-                {
-                    HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", JWT);
-                }
+                if (!string.IsNullOrWhiteSpace(User?.JWT))
+                    HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", User?.JWT);
 
                 var methodUrl = GetUrl(api, controller, action);
 
@@ -108,7 +107,7 @@ namespace Simplic.Cloud.API
                 if (response.IsSuccessStatusCode)
                 {
                     // Get json and parse
-                    return await response.Content.ReadAsAsync<R>();
+                    return await response.Content.ReadAsAsync<T>();
                 }
                 else
                 {
@@ -121,35 +120,88 @@ namespace Simplic.Cloud.API
             }
         }
 
+
         /// <summary>
-        /// Post async
+        /// Get async
         /// </summary>
-        /// <typeparam name="R">Return type</typeparam>
-        /// <typeparam name="I">Model type</typeparam>
+        /// <typeparam name="T">Return type</typeparam>
         /// <param name="api">Api path</param>
         /// <param name="controller">Controller</param>
         /// <param name="action">Action</param>
-        /// <param name="model">Model to post</param>
+        /// <param name="parameters">List of optional parameter</param>
         /// <returns>Return model</returns>
-        protected async Task<T> GetAsync<T>(string api, string controller, string action, IDictionary<string, string> parameter)
+        protected async Task<T> DeleteAsync<T>(string api, string controller, string action, IDictionary<string, string> parameters)
+        {
+            return await ExecuteMethodAsync<T>("delete", api, controller, action, parameters);
+        }
+
+        /// <summary>
+        /// Get async
+        /// </summary>
+        /// <typeparam name="T">Return type</typeparam>
+        /// <param name="api">Api path</param>
+        /// <param name="controller">Controller</param>
+        /// <param name="action">Action</param>
+        /// <param name="parameters">List of optional parameter</param>
+        /// <returns>Return model</returns>
+        protected async Task<T> GetAsync<T>(string api, string controller, string action, IDictionary<string, string> parameters)
+        {
+            return await ExecuteMethodAsync<T>("get", api, controller, action, parameters);
+        }
+
+        /// <summary>
+        /// Execute method async
+        /// </summary>
+        /// <typeparam name="T">Return type</typeparam>
+        /// <param name="method">Methods</param>
+        /// <param name="api">Api path</param>
+        /// <param name="controller">Controller</param>
+        /// <param name="action">Action</param>
+        /// <param name="parameters">List of optional parameter</param>
+        /// <returns>Return model</returns>
+        private async Task<T> ExecuteMethodAsync<T>(string method, string api, string controller, string action, IDictionary<string, string> parameters)
         {
             try
             {
-                if (!string.IsNullOrWhiteSpace(JWT))
-                    HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", JWT);
+                if (!string.IsNullOrWhiteSpace(User.JWT))
+                    HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", User?.JWT);
 
                 var methodUrl = GetUrl(api, controller, action);
-                if (parameter != null)
+                if (parameters != null && parameters.Any())
                 {
-                    // TODO: Add to URL
+                    var parameterString = new StringBuilder();
+                    if (!methodUrl.EndsWith("?"))
+                        parameterString.Append("?");
+
+                    var isFirst = true;
+                    foreach (var param in parameters)
+                    {
+                        if (!isFirst)
+                            parameterString.Append("&");
+                        isFirst = false;
+
+                        parameterString.Append($"{param.Key}={param.Value}");
+                    }
+
+                    methodUrl = $"{methodUrl}{parameterString}";
                 }
 
-                var response = await HttpClient.GetAsync(methodUrl);
+                HttpResponseMessage response = null;
+
+                if (method == "get")
+                    response = await HttpClient.GetAsync(methodUrl);
+                if (method == "delete")
+                    response = await HttpClient.DeleteAsync(methodUrl);
+                else
+                    throw new InvalidOperationException($"{method} is not valid");
 
                 if (response.IsSuccessStatusCode)
                 {
                     // Get json and parse
-                    return await response.Content.ReadAsAsync<T>();
+                    if (typeof(T) == typeof(string))
+                        return (T)(object)await response.Content.ReadAsStringAsync();
+                    else
+                        return await response.Content.ReadAsAsync<T>();
                 }
                 else
                 {
@@ -166,8 +218,8 @@ namespace Simplic.Cloud.API
         {
             try
             {
-                if (!string.IsNullOrWhiteSpace(JWT))
-                    HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", JWT);
+                if (!string.IsNullOrWhiteSpace(User?.JWT))
+                    HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", User?.JWT);
 
                 var methodUrl = GetUrl(api, controller, action);
 
@@ -178,7 +230,6 @@ namespace Simplic.Cloud.API
 
                 if (formData != null)
                 {
-                    Debugger.Launch();
                     foreach (var data in formData)
                     {
                         var content = new StringContent(data.Value, Encoding.UTF8, "application/json");
@@ -209,7 +260,7 @@ namespace Simplic.Cloud.API
         /// Gets or sets the current jwt. Get is protected for security reason. However, the getter can be accesses by
         /// using reflection.
         /// </summary>
-        public string JWT { protected get; set; }
+        public User User { protected get; set; }
 
         /// <summary>
         /// Gets the client url

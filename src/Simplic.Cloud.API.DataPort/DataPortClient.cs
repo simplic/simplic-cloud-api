@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
@@ -53,20 +54,40 @@ namespace Simplic.Cloud.API.DataPort
             });
         }
 
-        public async Task<IList<TransformationResultResponse>> GetResultQueueItems()
+        /// <summary>
+        /// Get pending result queue items
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="ApiException">Get request failed</exception>
+        public async Task<IList<TransformationResultQueueItemResponse>> GetResultQueueItems()
         {
-            Debugger.Launch();
-            return await GetAsync<IList<TransformationResultResponse>>("", "DataPort", "transformation-result", null);
+            return await GetAsync<IList<TransformationResultQueueItemResponse>>("", "DataPort", "transformation-result", null);
         }
 
-        public void GetResult(Guid queueItemId)
+        /// <summary>
+        /// Get data port result
+        /// </summary>
+        /// <param name="queueItemId">Unique queue item</param>
+        /// <returns>Result instance</returns>
+        public async Task<TransformationResultResponse> GetResult(Guid queueItemId)
         {
-
+            return await DeleteAsync<TransformationResultResponse>("", "DataPort", "transformation-queue", new Dictionary<string, string>
+            {
+                { "transformationQueueId", queueItemId.ToString() }
+            });
         }
 
-        public void SetAsProcessed()
+        /// <summary>
+        /// Remove result queue item
+        /// </summary>
+        /// <param name="queueItemId">Unique queue item id</param>
+        /// <returns>Async result</returns>
+        public async Task RemoveResultQueueItem(Guid queueItemId)
         {
-
+            await DeleteAsync<string>("", "DataPort", "transformation-result", new Dictionary<string, string>
+            {
+                { "transformationQueueId", queueItemId.ToString() }
+            });
         }
     }
 }
