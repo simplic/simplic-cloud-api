@@ -46,11 +46,12 @@ namespace Simplic.Cloud.API.DataPort
         /// <param name="transformerName"></param>
         /// <returns></returns>
         /// <exception cref="ApiException">If posting the multipart content is fails</exception>
-        public async Task EnqueueFile(byte[] blob, string transformerName)
+        public async Task EnqueueFile(byte[] blob, string transformerName, string fileName)
         {
             await PostMultipartAsync("", "DataPort", "transformation-queue", blob, new Dictionary<string, string>
             {
-                { "transformerName", transformerName }
+                { "transformerName", transformerName },
+                { "fileName", fileName }
             });
         }
 
@@ -71,10 +72,7 @@ namespace Simplic.Cloud.API.DataPort
         /// <returns>Result instance</returns>
         public async Task<TransformationResultResponse> GetResult(Guid queueItemId)
         {
-            return await DeleteAsync<TransformationResultResponse>("", "DataPort", "transformation-queue", new Dictionary<string, string>
-            {
-                { "transformationQueueId", queueItemId.ToString() }
-            });
+            return await GetAsync<TransformationResultResponse>("", "DataPort", $"transformation-queue/{queueItemId}", null);
         }
 
         /// <summary>
@@ -84,10 +82,7 @@ namespace Simplic.Cloud.API.DataPort
         /// <returns>Async result</returns>
         public async Task RemoveResultQueueItem(Guid queueItemId)
         {
-            await DeleteAsync<string>("", "DataPort", "transformation-result", new Dictionary<string, string>
-            {
-                { "transformationQueueId", queueItemId.ToString() }
-            });
+            await DeleteAsync<string>("", "DataPort", $"transformation-result/{queueItemId}", null);
         }
     }
 }

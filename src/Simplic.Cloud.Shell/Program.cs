@@ -5,6 +5,7 @@ using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using static Colorful.Console;
 
@@ -26,11 +27,16 @@ namespace Simplic.Cloud.Shell
                        WriteLine($"Detailed logging: {o.Verbose}", Color.Yellow);
                    });
 
+            Parser.Default.ParseArguments<Options>(args)
+       .WithParsed(o =>
+       {
+           WriteLine($"Detailed logging: {o.Verbose}", Color.Yellow);
+       });
+
             if (args.Length == 0)
             {
                 WriteLine("No arguments passed.", Color.Red);
                 return 1;
-
             }
 
             Parser.Default.ParseArguments<Login>(args)
@@ -38,6 +44,12 @@ namespace Simplic.Cloud.Shell
                    {
                        Login(o);
                    });
+
+            Parser.Default.ParseArguments<DataPortEnqueueDir>(args)
+                .WithParsed(o =>
+                {
+                    DataPortEnqueueDir(o);
+                });
 
             return 0;
         }
@@ -56,22 +68,52 @@ namespace Simplic.Cloud.Shell
             {
                 Task.Run(async () =>
                 {
-                    var result = await client.LoginAsync(login.EMail, login.Password);
-                    WriteLine($"Login successful. JWT: {result.JWT}", Color.Green);
-                    WriteLine($" > Organization id: {result.OrganizationId}");
+                    var user = await client.LoginAsync(login.EMail, login.Password);
+                    WriteLine($"Login successful. JWT: {user.JWT}", Color.Green);
+                    WriteLine($" > Organization id: {user.OrganizationId}");
+                }).GetAwaiter().GetResult();
+            }
+            catch (Exception ex)
+            {
+                WriteLine($"Login failed: {ex.Message}", Color.Red);
+                if (ex.InnerException != null)
+                    WriteLine($"Login failed details: {ex.InnerException.Message}", Color.Red);
+            }
+        }
+
+        /// <summary>
+        /// Login into cloud account
+        /// </summary>
+        /// <param name="enqueueDirOption">Login object</param>
+        private static void DataPortEnqueueDir(DataPortEnqueueDir enqueueDirOption)
+        {
+            WriteLine($"Login to simplic cloud... {enqueueDirOption.EMail}");
+
+            var client = new Client();
+
+            try
+            {
+                Task.Run(async () =>
+                {
+                    var user = await client.LoginAsync(enqueueDirOption.EMail, enqueueDirOption.Password);
+                    WriteLine($"Login successful. JWT: {user.JWT}", Color.Green);
+                    WriteLine($" > Organization id: {user.OrganizationId}");
 
                     var dataPortClient = new DataPortClient(client);
-                    await dataPortClient.EnqueueFile(File.ReadAllBytes(@"C:\Users\beggers.SPIEGELBURG\Downloads\_e6a1975e-d648-45d7-9ec1-cc8c5f638240_request.xml"), "TPSDLS01/tisys2");
 
-                    // Get result queue content
-                    var content123 = await dataPortClient.GetResultQueueItems();
+                    foreach (var file in Directory.GetFiles(enqueueDirOption.Directory)
+                        .OrderBy(x => new FileInfo(x).CreationTime))
+                    {
+                        await dataPortClient.EnqueueFile(File.ReadAllBytes(file), enqueueDirOption.TransformerName, Path.GetFileName(file));
+                        WriteLine($" File enqueued: {file}");
+                    }
 
                 }).GetAwaiter().GetResult();
             }
             catch (Exception ex)
             {
                 WriteLine($"Login failed: {ex.Message}", Color.Red);
-                if(ex.InnerException != null)
+                if (ex.InnerException != null)
                     WriteLine($"Login failed details: {ex.InnerException.Message}", Color.Red);
             }
         }

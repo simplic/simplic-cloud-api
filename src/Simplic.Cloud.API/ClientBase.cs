@@ -48,7 +48,7 @@ namespace Simplic.Cloud.API
 
             HttpClient = new HttpClient();
             User = clientBase.User;
-            Url = clientBase.User?.JWT;
+            Url = clientBase.Url;
         }
 
         /// <summary>
@@ -190,7 +190,7 @@ namespace Simplic.Cloud.API
 
                 if (method == "get")
                     response = await HttpClient.GetAsync(methodUrl);
-                if (method == "delete")
+                else if (method == "delete")
                     response = await HttpClient.DeleteAsync(methodUrl);
                 else
                     throw new InvalidOperationException($"{method} is not valid");
@@ -205,12 +205,13 @@ namespace Simplic.Cloud.API
                 }
                 else
                 {
-                    throw new ApiException("Error in get.", api, controller, action, response.StatusCode);
+                    var errorMessage = await response.Content.ReadAsStringAsync();
+                    throw new ApiException($"Error in {method} :: {errorMessage}.", api, controller, action, response.StatusCode);
                 }
             }
             catch (Exception ex)
             {
-                throw new ApiException("Unexpected error in get.", api, controller, action, System.Net.HttpStatusCode.ServiceUnavailable, ex);
+                throw new ApiException($"Unexpected error in {method}.", api, controller, action, System.Net.HttpStatusCode.ServiceUnavailable, ex);
             }
         }
 
