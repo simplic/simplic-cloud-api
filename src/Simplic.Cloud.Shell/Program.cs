@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using static Colorful.Console;
 
@@ -21,17 +22,6 @@ namespace Simplic.Cloud.Shell
             WriteLine($" @ {DateTime.Now.Year} SIMPLIC GmbH");
             WriteLine(new string('-', Console.BufferWidth - 1));
 
-            Parser.Default.ParseArguments<Options>(args)
-                   .WithParsed(o =>
-                   {
-                       WriteLine($"Detailed logging: {o.Verbose}", Color.Yellow);
-                   });
-
-            Parser.Default.ParseArguments<Options>(args)
-       .WithParsed(o =>
-       {
-           WriteLine($"Detailed logging: {o.Verbose}", Color.Yellow);
-       });
 
             if (args.Length == 0)
             {
@@ -39,16 +29,25 @@ namespace Simplic.Cloud.Shell
                 return 1;
             }
 
-            Parser.Default.ParseArguments<Login>(args)
-                   .WithParsed(o =>
-                   {
-                       Login(o);
-                   });
+            if (args[0] == "login")
+                Parser.Default.ParseArguments<Login>(args)
+                       .WithParsed(o =>
+                       {
+                           Login(o);
+                       });
 
-            Parser.Default.ParseArguments<DataPortEnqueueDir>(args)
+            if (args[0] == "dataport-enqueue-dir")
+                Parser.Default.ParseArguments<DataPortEnqueueDir>(args)
                 .WithParsed(o =>
                 {
                     DataPortEnqueueDir(o);
+                });
+
+            if (args[0] == "dataport-read-queue")
+                Parser.Default.ParseArguments<DataPortReadQueue>(args)
+                .WithParsed(o =>
+                {
+                    DataPortReadQueue(o);
                 });
 
             return 0;
@@ -106,15 +105,63 @@ namespace Simplic.Cloud.Shell
                     {
                         await dataPortClient.EnqueueFile(File.ReadAllBytes(file), enqueueDirOption.TransformerName, Path.GetFileName(file));
                         WriteLine($" File enqueued: {file}");
+
+                        if (enqueueDirOption.Delete)
+                        {
+                            WriteLine(" ... Delete file", Color.Yellow);
+                            File.Delete(file);
+                        }
                     }
 
                 }).GetAwaiter().GetResult();
             }
             catch (Exception ex)
             {
-                WriteLine($"Login failed: {ex.Message}", Color.Red);
+                WriteLine($"Enqueue data failed: {ex.Message}", Color.Red);
                 if (ex.InnerException != null)
-                    WriteLine($"Login failed details: {ex.InnerException.Message}", Color.Red);
+                    WriteLine($"Enqueue data failed details: {ex.InnerException.Message}", Color.Red);
+            }
+        }
+
+        /// <summary>
+        /// Login into cloud account
+        /// </summary>
+        /// <param name="enqueueDirOption">Login object</param>
+        private static void DataPortReadQueue(DataPortReadQueue enqueueDirOption)
+        {
+            WriteLine($"Login to simplic cloud... {enqueueDirOption.EMail}");
+
+            var client = new Client();
+
+            try
+            {
+                Task.Run(async () =>
+                {
+                    var user = await client.LoginAsync(enqueueDirOption.EMail, enqueueDirOption.Password);
+                    WriteLine($"Login successful. JWT: {user.JWT}", Color.Green);
+                    WriteLine($" > Organization id: {user.OrganizationId}");
+
+                    var dataPortClient = new DataPortClient(client);
+
+                    Console.WriteLine("Begin reading queue");
+                    foreach (var queueEntry in await dataPortClient.GetResultQueueItems())
+                    {
+                        var result = await dataPortClient.GetResult(queueEntry.TransformationQueueId);
+
+                        var original = Encoding.UTF8.GetString(result.OriginalContent);
+                        var strResult = Encoding.UTF8.GetString(result.ProcessedContent);
+                        Console.WriteLine($"{strResult}");
+                        // await dataPortClient.RemoveResultQueueItem(queueEntry.TransformationQueueId);
+                    }
+                    Console.WriteLine("BegiEnd reading queue");
+
+                }).GetAwaiter().GetResult();
+            }
+            catch (Exception ex)
+            {
+                WriteLine($"Read data failed: {ex.Message}", Color.Red);
+                if (ex.InnerException != null)
+                    WriteLine($"Read data failed details: {ex.InnerException.Message}", Color.Red);
             }
         }
     }
