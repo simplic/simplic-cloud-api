@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Simplic.Cloud.Shell")]
+[assembly: AssemblyTitle("Simplic.Cloud.CLI")]
 [assembly: AssemblyDescription("Simplic cloud shell, for testing and working with the simplic cloud from the command line interface.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("SIMPLIC GmbH")]
@@ -32,13 +32,13 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion(Simplic.Cloud.Shell.General.Version)]
-[assembly: AssemblyFileVersion(Simplic.Cloud.Shell.General.Version)]
+[assembly: AssemblyVersion(Simplic.Cloud.CLI.General.Version)]
+[assembly: AssemblyFileVersion(Simplic.Cloud.CLI.General.Version)]
 
-namespace Simplic.Cloud.Shell
+namespace Simplic.Cloud.CLI
 {
     public static class General
     {
-        public const string Version = "1.0.0.0";
+        public const string Version = "1.1.19.124";
     }
 }

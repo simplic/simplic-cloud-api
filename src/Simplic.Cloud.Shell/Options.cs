@@ -1,6 +1,6 @@
 ﻿using CommandLine;
 
-namespace Simplic.Cloud.Shell
+namespace Simplic.Cloud.CLI
 {
     public class Options
     {
@@ -79,5 +79,13 @@ namespace Simplic.Cloud.Shell
             HelpText = "User password.",
             Required = true)]
         public string Password { get; set; }
+
+        [Value(3, MetaName = "Directory",
+            HelpText = "Directory path.",
+            Required = true)]
+        public string Directory { get; set; }
+
+        [Option('d', "delete", Required = false, HelpText = "If set, the file will be set as processed")]
+        public bool Delete { get; set; }
     }
 }

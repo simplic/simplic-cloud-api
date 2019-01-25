@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simplic.Cloud.API", "Simpli
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simplic.Cloud.API.DataPort", "Simplic.Cloud.API.DataPort\Simplic.Cloud.API.DataPort.csproj", "{519D07A5-5BF1-4CDD-B950-F579C710EE81}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simplic.Cloud.Shell", "Simplic.Cloud.Shell\Simplic.Cloud.Shell.csproj", "{381FE878-0C7C-476D-8133-690AEA5B73D2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simplic.Cloud.CLI", "Simplic.Cloud.Shell\Simplic.Cloud.CLI.csproj", "{381FE878-0C7C-476D-8133-690AEA5B73D2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

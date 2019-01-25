@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{381FE878-0C7C-476D-8133-690AEA5B73D2}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Simplic.Cloud.Shell</RootNamespace>
-    <AssemblyName>Simplic.Cloud.Shell</AssemblyName>
+    <RootNamespace>Simplic.Cloud.CLI</RootNamespace>
+    <AssemblyName>simplic-cloud-cli</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

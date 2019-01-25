@@ -10,14 +10,14 @@ using System.Text;
 using System.Threading.Tasks;
 using static Colorful.Console;
 
-namespace Simplic.Cloud.Shell
+namespace Simplic.Cloud.CLI
 {
     class Program
     {
         static int Main(string[] args)
         {
             WriteLine(new string('-', System.Console.BufferWidth - 1));
-            Write("Simplic Cloud Shell ");
+            Write("Simplic Cloud CLI ");
             Write($"{General.Version} ", Color.Green);
             WriteLine($" @ {DateTime.Now.Year} SIMPLIC GmbH");
             WriteLine(new string('-', Console.BufferWidth - 1));
@@ -126,10 +126,10 @@ namespace Simplic.Cloud.Shell
         /// <summary>
         /// Login into cloud account
         /// </summary>
-        /// <param name="enqueueDirOption">Login object</param>
-        private static void DataPortReadQueue(DataPortReadQueue enqueueDirOption)
+        /// <param name="readQueueOption">Login object</param>
+        private static void DataPortReadQueue(DataPortReadQueue readQueueOption)
         {
-            WriteLine($"Login to simplic cloud... {enqueueDirOption.EMail}");
+            WriteLine($"Login to simplic cloud... {readQueueOption.EMail}");
 
             var client = new Client();
 
@@ -137,7 +137,7 @@ namespace Simplic.Cloud.Shell
             {
                 Task.Run(async () =>
                 {
-                    var user = await client.LoginAsync(enqueueDirOption.EMail, enqueueDirOption.Password);
+                    var user = await client.LoginAsync(readQueueOption.EMail, readQueueOption.Password);
                     WriteLine($"Login successful. JWT: {user.JWT}", Color.Green);
                     WriteLine($" > Organization id: {user.OrganizationId}");
 
@@ -147,11 +147,40 @@ namespace Simplic.Cloud.Shell
                     foreach (var queueEntry in await dataPortClient.GetResultQueueItems())
                     {
                         var result = await dataPortClient.GetResult(queueEntry.TransformationQueueId);
+                        var fileId = Guid.NewGuid();
 
-                        var original = Encoding.UTF8.GetString(result.OriginalContent);
-                        var strResult = Encoding.UTF8.GetString(result.ProcessedContent);
-                        Console.WriteLine($"{strResult}");
-                        // await dataPortClient.RemoveResultQueueItem(queueEntry.TransformationQueueId);
+                        var directory = readQueueOption.Directory;
+
+                        if (!directory.EndsWith("\\"))
+                            directory += "\\";
+
+                        var transformedFile = $"{directory}transformed_{fileId}.xml";
+                        var originalFile = $"{directory}original_{fileId}.xml";
+                        var failedFile = $"{directory}original_{fileId}_failed.xml";
+
+                        WriteLine($" Process: {queueEntry.TransformationQueueId}...");
+
+                        if (result?.ProcessedContent == null || result?.Status != 2)
+                        {
+                            WriteLine($"  Failed: {failedFile}", Color.Red);
+                            File.WriteAllBytes(failedFile, result.OriginalContent);
+                        }
+                        else
+                        {
+                            WriteLine($"  Original: {transformedFile}", Color.Green);
+                            File.WriteAllBytes(transformedFile, result.ProcessedContent);
+
+                            WriteLine($"  Transformed: {originalFile}", Color.Green);
+                            File.WriteAllBytes(originalFile, result.OriginalContent);
+                        }
+
+                        if (readQueueOption.Delete)
+                        {
+                            WriteLine($"  Remove from queue. {queueEntry.TransformationQueueId}");
+                            await dataPortClient.RemoveResultQueueItem(queueEntry.TransformationQueueId);
+                        }
+
+                        WriteLine($" Done: {queueEntry.TransformationQueueId}");
                     }
                     Console.WriteLine("BegiEnd reading queue");
 
