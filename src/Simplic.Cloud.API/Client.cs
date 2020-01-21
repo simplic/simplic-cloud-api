@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace Simplic.Cloud.API
 {
@@ -43,13 +44,23 @@ namespace Simplic.Cloud.API
         /// <exception cref="ApiException">If the login process fails</exception>
         public async Task<User> LoginAsync(string email, string password)
         {
-            User = await PostAsync<User, LoginRequest>("", "user", "login", new LoginRequest
+            User = await PostAsync<User, LoginRequest>("user", "account", "login", new LoginRequest
             {
                 EMail = email,
                 Password = password
             });
             
             return User;
+        }
+
+        /// <summary>
+        /// Echo/ping simplic cloud service
+        /// </summary>
+        /// <returns>Instance of <see cref="User"/> if login was successful</returns>
+        /// <exception cref="ApiException">If the login process fails</exception>
+        public async Task<EchoResponse> PingAsync()
+        {
+            return await GetAsync<EchoResponse>("echo", "echo", "", null);
         }
     }
 }

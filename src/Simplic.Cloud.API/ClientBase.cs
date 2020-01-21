@@ -16,7 +16,8 @@ namespace Simplic.Cloud.API
     /// </summary>
     public abstract class ClientBase : IDisposable
     {
-        public const string DefaultUrl = "https://dataport.simplic.io/api";
+        public const string ApiVersion = "v1-0";
+        public const string DefaultUrl = "http://cloud.simplic.io";
 
         /// <summary>
         /// Initialize client base
@@ -70,9 +71,10 @@ namespace Simplic.Cloud.API
         {
             var urlBuilder = new StringBuilder();
             urlBuilder.Append(Url);
+            urlBuilder.Append($"/{ApiVersion}");
 
             if (!string.IsNullOrWhiteSpace(api))
-                urlBuilder.Append($"/{api}");
+                urlBuilder.Append($"/{api}-api");
 
             if (!string.IsNullOrWhiteSpace(controller))
                 urlBuilder.Append($"/{controller}");
@@ -163,7 +165,7 @@ namespace Simplic.Cloud.API
         {
             try
             {
-                if (!string.IsNullOrWhiteSpace(User.JWT))
+                if (!string.IsNullOrWhiteSpace(User?.JWT))
                     HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", User?.JWT);
 
                 var methodUrl = GetUrl(api, controller, action);

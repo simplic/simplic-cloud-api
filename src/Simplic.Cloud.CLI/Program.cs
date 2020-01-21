@@ -20,8 +20,8 @@ namespace Simplic.Cloud.CLI
             Write("Simplic Cloud CLI ");
             Write($"{General.Version} ", Color.Green);
             WriteLine($" @ {DateTime.Now.Year} SIMPLIC GmbH");
+            PingApi();
             WriteLine(new string('-', Console.BufferWidth - 1));
-
 
             if (args.Length == 0)
             {
@@ -51,6 +51,30 @@ namespace Simplic.Cloud.CLI
                 });
 
             return 0;
+        }
+
+        /// <summary>
+        /// Ping api
+        /// </summary>
+        /// <returns></returns>
+        private static void PingApi()
+        {
+            var client = new Client();
+
+            try
+            {
+                Task.Run(async () =>
+                {
+                    var result = await client.PingAsync();
+                    WriteLine($"Ping api: {result.Version}@{result.DT} of type {result.Type}");
+                }).GetAwaiter().GetResult();
+            }
+            catch (Exception ex)
+            {
+                WriteLine($"Ping/echo failed: {ex.Message}", Color.Red);
+                if (ex.InnerException != null)
+                    WriteLine($"Ping/echo failed details: {ex.InnerException.Message}", Color.Red);
+            }
         }
 
         /// <summary>
