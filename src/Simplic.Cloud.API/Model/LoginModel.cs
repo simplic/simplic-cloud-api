@@ -24,13 +24,18 @@ namespace Simplic.Cloud.API
     public class User
     {
         /// <summary>
-        /// Gets or the organization id
-        /// </summary>
-        public Guid OrganizationId { get; set; }
-
-        /// <summary>
         /// Gets or sets the json web token (jwt ~user session)
         /// </summary>
-        public string JWT { get; set; }
+        public string Token { get; set; }
+
+        /// <summary>
+        /// Gets or sets the username
+        /// </summary>
+        public string UserName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the mail address
+        /// </summary>
+        public string Email { get; set; }
     }
 }

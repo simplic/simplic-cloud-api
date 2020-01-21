@@ -99,8 +99,8 @@ namespace Simplic.Cloud.API
         {
             try
             {
-                if (!string.IsNullOrWhiteSpace(User?.JWT))
-                    HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", User?.JWT);
+                if (!string.IsNullOrWhiteSpace(User?.Token))
+                    HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", User?.Token);
 
                 var methodUrl = GetUrl(api, controller, action);
 
@@ -165,8 +165,8 @@ namespace Simplic.Cloud.API
         {
             try
             {
-                if (!string.IsNullOrWhiteSpace(User?.JWT))
-                    HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", User?.JWT);
+                if (!string.IsNullOrWhiteSpace(User?.Token))
+                    HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", User?.Token);
 
                 var methodUrl = GetUrl(api, controller, action);
                 if (parameters != null && parameters.Any())
@@ -221,8 +221,8 @@ namespace Simplic.Cloud.API
         {
             try
             {
-                if (!string.IsNullOrWhiteSpace(User?.JWT))
-                    HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", User?.JWT);
+                if (!string.IsNullOrWhiteSpace(User?.Token))
+                    HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", User?.Token);
 
                 var methodUrl = GetUrl(api, controller, action);
 
@@ -263,7 +263,7 @@ namespace Simplic.Cloud.API
         /// Gets or sets the current jwt. Get is protected for security reason. However, the getter can be accesses by
         /// using reflection.
         /// </summary>
-        public User User { protected get; set; }
+        public User User { get; set; }
 
         /// <summary>
         /// Gets the client url

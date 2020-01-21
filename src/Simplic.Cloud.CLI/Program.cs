@@ -92,8 +92,8 @@ namespace Simplic.Cloud.CLI
                 Task.Run(async () =>
                 {
                     var user = await client.LoginAsync(login.EMail, login.Password);
-                    WriteLine($"Login successful. JWT: {user.JWT}", Color.Green);
-                    WriteLine($" > Organization id: {user.OrganizationId}");
+                    WriteLine($"Login successful. JWT: {user.Token}", Color.Green);
+                    WriteLine($" > User: {user.UserName}");
                 }).GetAwaiter().GetResult();
             }
             catch (Exception ex)
@@ -119,8 +119,8 @@ namespace Simplic.Cloud.CLI
                 Task.Run(async () =>
                 {
                     var user = await client.LoginAsync(enqueueDirOption.EMail, enqueueDirOption.Password);
-                    WriteLine($"Login successful. JWT: {user.JWT}", Color.Green);
-                    WriteLine($" > Organization id: {user.OrganizationId}");
+                    WriteLine($"Login successful. JWT: {user.Token}", Color.Green);
+                    // WriteLine($" > Organization id: {user.OrganizationId}");
 
                     var dataPortClient = new DataPortClient(client);
 
@@ -162,8 +162,8 @@ namespace Simplic.Cloud.CLI
                 Task.Run(async () =>
                 {
                     var user = await client.LoginAsync(readQueueOption.EMail, readQueueOption.Password);
-                    WriteLine($"Login successful. JWT: {user.JWT}", Color.Green);
-                    WriteLine($" > Organization id: {user.OrganizationId}");
+                    WriteLine($"Login successful. JWT: {user.Token}", Color.Green);
+                    // WriteLine($" > Organization id: {user.OrganizationId}");
 
                     var dataPortClient = new DataPortClient(client);
 

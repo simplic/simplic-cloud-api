@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.136
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29324.140
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simplic.Cloud.API", "Simplic.Cloud.API\Simplic.Cloud.API.csproj", "{A2CF02AC-4C6F-4FE5-BCBB-3C9CB6D1BFCA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simplic.Cloud.API.DataPort", "Simplic.Cloud.API.DataPort\Simplic.Cloud.API.DataPort.csproj", "{519D07A5-5BF1-4CDD-B950-F579C710EE81}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simplic.Cloud.CLI", "Simplic.Cloud.CLI\Simplic.Cloud.CLI.csproj", "{381FE878-0C7C-476D-8133-690AEA5B73D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simplic.Cloud.API.Logistics", "Simplic.Cloud.API.Logistics\Simplic.Cloud.API.Logistics.csproj", "{C76335A8-D1AA-4741-8265-BDDB60E968A4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{381FE878-0C7C-476D-8133-690AEA5B73D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{381FE878-0C7C-476D-8133-690AEA5B73D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{381FE878-0C7C-476D-8133-690AEA5B73D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C76335A8-D1AA-4741-8265-BDDB60E968A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C76335A8-D1AA-4741-8265-BDDB60E968A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C76335A8-D1AA-4741-8265-BDDB60E968A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C76335A8-D1AA-4741-8265-BDDB60E968A4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
