@@ -27,6 +27,18 @@ steps:
     version: 3.x
     includePreviewVersions: false
 
+- task: NuGetCommand@2
+  inputs:
+    command: 'restore'
+    restoreSolution: '**/*.sln'
+    feedsToUse: 'select'
+    vstsFeed: 'f7087ef5-bf6f-48b2-8b8b-5e513f4a7a9e'
+
+- task: MSBuild@1
+  inputs:
+    solution: '**/*.sln'
+    clean: true
+
 - task: BatchScript@1
   inputs:
-    filename: 'src\**\package.bat'
+    filename: 'src\Simplic.Cloud.API\package.bat'
