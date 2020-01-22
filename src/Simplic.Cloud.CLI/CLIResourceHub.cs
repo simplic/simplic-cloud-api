@@ -13,22 +13,22 @@ namespace Simplic.Cloud.CLI
 
         }
 
-        public override async Task OnAddResourceAsync(Cloud.ResourceScheduler.Api.Model.ResourceBaseModel resource)
+        protected override async Task OnAddResourceAsync(Cloud.ResourceScheduler.Api.Model.ResourceBaseModel resource)
         {
             await Task.Delay(1);
         }
 
-        public override async Task OnAddResourcesAsync(IList<Cloud.ResourceScheduler.Api.Model.ResourceBaseModel> resources)
+        protected override async Task OnAddResourcesAsync(IList<Cloud.ResourceScheduler.Api.Model.ResourceBaseModel> resources)
         {
             await Task.Delay(1);
         }
 
-        public override async Task OnRemoveResourceAsync(Guid resourceId)
+        protected override async Task OnRemoveResourceAsync(Guid resourceId)
         {
             await Task.Delay(1);
         }
 
-        public override async Task OnUpdateResourceAsync(Cloud.ResourceScheduler.Api.Model.ResourceBaseModel resource)
+        protected override async Task OnUpdateResourceAsync(Cloud.ResourceScheduler.Api.Model.ResourceBaseModel resource)
         {
             await Task.Delay(1);
         }
