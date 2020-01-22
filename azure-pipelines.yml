@@ -29,4 +29,4 @@ steps:
 
 - task: BatchScript@1
   inputs:
-    filename: '/src/**/package.bat'
+    filename: '\src\**\package.bat'
