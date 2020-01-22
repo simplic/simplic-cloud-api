@@ -31,7 +31,6 @@ steps:
 - task: MSBuild@1
   inputs:
     solution: '**/*.sln'
-    clean: true
 
 - task: BatchScript@1
   inputs:
