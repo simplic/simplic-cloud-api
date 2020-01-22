@@ -35,6 +35,16 @@ steps:
   inputs:
     solution: '**/*.sln'
 
-- task: BatchScript@1
+- task: NuGetCommand@2
   inputs:
-    filename: 'src/Simplic.Cloud.API/package.bat'
+    command: 'pack'
+    packagesToPack: 'src/Simplic.Cloud.API**/*.csproj'
+    versioningScheme: 'off'
+
+- task: NuGetCommand@2
+  inputs:
+    command: 'push'
+    packagesToPush: 'src/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+    nuGetFeedType: 'internal'
+    publishVstsFeed: 'f7087ef5-bf6f-48b2-8b8b-5e513f4a7a9e'
+    allowPackageConflicts: true
