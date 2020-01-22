@@ -1,6 +1,7 @@
 ﻿using CommandLine;
 using Simplic.Cloud.API;
 using Simplic.Cloud.API.DataPort;
+using Simplic.Cloud.API.Logistics;
 using System;
 using System.Diagnostics;
 using System.Drawing;
@@ -94,7 +95,16 @@ namespace Simplic.Cloud.CLI
                     var user = await client.LoginAsync(login.EMail, login.Password);
                     WriteLine($"Login successful. JWT: {user.Token}", Color.Green);
                     WriteLine($" > User: {user.UserName}");
+
+                    // Test websocket
+                    //Debugger.Launch();
+                    var l = new CLIResourceHub(client);
+                    await l.StartAsync();
+                    await l.RequestResourcesAsync(new ResourceScheduler.Api.Model.GetResourceRequest { });
+
                 }).GetAwaiter().GetResult();
+
+                System.Threading.Thread.Sleep(5000);
             }
             catch (Exception ex)
             {

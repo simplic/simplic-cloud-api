@@ -12,7 +12,6 @@ namespace Simplic.Cloud.API
     /// </summary>
     public class BaseHub : IDisposable
     {
-        private HubConnection connection;
         private ClientBase clientBase;
 
         /// <summary>
@@ -25,7 +24,7 @@ namespace Simplic.Cloud.API
             if (string.IsNullOrWhiteSpace(clientBase.User?.Token))
                 throw new Exception("User not logged in.");
 
-            connection = new HubConnectionBuilder()
+            Connection = new HubConnectionBuilder()
                 .WithUrl($"{clientBase.Url}/{ClientBase.ApiVersion}/{api}-api/{hubName}", options =>
                 {
                     options.AccessTokenProvider = () => Task.FromResult(clientBase.User.Token);
@@ -34,16 +33,27 @@ namespace Simplic.Cloud.API
         }
 
         /// <summary>
+        /// Start connection async
+        /// </summary>
+        /// <returns></returns>
+        public async Task StartAsync() => await Connection.StartAsync();
+
+        /// <summary>
         /// Dispose connection
         /// </summary>
-        public void Dispose()
+        public virtual void Dispose()
         {
             // Dispose connection
             Task.Run(async () =>
             {
-                await connection.StopAsync();
-                await connection.DisposeAsync();
+                await Connection.StopAsync();
+                await Connection.DisposeAsync();
             });
         }
+
+        /// <summary>
+        /// Gets the HubConnection
+        /// </summary>
+        protected HubConnection Connection { get; private set; }
     }
 }
