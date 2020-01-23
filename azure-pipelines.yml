@@ -39,7 +39,7 @@ steps:
 - task: NuGetCommand@2
   inputs:
     command: 'pack'
-    packagesToPack: 'src/Simplic.Cloud.API/*.csproj'
+    packagesToPack: 'src/**/*.csproj'
     configuration: '$(buildConfiguration)'
     packDestination: 
     versioningScheme: 'off'
