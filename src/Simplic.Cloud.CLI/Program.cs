@@ -2,6 +2,7 @@
 using Simplic.Cloud.API;
 using Simplic.Cloud.API.DataPort;
 using Simplic.Cloud.API.Logistics;
+using Simplic.Cloud.ResourceScheduler.Api.Model;
 using System;
 using System.Diagnostics;
 using System.Drawing;
@@ -97,15 +98,13 @@ namespace Simplic.Cloud.CLI
                     WriteLine($" > User: {user.UserName}");
 
                     // Test websocket
-                    //Debugger.Launch();
-                    var l = new CLIResourceHub(client);
+                    var l = new CLIResourceSchedulerHub(client);
                     await l.StartAsync();
-                    await l.RequestResourcesAsync(new ResourceScheduler.Api.Model.GetResourceRequest { });
+                    await l.JoinSessionAsync(new JoinSessionRequest { OrganizationId = Guid.Empty });
+                    await l.RequestResourcesAsync(new GetResourceRequest { });
                     await Task.Delay(10000);
 
                 }).GetAwaiter().GetResult();
-
-                System.Threading.Thread.Sleep(5000);
             }
             catch (Exception ex)
             {

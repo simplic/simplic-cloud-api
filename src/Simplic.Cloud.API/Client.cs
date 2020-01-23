@@ -44,7 +44,7 @@ namespace Simplic.Cloud.API
         /// <exception cref="ApiException">If the login process fails</exception>
         public async Task<User> LoginAsync(string email, string password)
         {
-            User = await PostAsync<User, LoginRequest>("user", "account", "login", new LoginRequest
+            User = await PostAsync<User, LoginRequest>("account", "account", "login", new LoginRequest
             {
                 EMail = email,
                 Password = password
