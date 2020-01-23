@@ -20,6 +20,11 @@ namespace Simplic.Cloud.CLI
 
         protected override async Task OnAddResourcesAsync(IList<Cloud.ResourceScheduler.Api.Model.ResourceBaseModel> resources)
         {
+            foreach (var resource in resources)
+            {
+                Console.WriteLine($"Id: {resource.Id}: {resource.DisplayName}");
+            }
+
             await Task.Delay(1);
         }
 

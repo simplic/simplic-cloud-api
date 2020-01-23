@@ -101,6 +101,7 @@ namespace Simplic.Cloud.CLI
                     var l = new CLIResourceHub(client);
                     await l.StartAsync();
                     await l.RequestResourcesAsync(new ResourceScheduler.Api.Model.GetResourceRequest { });
+                    await Task.Delay(10000);
 
                 }).GetAwaiter().GetResult();
 
