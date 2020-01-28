@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Simplic.Cloud.ResourceScheduler.Api.Model;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
@@ -37,6 +38,22 @@ namespace Simplic.Cloud.API.Logistics
             : base(client)
         {
 
+        }
+
+        /// <summary>
+        /// Create resource scheduler configuration
+        /// </summary>
+        /// <param name="email">User account mail address</param>
+        /// <param name="password">User account password</param>
+        /// <returns>Instance of <see cref="User"/> if login was successful</returns>
+        /// <exception cref="ApiException">If the login process fails</exception>
+        public async Task<ConfigurationModel> CreateResourceSchedulerAsync(string organizationId, string name)
+        {
+            return await PostAsync<ConfigurationModel, ConfigurationModel>("resource-scheduler", "configuration", "create", new ConfigurationModel
+            {
+                OrganizationId = organizationId,
+                Name = name
+            });
         }
     }
 }

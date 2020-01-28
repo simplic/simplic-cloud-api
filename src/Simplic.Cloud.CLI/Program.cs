@@ -9,6 +9,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using static Colorful.Console;
 
@@ -97,12 +98,21 @@ namespace Simplic.Cloud.CLI
                     WriteLine($"Login successful. JWT: {user.Token}", Color.Green);
                     WriteLine($" > User: {user.UserName}");
 
+                    Debugger.Launch();
+                    var logisticsApi = new LogisticsClient(client);
+
+                    var config = await logisticsApi.CreateResourceSchedulerAsync("2b94a1c9-b907-4ae6-af2b-507341cb12d9", "default");
+                    Console.WriteLine($" > New config: {config.OrganizationId}");
+
                     // Test websocket
                     var l = new CLIResourceSchedulerHub(client);
                     await l.StartAsync();
-                    await l.JoinSessionAsync(new JoinSessionRequest { OrganizationId = Guid.Empty });
-                    await l.RequestResourcesAsync(new GetResourceRequest { });
-                    await Task.Delay(10000);
+                    await Task.Delay(1000);
+                    await l.JoinSessionAsync(new JoinSessionRequest { OrganizationId = "2b94a1c9-b907-4ae6-af2b-507341cb12d9" });
+                    await l.AddResourceAsync(new AddResourceRequest { Id = Guid.NewGuid().ToString(), OrganizationId = "2b94a1c9-b907-4ae6-af2b-507341cb12d9", Type = ResourceType.Driver });
+
+                    await l.RequestResourcesAsync(new GetResourceRequest { OrganizationId = "2b94a1c9-b907-4ae6-af2b-507341cb12d9" });
+                    await Task.Delay(1000);
 
                 }).GetAwaiter().GetResult();
             }
