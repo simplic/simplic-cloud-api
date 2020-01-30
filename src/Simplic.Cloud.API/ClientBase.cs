@@ -125,6 +125,41 @@ namespace Simplic.Cloud.API
             }
         }
 
+        /// Post async
+        /// </summary>
+        /// <typeparam name="T">Return type</typeparam>
+        /// <typeparam name="I">Model type</typeparam>
+        /// <param name="api">Api path</param>
+        /// <param name="controller">Controller</param>
+        /// <param name="action">Action</param>
+        /// <param name="model">Model to post</param>
+        /// <returns>Return model</returns>
+        protected async Task<T> PutAsync<T, I>(string api, string controller, string action, I model)
+        {
+            try
+            {
+                if (!string.IsNullOrWhiteSpace(User?.Token))
+                    HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", User?.Token);
+
+                var methodUrl = GetUrl(api, controller, action);
+
+                var response = await HttpClient.PutAsJsonAsync<I>(methodUrl, model);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    // Get json and parse
+                    return await response.Content.ReadAsAsync<T>();
+                }
+                else
+                {
+                    throw new ApiException("Error in post.", api, controller, action, response.StatusCode);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new ApiException("Unexpected error in post.", api, controller, action, System.Net.HttpStatusCode.ServiceUnavailable, ex);
+            }
+        }
 
         /// <summary>
         /// Get async

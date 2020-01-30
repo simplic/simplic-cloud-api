@@ -2,6 +2,7 @@
 using Simplic.Cloud.API;
 using Simplic.Cloud.API.DataPort;
 using Simplic.Cloud.API.Logistics;
+using Simplic.Cloud.BusinessPartner.Api.Model;
 using Simplic.Cloud.ResourceScheduler.Api.Model;
 using System;
 using System.Diagnostics;
@@ -98,22 +99,30 @@ namespace Simplic.Cloud.CLI
                     WriteLine($"Login successful. JWT: {user.Token}", Color.Green);
                     WriteLine($" > User: {user.UserName}");
 
-                    Debugger.Launch();
-                    var logisticsApi = new LogisticsClient(client);
+                    var contactApi = new ContactClient(client);
 
-                    var config = await logisticsApi.CreateResourceSchedulerAsync("2b94a1c9-b907-4ae6-af2b-507341cb12d9", "default");
-                    Console.WriteLine($" > New config: {config.OrganizationId}");
+                    for (int i = 0; i < 30; i++)
+                    {
+                        var contact = await contactApi.CreateAsync(new Contact()
+                        {
+                            OrganizationId = Guid.Parse("2b94a1c9-b907-4ae6-af2b-507341cb12d9"),
+                            Type = ContactTypeEnum.Company,
+                            Addresses = new System.Collections.Generic.List<Contact.AddressField>
+                            {
+                                new Contact.AddressField
+                                {
+                                    CompanyName = "Sample company_" + i.ToString()
+                                }
+                            }
+                        });
+                        Console.WriteLine(" Contact: " + contact.Id.ToString());
 
-                    // Test websocket
-                    var l = new CLIResourceSchedulerHub(client);
-                    await l.StartAsync();
-                    await Task.Delay(1000);
-                    await l.JoinSessionAsync(new JoinSessionRequest { OrganizationId = "2b94a1c9-b907-4ae6-af2b-507341cb12d9" });
-                    await l.AddResourceAsync(new AddResourceRequest { Id = Guid.NewGuid().ToString(), OrganizationId = "2b94a1c9-b907-4ae6-af2b-507341cb12d9", Type = ResourceType.Driver });
+                        await Task.Delay(500);
 
-                    await l.RequestResourcesAsync(new GetResourceRequest { OrganizationId = "2b94a1c9-b907-4ae6-af2b-507341cb12d9" });
-                    await Task.Delay(1000);
-
+                        var get_contact = await contactApi.GetAsync(contact.Id);
+                        Console.WriteLine(" > Contact: " + get_contact.Id);
+                        await contactApi.DeleteAsync(get_contact.Id);
+                    }
                 }).GetAwaiter().GetResult();
             }
             catch (Exception ex)

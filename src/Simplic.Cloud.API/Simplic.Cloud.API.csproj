@@ -149,6 +149,7 @@
     <Compile Include="BaseHub.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="ClientBase.cs" />
+    <Compile Include="CRUDClientBase.cs" />
     <Compile Include="Model\EchoModel.cs" />
     <Compile Include="Model\LoginModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
