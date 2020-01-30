@@ -43,10 +43,16 @@ steps:
     configuration: '$(buildConfiguration)'
     versioningScheme: 'off'
 
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
+
 - task: NuGetCommand@2
   inputs:
     command: 'push'
-    packagesToPush: '**/Simplic.Cloud.API.*.nupkg;!**/Simplic.Cloud.API.*.symbols.nupkg'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/Simplic.Cloud.API.*.nupkg;!**/Simplic.Cloud.API.*.symbols.nupkg'
     nuGetFeedType: 'internal'
     publishVstsFeed: 'f7087ef5-bf6f-48b2-8b8b-5e513f4a7a9e'
     allowPackageConflicts: true
