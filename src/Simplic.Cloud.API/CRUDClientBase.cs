@@ -21,7 +21,7 @@ namespace Simplic.Cloud.API
         {
         }
 
-        public virtual async Task<T> GetAsync<I>(I id)
+        public virtual async Task<T> GetAsync(I id)
         {
             Debugger.Launch();
             return await base.GetAsync<T>(Api, Controller, "get", new Dictionary<string, string> { { "id", id.ToString() } });
@@ -37,7 +37,7 @@ namespace Simplic.Cloud.API
             return await base.PutAsync<T, T>(Api, Controller, "update", obj);
         }
 
-        public virtual async Task<T> DeleteAsync<I>(I id)
+        public virtual async Task<T> DeleteAsync(I id)
         {
             return await base.DeleteAsync<T>(Api, Controller, "delete", new Dictionary<string, string> { { "id", id.ToString() } });
         }
