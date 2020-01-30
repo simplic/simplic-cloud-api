@@ -43,6 +43,12 @@ steps:
     configuration: '$(buildConfiguration)'
     versioningScheme: 'off'
 
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '/'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
+
 - task: NuGetCommand@2
   inputs:
     command: 'push'
