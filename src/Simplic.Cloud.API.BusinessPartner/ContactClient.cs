@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
-namespace Simplic.Cloud.API.Logistics
+namespace Simplic.Cloud.API.BusinessPartner
 {
     /// <summary>
     /// Contact client. This api client contains all general and data port specific methods.
