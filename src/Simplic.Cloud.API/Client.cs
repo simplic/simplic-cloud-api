@@ -29,7 +29,7 @@ namespace Simplic.Cloud.API
         /// Initialize client and inherit the authentication
         /// </summary>
         /// <param name="client">Client instance</param>
-        public Client(Client client) 
+        public Client(IClient client) 
             : base(client)
         {
             

@@ -34,7 +34,7 @@ namespace Simplic.Cloud.API.BusinessPartner
         /// Initialize client and inherit the authentication
         /// </summary>
         /// <param name="client">Client instance</param>
-        public ContactClient(Client client)
+        public ContactClient(IClient client)
             : base(client)
         {
 

@@ -17,7 +17,7 @@ namespace Simplic.Cloud.API
         {
         }
 
-        public CRUDClientBase(ClientBase clientBase) : base(clientBase)
+        public CRUDClientBase(IClient clientBase) : base(clientBase)
         {
         }
 

@@ -33,7 +33,7 @@ namespace Simplic.Cloud.API.DataPort
         /// Initialize client and inherit the authentication
         /// </summary>
         /// <param name="client">Client instance</param>
-        public DataPortClient(Client client)
+        public DataPortClient(IClient client)
             : base(client)
         {
 

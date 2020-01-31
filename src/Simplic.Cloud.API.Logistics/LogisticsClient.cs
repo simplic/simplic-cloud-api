@@ -34,7 +34,7 @@ namespace Simplic.Cloud.API.Logistics
         /// Initialize client and inherit the authentication
         /// </summary>
         /// <param name="client">Client instance</param>
-        public LogisticsClient(Client client)
+        public LogisticsClient(IClient client)
             : base(client)
         {
 

@@ -43,7 +43,7 @@ namespace Simplic.Cloud.API
         /// </summary>
         /// <param name="clientBase">Client base instance</param>
         /// <exception cref="ArgumentNullException">Null check for <see cref="ClientBase"/> argument.</exception>
-        public ClientBase(ClientBase clientBase)
+        public ClientBase(IClient clientBase)
         {
             if (clientBase == null) throw new ArgumentNullException(nameof(clientBase));
 
