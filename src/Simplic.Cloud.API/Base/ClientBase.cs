@@ -69,9 +69,6 @@ namespace Simplic.Cloud.API
         /// <returns>Complete url</returns>
         private string GetUrl(string api, string controller, string action)
         {
-            // if (api == "resource-scheduler")
-            //     return $"http://localhost:49248/v1-0/resource-scheduler-api/{controller}/{action}";
-
             var urlBuilder = new StringBuilder();
             urlBuilder.Append(Url);
             urlBuilder.Append($"/{ApiVersion}");
