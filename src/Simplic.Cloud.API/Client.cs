@@ -6,7 +6,7 @@ namespace Simplic.Cloud.API
     /// <summary>
     /// Cloud api client. Login should be done before calling any other endpoint.
     /// </summary>
-    public class Client : ClientBase
+    public class Client : ClientBase, IClient
     {
         /// <summary>
         /// Initialize new client. 

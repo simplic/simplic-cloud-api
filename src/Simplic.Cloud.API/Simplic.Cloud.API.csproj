@@ -146,10 +146,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiException.cs" />
-    <Compile Include="BaseHub.cs" />
+    <Compile Include="Base\BaseHub.cs" />
     <Compile Include="Client.cs" />
-    <Compile Include="ClientBase.cs" />
-    <Compile Include="CRUDClientBase.cs" />
+    <Compile Include="Base\ClientBase.cs" />
+    <Compile Include="Base\CRUDClientBase.cs" />
+    <Compile Include="IClient.cs" />
     <Compile Include="Model\EchoModel.cs" />
     <Compile Include="Model\LoginModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -157,7 +158,6 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
-    <None Include="Simplic.Cloud.API.nuspec" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

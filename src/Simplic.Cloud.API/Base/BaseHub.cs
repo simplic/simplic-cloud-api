@@ -11,7 +11,7 @@ namespace Simplic.Cloud.API
     /// <summary>
     /// Basic hub integration
     /// </summary>
-    public class BaseHub : IDisposable
+    public abstract class BaseHub : IDisposable
     {
         private ClientBase clientBase;
 
