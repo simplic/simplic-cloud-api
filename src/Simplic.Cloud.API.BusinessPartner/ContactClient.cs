@@ -1,8 +1,5 @@
 ﻿using Simplic.Cloud.BusinessPartner.Api.Model;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Threading.Tasks;
 
 namespace Simplic.Cloud.API.BusinessPartner
 {
