@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Simplic.Cloud.API.Logistics
 {
-    public class VehicleClient : CRUDClientBase<Guid, Vehicle>
+    public class VehicleClient : CRUDClientBase<Vehicle, Guid>
     {
         public VehicleClient()
         {
