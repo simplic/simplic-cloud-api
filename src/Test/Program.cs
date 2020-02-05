@@ -1,5 +1,6 @@
 ﻿using Simplic.Cloud.API;
 using Simplic.Cloud.API.Logistics;
+using Simplic.Cloud.ResourceScheduler.Api.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,7 +39,7 @@ namespace Test
             localClient.Url = "http://localhost:49248";
 
             var resourceSchedulerClient = new ResourceSchedulerClient(localClient);
-            await resourceSchedulerClient.CreateResourceSchedulerAsync(organizationId.ToString(), name);
+            await resourceSchedulerClient.CreateResourceSchedulerAsync(organizationId, name);
 
             await Task.Delay(5000);
 
@@ -50,7 +51,13 @@ namespace Test
             await hub.JoinSessionAsync(new Simplic.Cloud.ResourceScheduler.Api.Model.JoinSessionRequest
             {
                 Name = name,
-                OrganizationId = organizationId.ToString()
+                OrganizationId = organizationId
+            });
+
+            await hub.RequestResourceGroupsAsync(new GetResourceGroupsRequest
+            {
+                Name = name,
+                OrganizationId = organizationId
             });
 
             Console.WriteLine("Add resources");
@@ -59,23 +66,31 @@ namespace Test
                 await hub.StartAsync();
                 await hub.AddResourceAsync(new Simplic.Cloud.ResourceScheduler.Api.Model.AddResourceRequest 
                 {
-                    Id = resource.ToString(),
+                    Id = resource,
                     Name = name,
-                    OrganizationId = organizationId.ToString(),
+                    OrganizationId = organizationId,
                     Type = Simplic.Cloud.ResourceScheduler.Api.Model.ResourceType.Vehicle
                 });
             }
 
-            await Task.Delay(5000);
+            await Task.Delay(10000);
+
+            await hub.StartAsync();
+            await hub.RemoveResourceAsync(new Simplic.Cloud.ResourceScheduler.Api.Model.RemoveResourceRequest 
+            {
+                Id = Guid.Parse("dcddc4d7-334d-4652-9864-e9432d486e89"),
+                Name = name,
+                OrganizationId = organizationId
+            });
 
             Console.WriteLine("Request resources");
-            // await hub.RequestResourcesAsync(new Simplic.Cloud.ResourceScheduler.Api.Model.GetResourceRequest { OrganizationId = organizationId.ToString(), Name = name });
-
-            await hub.LeaveSessionAsync(new Simplic.Cloud.ResourceScheduler.Api.Model.LeaveSessionRequest
+            
+            await hub.RequestResourcesAsync(new GetResourceRequest
             {
                 Name = name,
-                OrganizationId = organizationId.ToString()
+                OrganizationId = organizationId
             });
+
 
             Console.ReadLine();
         }

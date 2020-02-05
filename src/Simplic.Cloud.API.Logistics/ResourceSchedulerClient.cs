@@ -47,12 +47,21 @@ namespace Simplic.Cloud.API.Logistics
         /// <param name="password">User account password</param>
         /// <returns>Instance of <see cref="User"/> if login was successful</returns>
         /// <exception cref="ApiException">If the login process fails</exception>
-        public async Task<ConfigurationModel> CreateResourceSchedulerAsync(string organizationId, string name)
+        public async Task<ConfigurationModel> CreateResourceSchedulerAsync(Guid organizationId, string name)
         {
             return await PostAsync<ConfigurationModel, ConfigurationModel>("resource-scheduler", "configuration", "create", new ConfigurationModel
             {
                 OrganizationId = organizationId,
                 Name = name
+            });
+        }
+
+        public async Task<ConfigurationModel> GetByOrgainzationAsync(Guid id, string name)
+        {
+            return await GetAsync<ConfigurationModel>("resource-scheduler", "configuration", "get-by-organization", new Dictionary<string, string>
+            {
+                { "organizationId", id.ToString() },
+                { "name", name }
             });
         }
     }

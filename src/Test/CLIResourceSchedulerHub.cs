@@ -14,6 +14,14 @@ namespace Test
 
         }
 
+        protected override async Task OnAddResourceGroupsAsync(IList<ResourceGroup> resourceGroups)
+        {
+            foreach (var group in resourceGroups)
+            {
+                Console.WriteLine($"Group: {group.Name}");
+            }
+        }
+
         protected override async Task OnAddDriverResourcesAsync(IList<DriverResourceModel> resources)
         {
             foreach (var resource in resources)
@@ -60,6 +68,7 @@ namespace Test
 
         protected override async Task OnRemoveResourceAsync(Guid resourceId)
         {
+            Console.WriteLine("Remove resource");
             await Task.Delay(1);
         }
 

@@ -20,6 +20,7 @@ namespace Simplic.Cloud.API.Logistics
         public ResourceSchedulerHub(ClientBase clientBase) : base("resource-scheduler", "resource-scheduler", clientBase)
         {
             receiver.Add(Connection.On<IList<DriverResourceModel>>("PushAddDriverResourcesAsync", OnAddDriverResourcesAsync));
+            receiver.Add(Connection.On<IList<ResourceGroup>>("PushAddResourceGroupsAsync", OnAddResourceGroupsAsync));
             receiver.Add(Connection.On<IList<TractorUnitResourceModel>>("PushAddTractorUnitResourcesAsync", OnAddTractorUnitResourcesAsync));
             receiver.Add(Connection.On<IList<TrailerResourceModel>>("PushAddTrailerResourcesAsync", OnAddTrailerResourcesAsync));
             receiver.Add(Connection.On<Guid>("PushRemoveResourceAsync", OnRemoveResourceAsync));
@@ -37,6 +38,14 @@ namespace Simplic.Cloud.API.Logistics
         }
 
         #region [Request]
+        /// <summary>
+        /// Reqeust resource groups
+        /// </summary>
+        public async Task RequestResourceGroupsAsync(GetResourceGroupsRequest request)
+        {
+            await Connection.SendAsync(nameof(RequestResourceGroupsAsync), request);
+        }
+
         /// <summary>
         /// Reqeust resources
         /// </summary>
@@ -83,6 +92,13 @@ namespace Simplic.Cloud.API.Logistics
         #endregion
 
         #region [Response]
+        /// <summary>
+        /// Resource groups requested
+        /// </summary>
+        /// <param name="resourceGroups"></param>
+        /// <returns></returns>
+        protected abstract Task OnAddResourceGroupsAsync(IList<ResourceGroup> resourceGroups);
+
         /// <summary>
         /// Pushes a list of resources
         /// </summary>
