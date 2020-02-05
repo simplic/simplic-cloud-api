@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Simplic.Cloud.CLI
+namespace Test
 {
     public class CLIResourceSchedulerHub : ResourceSchedulerHub
     {
@@ -43,11 +43,13 @@ namespace Simplic.Cloud.CLI
 
         protected override async Task OnUpdateDriverResourceAsync(DriverResourceModel resource)
         {
+            Console.WriteLine(resource.Id);
             await Task.Delay(1);
         }
 
         protected override async Task OnUpdateTractorUnitResourceAsync(TractorUnitResourceModel resource)
         {
+            Console.WriteLine(resource.Id);
             await Task.Delay(1);
         }
 
@@ -61,39 +63,39 @@ namespace Simplic.Cloud.CLI
             await Task.Delay(1);
         }
 
-        protected override Task OnAddShipmentAppointmentAsync(ShipmentAppointmentModel appointment)
+        protected override async Task OnAddShipmentAppointmentAsync(ShipmentAppointmentModel appointment)
         {
-            throw new NotImplementedException();
+            
         }
 
-        protected override Task OnUpdateShipmentAppointmentAsync(ShipmentAppointmentModel appointment)
+        protected override async Task OnUpdateShipmentAppointmentAsync(ShipmentAppointmentModel appointment)
         {
-            throw new NotImplementedException();
+            
         }
 
-        protected override Task OnAddEmptyTourAppointmentAsync(EmptyTourAppointmentModel appointment)
+        protected override async Task OnAddEmptyTourAppointmentAsync(EmptyTourAppointmentModel appointment)
         {
-            throw new NotImplementedException();
+            
         }
 
-        protected override Task OnUpdateEmptyTourAppointmentAsync(EmptyTourAppointmentModel appointment)
+        protected override async Task OnUpdateEmptyTourAppointmentAsync(EmptyTourAppointmentModel appointment)
         {
-            throw new NotImplementedException();
+            
         }
 
-        protected override Task OnAddDriverRestAppointmentAsync(DriverRestAppointmentModel appointment)
+        protected override async Task OnAddDriverRestAppointmentAsync(DriverRestAppointmentModel appointment)
         {
-            throw new NotImplementedException();
+
         }
 
-        protected override Task OnUpdateDriverRestAppointmentAsync(DriverRestAppointmentModel appointment)
+        protected override async Task OnUpdateDriverRestAppointmentAsync(DriverRestAppointmentModel appointment)
         {
-            throw new NotImplementedException();
+
         }
 
-        protected override Task OnRemoveAppointmentAsync(Guid appointmentId)
+        protected override async Task OnRemoveAppointmentAsync(Guid appointmentId)
         {
-            throw new NotImplementedException();
+
         }
     }
 }

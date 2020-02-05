@@ -26,6 +26,14 @@ namespace Simplic.Cloud.API.Logistics
             receiver.Add(Connection.On<DriverResourceModel>("PushUpdateDriverResourceAsync", OnUpdateDriverResourceAsync));
             receiver.Add(Connection.On<TractorUnitResourceModel>("PushUpdateTractorUnitResourceAsync", OnUpdateTractorUnitResourceAsync));
             receiver.Add(Connection.On<TrailerResourceModel>("PushUpdateTrailerResourceAsync", OnUpdateTrailerResourceAsync));
+
+            receiver.Add(Connection.On<ShipmentAppointmentModel>("PushAddShipmentAppointmentAsync", OnAddShipmentAppointmentAsync));
+            receiver.Add(Connection.On<ShipmentAppointmentModel>("PushUpdateShipmentAppointmentAsync", OnUpdateShipmentAppointmentAsync));
+            receiver.Add(Connection.On<EmptyTourAppointmentModel>("PushAddEmptyTourAppointmentAsync", OnAddEmptyTourAppointmentAsync));
+            receiver.Add(Connection.On<EmptyTourAppointmentModel>("PushUpdateEmptyTourAppointmentAsync", OnUpdateEmptyTourAppointmentAsync));
+            receiver.Add(Connection.On<DriverRestAppointmentModel>("PushAddDriverRestAppointmentAsync", OnAddDriverRestAppointmentAsync));
+            receiver.Add(Connection.On<DriverRestAppointmentModel>("PushUpdateDriverRestAppointmentAsync", OnUpdateDriverRestAppointmentAsync));
+            receiver.Add(Connection.On<Guid>("PushRemoveAppointmentAsync", OnRemoveAppointmentAsync));
         }
 
         #region [Request]
@@ -116,6 +124,48 @@ namespace Simplic.Cloud.API.Logistics
         /// </summary>
         /// <param name="resourceId">Resource id</param>
         protected abstract Task OnRemoveResourceAsync(Guid resourceId);
+
+        /// <summary>
+        /// Pushes a shipment appointment
+        /// </summary>
+        /// <param name="appointment">Appointment</param>
+        protected abstract Task OnAddShipmentAppointmentAsync(ShipmentAppointmentModel appointment);
+
+        /// <summary>
+        /// Pushes a shipment appointment
+        /// </summary>
+        /// <param name="appointment">Appointment</param>
+        protected abstract Task OnUpdateShipmentAppointmentAsync(ShipmentAppointmentModel appointment);
+
+        /// <summary>
+        /// Pushes a empty tour appointment
+        /// </summary>
+        /// <param name="appointment">Appointment</param>
+        protected abstract Task OnAddEmptyTourAppointmentAsync(EmptyTourAppointmentModel appointment);
+
+        /// <summary>
+        /// Pushes a empty tour appointment
+        /// </summary>
+        /// <param name="appointment">Appointment</param>
+        protected abstract Task OnUpdateEmptyTourAppointmentAsync(EmptyTourAppointmentModel appointment);
+
+        /// <summary>
+        /// Pushes a driver rest appointment
+        /// </summary>
+        /// <param name="appointment">Appointment</param>
+        protected abstract Task OnAddDriverRestAppointmentAsync(DriverRestAppointmentModel appointment);
+
+        /// <summary>
+        /// Pushes a driver rest appointment
+        /// </summary>
+        /// <param name="appointment">Appointment</param>
+        protected abstract Task OnUpdateDriverRestAppointmentAsync(DriverRestAppointmentModel appointment);
+
+        /// <summary>
+        /// Push remove appointment
+        /// </summary>
+        /// <param name="appointmentId">Appointment id</param>
+        protected abstract Task OnRemoveAppointmentAsync(Guid appointmentId);
         #endregion
 
         #region Public Methods

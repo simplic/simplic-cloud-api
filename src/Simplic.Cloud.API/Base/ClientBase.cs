@@ -303,6 +303,6 @@ namespace Simplic.Cloud.API
         /// <summary>
         /// Gets the client url
         /// </summary>
-        public string Url { get; protected set; } = DefaultUrl;
+        public string Url { get; set; } = DefaultUrl;
     }
 }
