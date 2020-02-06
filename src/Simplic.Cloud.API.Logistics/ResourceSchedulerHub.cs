@@ -63,6 +63,26 @@ namespace Simplic.Cloud.API.Logistics
         }
 
         /// <summary>
+        /// Schedule appointment
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public async Task ScheduleAppointmentAsync(ScheduleAppointmentRequest request)
+        {
+            await Connection.SendAsync(nameof(RequestResourceGroupsAsync), request);
+        }
+
+        /// <summary>
+        /// Remove appointment
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public async Task RemoveAppointmentAsync(RemoveAppointmentRequest request)
+        {
+            await Connection.SendAsync(nameof(RequestResourceGroupsAsync), request);
+        }
+
+        /// <summary>
         /// Remove resource
         /// </summary>
         /// <param name="request">Request type</param>
