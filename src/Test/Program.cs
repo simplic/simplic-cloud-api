@@ -22,7 +22,10 @@ namespace Test
                 Guid.Parse("dcddc4d7-334d-4652-9864-e9432d486e89"),
                 Guid.Parse("e0fb5ea2-715f-4ef1-b805-65f8d498fa16"),
                 Guid.Parse("a53a740a-a475-44da-b85f-7003116b5a9c"),
-                Guid.Parse("d9596732-0868-40da-8cfe-5498b9726df2")
+                Guid.Parse("d9596732-0868-40da-8cfe-5498b9726df2"),
+                Guid.Parse("28EE6BBD-79FC-42EA-83FF-CA45D80F4114"),
+                Guid.Parse("338E4A88-052A-43C5-8AB4-04A645EAED3C"),
+                Guid.Parse("506AF853-45DA-4C3A-B436-68382D830678")
             };
 
             Console.WriteLine("Create test application.");
