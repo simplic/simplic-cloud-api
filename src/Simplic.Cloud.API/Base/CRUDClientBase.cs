@@ -27,19 +27,19 @@ namespace Simplic.Cloud.API
             return await base.GetAsync<T>(Api, Controller, "get", new Dictionary<string, string> { { "id", id.ToString() } });
         }
 
-        public virtual async Task<T> CreateAsync(T obj)
+        public virtual async Task<CRUDResponseModel> CreateAsync(T obj)
         {
-            return await PostAsync<T, T>(Api, Controller, "create", obj);
+            return await PostAsync<CRUDResponseModel, T>(Api, Controller, "create", obj);
         }
 
-        public virtual async Task<T> UpdateAsync(T obj)
+        public virtual async Task<CRUDResponseModel> UpdateAsync(T obj)
         {
-            return await base.PutAsync<T, T>(Api, Controller, "update", obj);
+            return await base.PutAsync<CRUDResponseModel, T>(Api, Controller, "update", obj);
         }
 
-        public virtual async Task<T> DeleteAsync(I id)
+        public virtual async Task<CRUDResponseModel> DeleteAsync(I id)
         {
-            return await base.DeleteAsync<T>(Api, Controller, "delete", new Dictionary<string, string> { { "id", id.ToString() } });
+            return await base.DeleteAsync<CRUDResponseModel>(Api, Controller, "delete", new Dictionary<string, string> { { "id", id.ToString() } });
         }
 
         protected abstract string Api { get; }
