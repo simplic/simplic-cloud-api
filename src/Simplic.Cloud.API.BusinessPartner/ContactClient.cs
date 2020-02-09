@@ -6,7 +6,7 @@ namespace Simplic.Cloud.API.BusinessPartner
     /// <summary>
     /// Contact client. This api client contains all general and data port specific methods.
     /// </summary>
-    public class ContactClient : CRUDClientBase<Contact, Guid>
+    public class ContactClient : CRUDClientBase<ContactDocument, Guid>
     {
         /// <summary>
         /// Initialize new client. 

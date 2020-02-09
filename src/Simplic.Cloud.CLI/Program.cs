@@ -102,28 +102,6 @@ namespace Simplic.Cloud.CLI
 
                     var contactApi = new ContactClient(client);
 
-                    for (int i = 0; i < 30; i++)
-                    {
-                        var contact = await contactApi.CreateAsync(new Contact()
-                        {
-                            OrganizationId = Guid.Parse("2b94a1c9-b907-4ae6-af2b-507341cb12d9"),
-                            Type = ContactTypeEnum.Company,
-                            Addresses = new System.Collections.Generic.List<Contact.AddressField>
-                            {
-                                new Contact.AddressField
-                                {
-                                    CompanyName = "Sample company_" + i.ToString()
-                                }
-                            }
-                        });
-                        Console.WriteLine(" Contact: " + contact.Id.ToString());
-
-                        await Task.Delay(500);
-
-                        var get_contact = await contactApi.GetAsync(contact.Id);
-                        Console.WriteLine(" > Contact: " + get_contact.Id);
-                        await contactApi.DeleteAsync(get_contact.Id);
-                    }
                 }).GetAwaiter().GetResult();
             }
             catch (Exception ex)
