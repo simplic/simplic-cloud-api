@@ -106,5 +106,10 @@ namespace Test
         {
 
         }
+
+        protected override async Task OnAppointmentNotFoundAsync(Guid appointmentId)
+        {
+
+        }
     }
 }
