@@ -111,5 +111,15 @@ namespace Test
         {
 
         }
+
+        protected override async Task OnLockResourceAsync(Guid resourceId)
+        {
+
+        }
+
+        protected override async Task OnUnlockResourceAsync(Guid resourceId)
+        {
+
+        }
     }
 }

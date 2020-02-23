@@ -36,6 +36,9 @@ namespace Simplic.Cloud.API.Logistics
             receiver.Add(Connection.On<DriverRestAppointmentModel>("PushUpdateDriverRestAppointmentAsync", OnUpdateDriverRestAppointmentAsync));
             receiver.Add(Connection.On<Guid>("PushRemoveAppointmentAsync", OnRemoveAppointmentAsync));
             receiver.Add(Connection.On<Guid>("PushAppointmentNotFoundAsync", OnAppointmentNotFoundAsync));
+
+            receiver.Add(Connection.On<Guid>("PushLockResourceAsync", OnLockResourceAsync));
+            receiver.Add(Connection.On<Guid>("PushUnlockResourceAsync", OnLockResourceAsync));
         }
 
         #region [Request]
@@ -109,6 +112,24 @@ namespace Simplic.Cloud.API.Logistics
         public async Task LeaveSessionAsync(LeaveSessionRequest request)
         {
             await Connection.SendAsync(nameof(LeaveSessionAsync), request);
+        }
+
+        /// <summary>
+        /// Lock resources async
+        /// </summary>
+        /// <param name="request">Request instance</param>
+        public async Task LockResourceAsync(LockResourceRequest request)
+        {
+            await Connection.SendAsync(nameof(LockResourceAsync), request);
+        }
+
+        /// <summary>
+        /// Unlock resources async
+        /// </summary>
+        /// <param name="request">Request instance</param>
+        public async Task UnlockResourceAsync(UnlockResourceRequest request)
+        {
+            await Connection.SendAsync(nameof(UnlockResourceAsync), request);
         }
         #endregion
 
@@ -209,6 +230,18 @@ namespace Simplic.Cloud.API.Logistics
         /// </summary>
         /// <param name="appointmentId">Appointment id</param>
         protected abstract Task OnAppointmentNotFoundAsync(Guid appointmentId);
+
+        /// <summary>
+        /// On resource locked
+        /// </summary>
+        /// <param name="resourceId">Resource id</param>
+        protected abstract Task OnLockResourceAsync(Guid resourceId);
+
+        /// <summary>
+        /// On resource unlocked
+        /// </summary>
+        /// <param name="resourceId">Resource id</param>
+        protected abstract Task OnUnlockResourceAsync(Guid resourceId);
         #endregion
 
         #region Public Methods
