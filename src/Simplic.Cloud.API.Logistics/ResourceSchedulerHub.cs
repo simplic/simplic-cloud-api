@@ -38,7 +38,7 @@ namespace Simplic.Cloud.API.Logistics
             receiver.Add(Connection.On<Guid>("PushAppointmentNotFoundAsync", OnAppointmentNotFoundAsync));
 
             receiver.Add(Connection.On<Guid>("PushLockResourceAsync", OnLockResourceAsync));
-            receiver.Add(Connection.On<Guid>("PushUnlockResourceAsync", OnLockResourceAsync));
+            receiver.Add(Connection.On<Guid>("PushUnlockResourceAsync", OnUnlockResourceAsync));
         }
 
         #region [Request]
