@@ -42,7 +42,7 @@ namespace Test
             localClient.Url = "http://localhost:49248";
 
             var resourceSchedulerClient = new ResourceSchedulerClient(localClient);
-            await resourceSchedulerClient.CreateResourceSchedulerAsync(organizationId, name);
+            // await resourceSchedulerClient.CreateResourceSchedulerAsync(organizationId, name);
 
             await Task.Delay(5000);
 
@@ -62,31 +62,6 @@ namespace Test
                 Name = name,
                 OrganizationId = organizationId
             });
-
-            Console.WriteLine("Add resources");
-            foreach (var resource in resources)
-            {
-                await hub.StartAsync();
-                await hub.AddResourceAsync(new Simplic.Cloud.ResourceScheduler.Api.Model.AddResourceRequest 
-                {
-                    Id = resource,
-                    Name = name,
-                    OrganizationId = organizationId,
-                    Type = Simplic.Cloud.ResourceScheduler.Api.Model.ResourceType.Vehicle
-                });
-            }
-
-            await Task.Delay(10000);
-
-            await hub.StartAsync();
-            await hub.RemoveResourceAsync(new Simplic.Cloud.ResourceScheduler.Api.Model.RemoveResourceRequest 
-            {
-                Id = Guid.Parse("dcddc4d7-334d-4652-9864-e9432d486e89"),
-                Name = name,
-                OrganizationId = organizationId
-            });
-
-            Console.WriteLine("Request resources");
             
             await hub.RequestResourcesAsync(new GetResourceRequest
             {
