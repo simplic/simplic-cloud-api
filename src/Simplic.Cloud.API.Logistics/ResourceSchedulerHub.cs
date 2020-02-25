@@ -59,6 +59,15 @@ namespace Simplic.Cloud.API.Logistics
         }
 
         /// <summary>
+        /// Request resource scheduler data
+        /// </summary>
+        /// <param name="request">Request information</param>
+        public async Task RequestDataAsync(LoadDataRequest request)
+        {
+            await Connection.SendAsync(nameof(RequestDataAsync), request);
+        }
+
+        /// <summary>
         /// Add resource request
         /// </summary>
         public async Task AddResourceAsync(AddResourceRequest request)
