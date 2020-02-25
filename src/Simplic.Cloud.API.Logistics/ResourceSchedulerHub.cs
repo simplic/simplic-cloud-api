@@ -39,6 +39,9 @@ namespace Simplic.Cloud.API.Logistics
 
             receiver.Add(Connection.On<Guid>("PushLockResourceAsync", OnLockResourceAsync));
             receiver.Add(Connection.On<Guid>("PushUnlockResourceAsync", OnUnlockResourceAsync));
+
+            receiver.Add(Connection.On<TimelineSeparatorModel>("PushAddTimelineSeparatorAsync", OnAddTimelineSeparatorAsync));
+            receiver.Add(Connection.On<Guid>("PushRemoveTimelineSeparatorAsync", OnRemoveTimelineSeparatorAsync));
         }
 
         #region [Request]
@@ -93,6 +96,24 @@ namespace Simplic.Cloud.API.Logistics
         public async Task RemoveAppointmentAsync(RemoveAppointmentRequest request)
         {
             await Connection.SendAsync(nameof(RemoveAppointmentAsync), request);
+        }
+
+        /// <summary>
+        /// Add timeline separator
+        /// </summary>
+        /// <param name="request">Request instance</param>
+        public async Task AddTimelineSeparatorAsync(AddTimelineSeparatorRequest request)
+        {
+            await Connection.SendAsync(nameof(AddTimelineSeparatorAsync), request);
+        }
+
+        /// <summary>
+        /// Remove timeline separator
+        /// </summary>
+        /// <param name="request">Request instance</param>
+        public async Task RemoveTimelineSeparatorAsync(RemoveTimelineSeparatorRequest request)
+        {
+            await Connection.SendAsync(nameof(RemoveTimelineSeparatorAsync), request);
         }
 
         /// <summary>
@@ -251,6 +272,18 @@ namespace Simplic.Cloud.API.Logistics
         /// </summary>
         /// <param name="resourceId">Resource id</param>
         protected abstract Task OnUnlockResourceAsync(Guid resourceId);
+
+        /// <summary>
+        /// Add timeline separator
+        /// </summary>
+        /// <param name="model">Timeline separator id</param>
+        protected abstract Task OnAddTimelineSeparatorAsync(TimelineSeparatorModel model);
+
+        /// <summary>
+        /// Remove timeline separator
+        /// </summary>
+        /// <param name="separatorId">Separator id</param>
+        protected abstract Task OnRemoveTimelineSeparatorAsync(Guid separatorId);
         #endregion
 
         #region Public Methods

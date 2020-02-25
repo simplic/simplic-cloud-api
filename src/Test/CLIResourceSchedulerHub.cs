@@ -162,5 +162,15 @@ namespace Test
             Console.WriteLine("---- ---- ----");
             Console.WriteLine($"Unlock resource: {resourceId}");
         }
+
+        protected override async Task OnAddTimelineSeparatorAsync(TimelineSeparatorModel model)
+        {
+            Console.WriteLine($"Add timeline separator: {model.Id}: {model.Date}");
+        }
+
+        protected override async Task OnRemoveTimelineSeparatorAsync(Guid separatorId)
+        {
+            Console.WriteLine($"Remove timeline separator: {separatorId}");
+        }
     }
 }
