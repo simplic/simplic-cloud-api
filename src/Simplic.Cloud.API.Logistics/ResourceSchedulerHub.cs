@@ -28,9 +28,9 @@ namespace Simplic.Cloud.API.Logistics
             receiver.Add(Connection.On<TractorUnitResourceModel>("PushUpdateTractorUnitResourceAsync", OnUpdateTractorUnitResourceAsync));
             receiver.Add(Connection.On<TrailerResourceModel>("PushUpdateTrailerResourceAsync", OnUpdateTrailerResourceAsync));
 
-            receiver.Add(Connection.On<ShipmentAppointmentModel>("PushAddShipmentAppointmentAsync", OnAddShipmentAppointmentAsync));
-            receiver.Add(Connection.On<ShipmentAppointmentModel>("PushUpdateShipmentAppointmentAsync", OnUpdateShipmentAppointmentAsync));
-            receiver.Add(Connection.On<EmptyTourAppointmentModel>("PushAddEmptyTourAppointmentAsync", OnAddEmptyTourAppointmentAsync));
+            receiver.Add(Connection.On<IList<TourAppointmentModel>>("PushAddTourAppointmentAsync", OnAddTourAppointmentAsync));
+            receiver.Add(Connection.On<TourAppointmentModel>("PushUpdateTourAppointmentAsync", OnUpdateTourAppointmentAsync));
+            receiver.Add(Connection.On<IList<EmptyTourAppointmentModel>>("PushAddEmptyTourAppointmentAsync", OnAddEmptyTourAppointmentAsync));
             receiver.Add(Connection.On<EmptyTourAppointmentModel>("PushUpdateEmptyTourAppointmentAsync", OnUpdateEmptyTourAppointmentAsync));
             receiver.Add(Connection.On<DriverRestAppointmentModel>("PushAddDriverRestAppointmentAsync", OnAddDriverRestAppointmentAsync));
             receiver.Add(Connection.On<DriverRestAppointmentModel>("PushUpdateDriverRestAppointmentAsync", OnUpdateDriverRestAppointmentAsync));
@@ -214,22 +214,22 @@ namespace Simplic.Cloud.API.Logistics
         protected abstract Task OnRemoveResourceAsync(Guid resourceId);
 
         /// <summary>
-        /// Pushes a shipment appointment
+        /// Pushes a tour appointment
         /// </summary>
-        /// <param name="appointment">Appointment</param>
-        protected abstract Task OnAddShipmentAppointmentAsync(ShipmentAppointmentModel appointment);
+        /// <param name="appointments">Appointment</param>
+        protected abstract Task OnAddTourAppointmentAsync(IList<TourAppointmentModel> appointments);
 
         /// <summary>
-        /// Pushes a shipment appointment
+        /// Pushes a tour appointment
         /// </summary>
         /// <param name="appointment">Appointment</param>
-        protected abstract Task OnUpdateShipmentAppointmentAsync(ShipmentAppointmentModel appointment);
+        protected abstract Task OnUpdateTourAppointmentAsync(TourAppointmentModel appointment);
 
         /// <summary>
         /// Pushes a empty tour appointment
         /// </summary>
         /// <param name="appointment">Appointment</param>
-        protected abstract Task OnAddEmptyTourAppointmentAsync(EmptyTourAppointmentModel appointment);
+        protected abstract Task OnAddEmptyTourAppointmentAsync(IList<EmptyTourAppointmentModel> appointments);
 
         /// <summary>
         /// Pushes a empty tour appointment

@@ -36,8 +36,8 @@
     <Reference Include="JsonSubTypes, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\JsonSubTypes.1.2.0\lib\net47\JsonSubTypes.dll</HintPath>
     </Reference>
-    <Reference Include="MongoDB.Bson, Version=2.10.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MongoDB.Bson.2.10.1\lib\net452\MongoDB.Bson.dll</HintPath>
+    <Reference Include="MongoDB.Bson, Version=2.10.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Bson.2.10.2\lib\net452\MongoDB.Bson.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -45,14 +45,14 @@
     <Reference Include="RestSharp, Version=105.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RestSharp.105.1.0\lib\net452\RestSharp.dll</HintPath>
     </Reference>
-    <Reference Include="Simplic.Cloud.BusinessPartner.Api.Model, Version=1.6.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Simplic.Cloud.BusinessPartner.Api.Model.1.6.0\lib\netstandard2.0\Simplic.Cloud.BusinessPartner.Api.Model.dll</HintPath>
+    <Reference Include="Simplic.Cloud.BusinessPartner.Api.Model, Version=1.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Simplic.Cloud.BusinessPartner.Api.Model.1.7.0\lib\netstandard2.0\Simplic.Cloud.BusinessPartner.Api.Model.dll</HintPath>
     </Reference>
     <Reference Include="Simplic.Cloud.Logistics.Api.Model, Version=1.11.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Simplic.Cloud.Logistics.Api.Model.1.11.0\lib\netstandard2.0\Simplic.Cloud.Logistics.Api.Model.dll</HintPath>
     </Reference>
-    <Reference Include="Simplic.Cloud.ResourceScheduler.Api.Model, Version=1.18.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Simplic.Cloud.ResourceScheduler.Api.Model.1.18.0\lib\netstandard2.0\Simplic.Cloud.ResourceScheduler.Api.Model.dll</HintPath>
+    <Reference Include="Simplic.Cloud.ResourceScheduler.Api.Model, Version=1.20.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Simplic.Cloud.ResourceScheduler.Api.Model.1.20.0\lib\netstandard2.0\Simplic.Cloud.ResourceScheduler.Api.Model.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">

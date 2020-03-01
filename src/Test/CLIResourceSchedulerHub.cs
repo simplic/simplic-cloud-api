@@ -86,22 +86,24 @@ namespace Test
             Console.WriteLine($"Remove resource: {resourceId}");
         }
 
-        protected override async Task OnAddShipmentAppointmentAsync(ShipmentAppointmentModel appointment)
+        protected override async Task OnAddTourAppointmentAsync(IList<TourAppointmentModel> appointments)
         {
             Console.WriteLine("---- ---- ----");
-            Console.WriteLine($"Add shipment: {GetAppointmentText(appointment)}");
+            foreach (var tour in appointments)
+                Console.WriteLine($"Add shipment: {GetAppointmentText(tour)}");
         }
 
-        protected override async Task OnUpdateShipmentAppointmentAsync(ShipmentAppointmentModel appointment)
+        protected override async Task OnUpdateTourAppointmentAsync(TourAppointmentModel appointment)
         {
             Console.WriteLine("---- ---- ----");
             Console.WriteLine($"Update shipment: {GetAppointmentText(appointment)}");
         }
 
-        protected override async Task OnAddEmptyTourAppointmentAsync(EmptyTourAppointmentModel appointment)
+        protected override async Task OnAddEmptyTourAppointmentAsync(IList<EmptyTourAppointmentModel> appointments)
         {
             Console.WriteLine("---- ---- ----");
-            Console.WriteLine($"Add empty tour: {GetAppointmentText(appointment)}");
+            foreach (var tour in appointments)
+                Console.WriteLine($"Add empty tour: {GetAppointmentText(tour)}");
         }
 
         protected override async Task OnUpdateEmptyTourAppointmentAsync(EmptyTourAppointmentModel appointment)
