@@ -42,7 +42,7 @@ namespace Test
             localClient.Url = "http://localhost:49248";
 
             var resourceSchedulerClient = new ResourceSchedulerClient(localClient);
-            // await resourceSchedulerClient.CreateResourceSchedulerAsync(organizationId, name);
+            await resourceSchedulerClient.CreateResourceSchedulerAsync(organizationId, name);
 
             await Task.Delay(5000);
 
@@ -53,20 +53,20 @@ namespace Test
             Console.WriteLine("Join resource scheduler session");
             await hub.JoinSessionAsync(new Simplic.Cloud.ResourceScheduler.Api.Model.JoinSessionRequest
             {
-                Name = name,
-                OrganizationId = organizationId
+                OName = name,
+                OId = organizationId
             });
 
             await hub.RequestResourceGroupsAsync(new GetResourceGroupsRequest
             {
-                Name = name,
-                OrganizationId = organizationId
+                OName = name,
+                OId = organizationId
             });
             
             await hub.RequestResourcesAsync(new GetResourceRequest
             {
-                Name = name,
-                OrganizationId = organizationId
+                OName = name,
+                OId = organizationId
             });
 
 

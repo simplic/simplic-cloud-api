@@ -52,7 +52,7 @@ namespace Simplic.Cloud.API.Logistics
             return await PostAsync<ConfigurationModel, ConfigurationModel>("resource-scheduler", "configuration", "create", new ConfigurationModel
             {
                 OrganizationId = organizationId,
-                Name = name
+                OrgainzationName = name
             });
         }
 
