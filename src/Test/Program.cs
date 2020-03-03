@@ -1,5 +1,7 @@
 ﻿using Simplic.Cloud.API;
+using Simplic.Cloud.API.HR;
 using Simplic.Cloud.API.Logistics;
+using Simplic.Cloud.HR.Api.Model;
 using Simplic.Cloud.ResourceScheduler.Api.Model;
 using System;
 using System.Collections.Generic;
@@ -36,6 +38,41 @@ namespace Test
             var result = await client.LoginAsync("test1234@brtls.eu", "test1234!");
 
             Console.WriteLine("User login: " + result.UserName);
+
+            var hrClient = new EmployeeClient(client);
+            await hrClient.CreateAsync(new Employee
+            {
+                Id = Guid.NewGuid(),
+                OrganizationId = organizationId,
+                Matchcode = "HR-Test",
+                Addresses = new List<Simplic.Cloud.BusinessPartner.Api.Model.Address>
+                {
+                    new Simplic.Cloud.BusinessPartner.Api.Model.Address
+                    {
+                        Title = "Hr.",
+                        FirstName = "Max",
+                        LastName = "Mustermann",
+                        ZipCode = "31137",
+                        Street = "Str. 1",
+                        Additional01 = "AD01",
+                        City = "HI"
+                    }
+                },
+                Employments = new List<Employment>
+                {
+                    new Employment
+                    {
+                        Number = "T1234",
+                        IsActive = true,
+                        TelematicSystems = new List<TelematicSystem>
+                        {
+                            new TelematicSystem{ Id = "123123898", Provider = "Spedion", From = new DateTime(2000,1,1) }
+                        }
+                    }
+                }
+            });
+
+
             Console.WriteLine("Start resource scheduler");
 
             var localClient = new Client(client);
@@ -62,7 +99,7 @@ namespace Test
                 OName = name,
                 OId = organizationId
             });
-            
+
             await hub.RequestResourcesAsync(new GetResourceRequest
             {
                 OName = name,
