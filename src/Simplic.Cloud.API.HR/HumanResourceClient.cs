@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
-namespace Simplic.Cloud.API.Logistics
+namespace Simplic.Cloud.API.HR
 {
     /// <summary>
     /// HR client. This api client contains all general and data port specific methods.
     /// </summary>
-    public class HumanResourceClient : ClientBase
+    public class HumanResourceClient : CRUDClientBase<object, Guid>
     {
         /// <summary>
         /// Initialize new client. 
@@ -38,5 +38,15 @@ namespace Simplic.Cloud.API.Logistics
         {
 
         }
+
+        /// <summary>
+        /// Gets the api name (hr)
+        /// </summary>
+        protected override string Api => "hr";
+
+        /// <summary>
+        /// Gets the controller name (employee)
+        /// </summary>
+        protected override string Controller => "employee";
     }
 }
