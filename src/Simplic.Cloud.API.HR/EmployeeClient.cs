@@ -8,12 +8,12 @@ namespace Simplic.Cloud.API.HR
     /// <summary>
     /// HR client. This api client contains all general and data port specific methods.
     /// </summary>
-    public class HumanResourceClient : CRUDClientBase<object, Guid>
+    public class EmployeeClient : CRUDClientBase<object, Guid>
     {
         /// <summary>
         /// Initialize new client. 
         /// </summary>
-        public HumanResourceClient()
+        public EmployeeClient()
             : base()
         {
 
@@ -23,7 +23,7 @@ namespace Simplic.Cloud.API.HR
         /// Initialize client with different url. <see cref="ClientBase.DefaultUrl"/>
         /// </summary>
         /// <param name="url">Unique url</param>
-        public HumanResourceClient(string url)
+        public EmployeeClient(string url)
             : base(url)
         {
 
@@ -33,7 +33,7 @@ namespace Simplic.Cloud.API.HR
         /// Initialize client and inherit the authentication
         /// </summary>
         /// <param name="client">Client instance</param>
-        public HumanResourceClient(IClient client)
+        public EmployeeClient(IClient client)
             : base(client)
         {
 
