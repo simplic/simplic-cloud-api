@@ -16,7 +16,7 @@ namespace Simplic.Cloud.API
     /// </summary>
     public abstract class ClientBase : IDisposable
     {
-        public const string DefaultUrl = "https://dataport.simplic.io/api";
+        public const string DefaultUrl = "http://dataport.simplic.io/api";
 
         /// <summary>
         /// Initialize client base
