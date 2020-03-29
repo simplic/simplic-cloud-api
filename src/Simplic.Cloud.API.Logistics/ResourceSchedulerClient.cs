@@ -1,5 +1,4 @@
-﻿using Simplic.Cloud.ResourceScheduler.Api.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;

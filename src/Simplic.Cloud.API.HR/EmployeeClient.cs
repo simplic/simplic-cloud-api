@@ -1,15 +1,11 @@
-﻿using Simplic.Cloud.HR.Api.Model;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Threading.Tasks;
+﻿using System;
 
 namespace Simplic.Cloud.API.HR
 {
     /// <summary>
     /// HR client. This api client contains all general and data port specific methods.
     /// </summary>
-    public class EmployeeClient : CRUDClientBase<Employee, Guid>
+    public class EmployeeClient : CRUDClientBase<EmployeeModel, Guid>
     {
         /// <summary>
         /// Initialize new client. 

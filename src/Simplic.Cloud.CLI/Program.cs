@@ -3,7 +3,6 @@ using Simplic.Cloud.API;
 using Simplic.Cloud.API.BusinessPartner;
 using Simplic.Cloud.API.DataPort;
 using Simplic.Cloud.API.Logistics;
-using Simplic.Cloud.ResourceScheduler.Api.Model;
 using System;
 using System.Diagnostics;
 using System.Drawing;

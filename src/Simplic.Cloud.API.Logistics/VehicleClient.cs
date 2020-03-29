@@ -1,5 +1,4 @@
-﻿using Simplic.Cloud.Logistics.Api.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Simplic.Cloud.API.Logistics
 {
-    public class VehicleClient : CRUDClientBase<VehicleDocument, Guid>
+    public class VehicleClient : CRUDClientBase<VehicleModel, Guid>
     {
         public VehicleClient()
         {

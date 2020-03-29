@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.SignalR.Client;
-using Simplic.Cloud.ResourceScheduler.Api.Model;
+using Simplic.Cloud.API.Logistics;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;

@@ -21,8 +21,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simplic.Cloud.API.BusinessP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simplic.Cloud.API.HR", "Simplic.Cloud.API.HR\Simplic.Cloud.API.HR.csproj", "{4F12D2A1-2E44-4115-8EFB-5769CA59B43E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{55F88F7B-6B4E-4446-8A6D-339B865D7B8F}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,10 +51,6 @@ Global
 		{4F12D2A1-2E44-4115-8EFB-5769CA59B43E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F12D2A1-2E44-4115-8EFB-5769CA59B43E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F12D2A1-2E44-4115-8EFB-5769CA59B43E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{55F88F7B-6B4E-4446-8A6D-339B865D7B8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{55F88F7B-6B4E-4446-8A6D-339B865D7B8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{55F88F7B-6B4E-4446-8A6D-339B865D7B8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{55F88F7B-6B4E-4446-8A6D-339B865D7B8F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
