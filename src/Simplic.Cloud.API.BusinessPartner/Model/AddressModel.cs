@@ -23,7 +23,7 @@ namespace Simplic.Cloud.API.BusinessPartner
         public string CountryIso { get; set; }
         public double Latitude { get; set; }
         public double Longitude { get; set; }
-        public List<MailAddress> MailAddresses { get; set; }
-        public List<PhoneNumber> PhoneNumbers { get; set; }
+        public List<MailAddressModel> MailAddresses { get; set; }
+        public List<PhoneNumberModel> PhoneNumbers { get; set; }
     }
 }

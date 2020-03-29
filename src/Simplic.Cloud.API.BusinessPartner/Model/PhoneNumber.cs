@@ -1,6 +1,6 @@
 ﻿namespace Simplic.Cloud.API.BusinessPartner
 {
-    public class PhoneNumber
+    public class PhoneNumberModel
     {
         /// <summary>
         /// Gets or sets the phone number type
