@@ -1,15 +1,11 @@
-﻿using Simplic.Cloud.BusinessPartner.Api.Model;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Threading.Tasks;
+﻿using System;
 
 namespace Simplic.Cloud.API.BusinessPartner
 {
     /// <summary>
     /// Contact client. This api client contains all general and data port specific methods.
     /// </summary>
-    public class ContactClient : CRUDClientBase<Contact, Guid>
+    public class ContactClient : CRUDClientBase<ContactModel, Guid>
     {
         /// <summary>
         /// Initialize new client. 

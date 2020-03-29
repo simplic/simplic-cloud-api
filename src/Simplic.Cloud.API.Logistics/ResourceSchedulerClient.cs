@@ -9,12 +9,12 @@ namespace Simplic.Cloud.API.Logistics
     /// <summary>
     /// Data port client. This api client contains all general and data port specific methods.
     /// </summary>
-    public class LogisticsClient : ClientBase
+    public class ResourceSchedulerClient : ClientBase
     {
         /// <summary>
         /// Initialize new client. 
         /// </summary>
-        public LogisticsClient()
+        public ResourceSchedulerClient()
             : base()
         {
 
@@ -24,7 +24,7 @@ namespace Simplic.Cloud.API.Logistics
         /// Initialize client with different url. <see cref="ClientBase.DefaultUrl"/>
         /// </summary>
         /// <param name="url">Unique url</param>
-        public LogisticsClient(string url)
+        public ResourceSchedulerClient(string url)
             : base(url)
         {
 
@@ -34,7 +34,7 @@ namespace Simplic.Cloud.API.Logistics
         /// Initialize client and inherit the authentication
         /// </summary>
         /// <param name="client">Client instance</param>
-        public LogisticsClient(IClient client)
+        public ResourceSchedulerClient(IClient client)
             : base(client)
         {
 
@@ -47,12 +47,11 @@ namespace Simplic.Cloud.API.Logistics
         /// <param name="password">User account password</param>
         /// <returns>Instance of <see cref="User"/> if login was successful</returns>
         /// <exception cref="ApiException">If the login process fails</exception>
-        public async Task<ConfigurationModel> CreateResourceSchedulerAsync(string organizationId, string name)
+        public async Task<ConfigurationModel> CreateResourceSchedulerAsync(string name)
         {
             return await PostAsync<ConfigurationModel, ConfigurationModel>("resource-scheduler", "configuration", "create", new ConfigurationModel
             {
-                OrganizationId = organizationId,
-                Name = name
+                // ConfigurationName = name
             });
         }
     }

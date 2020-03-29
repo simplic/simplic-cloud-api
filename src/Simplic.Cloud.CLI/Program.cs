@@ -3,7 +3,6 @@ using Simplic.Cloud.API;
 using Simplic.Cloud.API.BusinessPartner;
 using Simplic.Cloud.API.DataPort;
 using Simplic.Cloud.API.Logistics;
-using Simplic.Cloud.BusinessPartner.Api.Model;
 using Simplic.Cloud.ResourceScheduler.Api.Model;
 using System;
 using System.Diagnostics;
@@ -104,13 +103,13 @@ namespace Simplic.Cloud.CLI
 
                     for (int i = 0; i < 30; i++)
                     {
-                        var contact = await contactApi.CreateAsync(new Contact()
+                        var contact = await contactApi.CreateAsync(new ContactModel()
                         {
                             OrganizationId = Guid.Parse("2b94a1c9-b907-4ae6-af2b-507341cb12d9"),
-                            Type = ContactTypeEnum.Company,
-                            Addresses = new System.Collections.Generic.List<Contact.AddressField>
+                            Type = ContactType.Company,
+                            Addresses = new System.Collections.Generic.List<Simplic.Cloud.API.BusinessPartner.AddressModel>
                             {
-                                new Contact.AddressField
+                                new Simplic.Cloud.API.BusinessPartner.AddressModel
                                 {
                                     CompanyName = "Sample company_" + i.ToString()
                                 }
