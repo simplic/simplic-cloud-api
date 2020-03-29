@@ -30,6 +30,7 @@ namespace Simplic.Cloud.API
                 {
                     options.AccessTokenProvider = () => Task.FromResult(clientBase.User.Token);
                 })
+                .WithAutomaticReconnect()
                 .Build();
         }
 
@@ -37,7 +38,11 @@ namespace Simplic.Cloud.API
         /// Start connection async
         /// </summary>
         /// <returns></returns>
-        public async Task StartAsync() => await Connection.StartAsync();
+        public async Task StartAsync()
+        {
+            if (Connection.State == HubConnectionState.Disconnected)
+                await Connection.StartAsync();
+        }
 
         /// <summary>
         /// Dispose connection

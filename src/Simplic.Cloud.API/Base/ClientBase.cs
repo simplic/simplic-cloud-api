@@ -17,7 +17,7 @@ namespace Simplic.Cloud.API
     public abstract class ClientBase : IDisposable
     {
         public const string ApiVersion = "v1-0";
-        public const string DefaultUrl = "http://cloud.simplic.io";
+        public const string DefaultUrl = "https://cloud.simplic.io";
 
         /// <summary>
         /// Initialize client base
@@ -303,6 +303,6 @@ namespace Simplic.Cloud.API
         /// <summary>
         /// Gets the client url
         /// </summary>
-        public string Url { get; protected set; } = DefaultUrl;
+        public string Url { get; set; } = DefaultUrl;
     }
 }

@@ -52,6 +52,7 @@
     <Compile Include="Base\ClientBase.cs" />
     <Compile Include="Base\CRUDClientBase.cs" />
     <Compile Include="IClient.cs" />
+    <Compile Include="Model\CRUDResponseModel.cs" />
     <Compile Include="Model\EchoModel.cs" />
     <Compile Include="Model\LoginModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
