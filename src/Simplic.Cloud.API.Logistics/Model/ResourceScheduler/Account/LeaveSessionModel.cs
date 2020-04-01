@@ -1,6 +1,6 @@
 ﻿namespace Simplic.Cloud.API.Logistics
 {
-    public class JoinSessionRequest : BaseModel
+    public class LeaveSessionModel : BaseModel
     {
 
     }

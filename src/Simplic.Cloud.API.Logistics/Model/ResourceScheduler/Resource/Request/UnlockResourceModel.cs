@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Simplic.Cloud.API.Logistics
 {
     /// <summary>
-    /// Request resources
+    /// Unlock resource request
     /// </summary>
-    public class RemoveResourceRequest : BaseModel
+    public class UnlockResourceModel : BaseModel
     {
         /// <summary>
         /// Gets or sets the resource id

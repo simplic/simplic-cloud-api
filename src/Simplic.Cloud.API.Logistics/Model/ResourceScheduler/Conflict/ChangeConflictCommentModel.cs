@@ -5,7 +5,7 @@ namespace Simplic.Cloud.API.Logistics
     /// <summary>
     /// Request conflict change
     /// </summary>
-    public class ChangeConflictCommentRequest
+    public class ChangeConflictCommentModel
     {
         /// <summary>
         /// Gets or sets the id of the conflict

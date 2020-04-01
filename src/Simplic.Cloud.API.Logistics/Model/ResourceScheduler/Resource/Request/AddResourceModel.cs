@@ -5,7 +5,7 @@ namespace Simplic.Cloud.API.Logistics
     /// <summary>
     /// Add resource request
     /// </summary>
-    public class AddResourceRequest : BaseModel
+    public class AddResourceModel : BaseModel
     {
         /// <summary>
         /// Gets or sets the resource id

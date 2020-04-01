@@ -37,6 +37,12 @@ namespace Test
 
             Console.WriteLine("User login: " + result.UserName);
 
+            var logisticClient = new ResourceSchedulerConfigurationClient(client);
+            foreach (var configuration in await logisticClient.GetAllAsync())
+            {
+                Console.WriteLine(configuration.ConfigurationName);
+            }
+
             // var hrClient = new EmployeeClient(client);
             // await hrClient.CreateAsync(new Employee
             // {

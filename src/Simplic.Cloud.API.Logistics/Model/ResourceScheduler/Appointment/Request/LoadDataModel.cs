@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Simplic.Cloud.API.Logistics
 {
-    public class LoadDataRequest : BaseModel
+    public class LoadDataModel : BaseModel
     {
         /// <summary>
         /// Gets or sets the appointment id

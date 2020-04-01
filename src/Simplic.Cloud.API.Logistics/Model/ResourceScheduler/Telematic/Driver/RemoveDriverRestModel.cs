@@ -4,8 +4,8 @@ using System.Text;
 
 namespace Simplic.Cloud.API.Logistics
 {
-    public class EndDriverShiftRequest : DriverBaseModel
+    public class RemoveDriverRestModel : DriverBaseModel
     {
-        public DateTime DateTime { get; set; }
+
     }
 }

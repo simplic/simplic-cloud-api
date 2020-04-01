@@ -5,9 +5,9 @@ using System.Text;
 namespace Simplic.Cloud.API.Logistics
 {
     /// <summary>
-    /// Request resources
+    /// Get resource group requests
     /// </summary>
-    public class GetResourceRequest : BaseModel
+    public class GetResourceGroupsModel : BaseModel
     {
 
     }

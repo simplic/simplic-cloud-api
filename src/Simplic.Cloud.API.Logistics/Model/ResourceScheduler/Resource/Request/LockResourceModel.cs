@@ -3,9 +3,9 @@
 namespace Simplic.Cloud.API.Logistics
 {
     /// <summary>
-    /// Unlock resource request
+    /// Lock resource request
     /// </summary>
-    public class UnlockResourceRequest : BaseModel
+    public class LockResourceModel : BaseModel
     {
         /// <summary>
         /// Gets or sets the resource id

@@ -48,7 +48,7 @@ namespace Simplic.Cloud.API.Logistics
         /// <summary>
         /// Reqeust resource groups
         /// </summary>
-        public async Task RequestResourceGroupsAsync(GetResourceGroupsRequest request)
+        public async Task RequestResourceGroupsAsync(GetResourceGroupsModel request)
         {
             await Connection.SendAsync(nameof(RequestResourceGroupsAsync), request);
         }
@@ -56,7 +56,7 @@ namespace Simplic.Cloud.API.Logistics
         /// <summary>
         /// Reqeust resources
         /// </summary>
-        public async Task RequestResourcesAsync(GetResourceRequest request)
+        public async Task RequestResourcesAsync(GetResourceModel request)
         {
             await Connection.SendAsync(nameof(RequestResourcesAsync), request);
         }
@@ -65,7 +65,7 @@ namespace Simplic.Cloud.API.Logistics
         /// Request resource scheduler data
         /// </summary>
         /// <param name="request">Request information</param>
-        public async Task RequestDataAsync(LoadDataRequest request)
+        public async Task RequestDataAsync(LoadDataModel request)
         {
             await Connection.SendAsync(nameof(RequestDataAsync), request);
         }
@@ -73,7 +73,7 @@ namespace Simplic.Cloud.API.Logistics
         /// <summary>
         /// Add resource request
         /// </summary>
-        public async Task AddResourceAsync(AddResourceRequest request)
+        public async Task AddResourceAsync(AddResourceModel request)
         {
             await Connection.SendAsync(nameof(AddResourceAsync), request);
         }
@@ -102,7 +102,7 @@ namespace Simplic.Cloud.API.Logistics
         /// Add timeline separator
         /// </summary>
         /// <param name="request">Request instance</param>
-        public async Task AddTimelineSeparatorAsync(AddTimelineSeparatorRequest request)
+        public async Task AddTimelineSeparatorAsync(AddTimelineSeparatorModel request)
         {
             await Connection.SendAsync(nameof(AddTimelineSeparatorAsync), request);
         }
@@ -111,7 +111,7 @@ namespace Simplic.Cloud.API.Logistics
         /// Remove timeline separator
         /// </summary>
         /// <param name="request">Request instance</param>
-        public async Task RemoveTimelineSeparatorAsync(RemoveTimelineSeparatorRequest request)
+        public async Task RemoveTimelineSeparatorAsync(RemoveTimelineSeparatorModel request)
         {
             await Connection.SendAsync(nameof(RemoveTimelineSeparatorAsync), request);
         }
@@ -121,7 +121,7 @@ namespace Simplic.Cloud.API.Logistics
         /// </summary>
         /// <param name="request">Request type</param>
         /// <returns></returns>
-        public async Task RemoveResourceAsync(RemoveResourceRequest request)
+        public async Task RemoveResourceAsync(RemoveResourceModel request)
         {
             await Connection.SendAsync(nameof(RemoveResourceAsync), request);
         }
@@ -130,7 +130,7 @@ namespace Simplic.Cloud.API.Logistics
         /// Join session
         /// </summary>
         /// <param name="request">Request object</param>
-        public async Task JoinSessionAsync(JoinSessionRequest request)
+        public async Task JoinSessionAsync(JoinSessionModel request)
         {
             await Connection.SendAsync(nameof(JoinSessionAsync), request);
         }
@@ -139,7 +139,7 @@ namespace Simplic.Cloud.API.Logistics
         /// Leave session
         /// </summary>
         /// <param name="request">Request object</param>
-        public async Task LeaveSessionAsync(LeaveSessionRequest request)
+        public async Task LeaveSessionAsync(LeaveSessionModel request)
         {
             await Connection.SendAsync(nameof(LeaveSessionAsync), request);
         }
@@ -148,7 +148,7 @@ namespace Simplic.Cloud.API.Logistics
         /// Lock resources async
         /// </summary>
         /// <param name="request">Request instance</param>
-        public async Task LockResourceAsync(LockResourceRequest request)
+        public async Task LockResourceAsync(LockResourceModel request)
         {
             await Connection.SendAsync(nameof(LockResourceAsync), request);
         }
@@ -157,7 +157,7 @@ namespace Simplic.Cloud.API.Logistics
         /// Unlock resources async
         /// </summary>
         /// <param name="request">Request instance</param>
-        public async Task UnlockResourceAsync(UnlockResourceRequest request)
+        public async Task UnlockResourceAsync(UnlockResourceModel request)
         {
             await Connection.SendAsync(nameof(UnlockResourceAsync), request);
         }

@@ -4,7 +4,10 @@ using System.Text;
 
 namespace Simplic.Cloud.API.Logistics
 {
-    public class StopDriverRestRequest : DriverBaseModel
+    /// <summary>
+    /// Request resources
+    /// </summary>
+    public class GetResourceModel : BaseModel
     {
 
     }

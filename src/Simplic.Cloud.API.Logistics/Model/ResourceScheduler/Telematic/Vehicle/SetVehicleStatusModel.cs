@@ -7,8 +7,13 @@ namespace Simplic.Cloud.API.Logistics
     /// <summary>
     /// Vehicle status request
     /// </summary>
-    public class SetVehicleLocationRequest : VehicleBaseModel
+    public class SetVehicleStatusModel : VehicleBaseModel
     {
+        /// <summary>
+        /// Gets or sets the vehicle status
+        /// </summary>
+        public VehicleStatus Status { get; set; }
+
         /// <summary>
         /// Gets or sets the vehicle location
         /// </summary>

@@ -4,11 +4,8 @@ using System.Text;
 
 namespace Simplic.Cloud.API.Logistics
 {
-    /// <summary>
-    /// Get resource group requests
-    /// </summary>
-    public class GetResourceGroupsRequest : BaseModel
+    public class EndDriverShiftModel : DriverBaseModel
     {
-
+        public DateTime DateTime { get; set; }
     }
 }

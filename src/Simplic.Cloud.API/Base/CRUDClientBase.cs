@@ -23,7 +23,6 @@ namespace Simplic.Cloud.API
 
         public virtual async Task<T> GetAsync(I id)
         {
-            Debugger.Launch();
             return await base.GetAsync<T>(Api, Controller, "get", new Dictionary<string, string> { { "id", id.ToString() } });
         }
 
