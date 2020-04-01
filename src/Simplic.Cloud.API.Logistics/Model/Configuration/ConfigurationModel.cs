@@ -13,6 +13,11 @@ namespace Simplic.Cloud.API.Logistics
     public class ConfigurationModel
     {
         /// <summary>
+        /// Gets or sets the configuration id
+        /// </summary>
+        public Guid Id { get; set; }
+
+        /// <summary>
         /// Gets or sets the resource scheduler name
         /// </summary>
         public string ConfigurationName { get; set; } = "default";
