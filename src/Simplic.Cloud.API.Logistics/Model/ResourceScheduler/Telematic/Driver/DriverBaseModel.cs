@@ -7,16 +7,11 @@ namespace Simplic.Cloud.API.Logistics
     /// <summary>
     /// Driver base model
     /// </summary>
-    public class DriverBaseModel
+    public class DriverBaseModel : BaseModel
     {
         /// <summary>
         /// Gets or sets the driver id
         /// </summary>
         public Guid Id { get; set; }
-
-        /// <summary>
-        /// Gets or sets the configuration name
-        /// </summary>
-        public string ConfigurationName { get; set; }
     }
 }

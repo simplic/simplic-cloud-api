@@ -7,11 +7,8 @@ namespace Simplic.Cloud.API.Logistics
     /// <summary>
     /// Get resource group requests
     /// </summary>
-    public class GetResourceGroupsRequest
+    public class GetResourceGroupsRequest : BaseModel
     {
-        /// <summary>
-        /// Gets or sets the configuration name
-        /// </summary>
-        public string ConfigurationName { get; set; }
+
     }
 }

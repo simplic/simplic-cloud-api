@@ -65,10 +65,11 @@
     <Compile Include="Model\ResourceScheduler\Appointment\EmptyTourAppointmentModel.cs" />
     <Compile Include="Model\ResourceScheduler\Appointment\Request\AppointmentType.cs" />
     <Compile Include="Model\ResourceScheduler\Appointment\Request\LoadDataRequest.cs" />
-    <Compile Include="Model\ResourceScheduler\Appointment\Request\RemoveAppointmentRequest.cs" />
-    <Compile Include="Model\ResourceScheduler\Appointment\Request\ScheduleAppointmentRequest.cs" />
+    <Compile Include="Model\ResourceScheduler\Appointment\Request\RemoveAppointmentModel.cs" />
+    <Compile Include="Model\ResourceScheduler\Appointment\Request\ScheduleAppointmentModel.cs" />
     <Compile Include="Model\ResourceScheduler\Appointment\Request\StartDateType.cs" />
     <Compile Include="Model\ResourceScheduler\Appointment\TourAppointmentModel.cs" />
+    <Compile Include="Model\ResourceScheduler\BaseClass.cs" />
     <Compile Include="Model\ResourceScheduler\Base\RuntimeCommand.cs" />
     <Compile Include="Model\ResourceScheduler\Conflict\ChangeConflictCommentRequest.cs" />
     <Compile Include="Model\ResourceScheduler\Conflict\ConflictModel.cs" />

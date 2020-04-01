@@ -8,14 +8,9 @@ namespace Simplic.Cloud.API.Logistics
     /// <summary>
     /// Appointment base class
     /// </summary>
-    public class AppointmentBaseModel
+    public class AppointmentBaseModel : BaseModel
     {
         public Guid Id { get; set; }
-        
-        /// <summary>
-        /// Gets or sets the configuration name
-        /// </summary>
-        public string ConfigurationName { get; set; }
 
         /// <summary>
         /// Gets or sets the resource ids

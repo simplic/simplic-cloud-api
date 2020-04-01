@@ -7,16 +7,11 @@ namespace Simplic.Cloud.API.Logistics
     /// <summary>
     /// Add timeline Separator requests
     /// </summary>
-    public class RemoveTimelineSeparatorRequest
+    public class RemoveTimelineSeparatorRequest : BaseModel
     {
         /// <summary>
         /// Gets or sets the id
         /// </summary>
         public Guid Id { get; set; }
-
-        /// <summary>
-        /// Gets or sets the configuration name
-        /// </summary>
-        public string ConfigurationName { get; set; }
     }
 }

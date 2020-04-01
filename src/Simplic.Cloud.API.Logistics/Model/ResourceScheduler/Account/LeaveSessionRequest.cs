@@ -1,7 +1,7 @@
 ﻿namespace Simplic.Cloud.API.Logistics
 {
-    public class LeaveSessionRequest
+    public class LeaveSessionRequest : BaseModel
     {
-        public string ConfigurationName { get; set; } = "default";
+
     }
 }

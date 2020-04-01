@@ -5,14 +5,12 @@ namespace Simplic.Cloud.API.Logistics
     /// <summary>
     /// Add resource request
     /// </summary>
-    public class AddResourceRequest
+    public class AddResourceRequest : BaseModel
     {
         /// <summary>
         /// Gets or sets the resource id
         /// </summary>
         public Guid Id { get; set; }
-
-        public string ConfigurationName { get; set; } = "default";
 
         /// <summary>
         /// Gets or sets the resource type

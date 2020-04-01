@@ -1,6 +1,5 @@
 ﻿using Simplic.Cloud.API;
 using Simplic.Cloud.API.Logistics;
-using Simplic.Cloud.ResourceScheduler.Api.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -4,14 +4,12 @@ using System.Text;
 
 namespace Simplic.Cloud.API.Logistics
 {
-    public class LoadDataRequest
+    public class LoadDataRequest : BaseModel
     {
         /// <summary>
         /// Gets or sets the appointment id
         /// </summary>
         public Guid Id { get; set; }
-
-        public string ConfigurationName { get; set; } = "default";
 
         /// <summary>
         /// Gets or sets the start datetime

@@ -1,7 +1,7 @@
 ﻿namespace Simplic.Cloud.API.Logistics
 {
-    public class JoinSessionRequest
+    public class JoinSessionRequest : BaseModel
     {
-        public string ConfigurationName { get; set; } = "default";
+
     }
 }

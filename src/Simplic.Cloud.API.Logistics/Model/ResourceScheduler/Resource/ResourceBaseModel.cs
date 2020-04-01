@@ -3,17 +3,12 @@ using System.Collections.Generic;
 
 namespace Simplic.Cloud.API.Logistics
 {
-    public class ResourceBaseModel
+    public class ResourceBaseModel : BaseModel
     {
         /// <summary>
         /// Gets or sets the resource id
         /// </summary>
         public Guid Id { get; set; }
-
-        /// <summary>
-        /// Gets or sets the configuration name
-        /// </summary>
-        public string ConfigurationName { get; set; }
 
         /// <summary>
         /// Gets or sets the resource id

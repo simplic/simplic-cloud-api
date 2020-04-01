@@ -83,7 +83,7 @@ namespace Simplic.Cloud.API.Logistics
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public async Task ScheduleAppointmentAsync(ScheduleAppointmentRequest request)
+        public async Task ScheduleAppointmentAsync(ScheduleAppointmentModel request)
         {
             await Connection.SendAsync(nameof(ScheduleAppointmentAsync), request);
         }
@@ -93,7 +93,7 @@ namespace Simplic.Cloud.API.Logistics
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public async Task RemoveAppointmentAsync(RemoveAppointmentRequest request)
+        public async Task RemoveAppointmentAsync(RemoveAppointmentModel request)
         {
             await Connection.SendAsync(nameof(RemoveAppointmentAsync), request);
         }

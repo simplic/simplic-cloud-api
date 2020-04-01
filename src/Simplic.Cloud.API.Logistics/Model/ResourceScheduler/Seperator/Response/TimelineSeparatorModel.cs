@@ -7,17 +7,12 @@ namespace Simplic.Cloud.API.Logistics
     /// <summary>
     /// Timeline Separator
     /// </summary>
-    public class TimelineSeparatorModel
+    public class TimelineSeparatorModel : BaseModel
     {
         /// <summary>
         /// Gets or sets the timeline id
         /// </summary>
         public Guid Id { get; set; }
-
-        /// <summary>
-        /// Gets or sets the configuration name
-        /// </summary>
-        public string ConfigurationName { get; set; }
 
         /// <summary>
         /// Gets or sets the date time
