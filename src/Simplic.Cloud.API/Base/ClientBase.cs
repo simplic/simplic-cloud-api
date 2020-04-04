@@ -97,6 +97,8 @@ namespace Simplic.Cloud.API
         /// <returns>Return model</returns>
         protected async Task<T> PostAsync<T, I>(string api, string controller, string action, I model)
         {
+            var statusCode = HttpStatusCode.OK;
+
             try
             {
                 if (!string.IsNullOrWhiteSpace(User?.Token))
@@ -105,6 +107,7 @@ namespace Simplic.Cloud.API
                 var methodUrl = GetUrl(api, controller, action);
 
                 var response = await HttpClient.PostAsJsonAsync<I>(methodUrl, model);
+                statusCode = response.StatusCode;
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -118,7 +121,7 @@ namespace Simplic.Cloud.API
             }
             catch (Exception ex)
             {
-                throw new ApiException("Unexpected error in post.", api, controller, action, System.Net.HttpStatusCode.ServiceUnavailable, ex);
+                throw new ApiException("Unexpected error in post.", api, controller, action, statusCode, ex);
             }
         }
 
