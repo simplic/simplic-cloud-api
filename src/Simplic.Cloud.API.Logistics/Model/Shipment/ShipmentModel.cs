@@ -16,9 +16,9 @@ namespace Simplic.Cloud.API.Logistics
         public string ShipmentNr { get; set; }
         public string ExtShipmentNr { get; set; }
         public string Notes { get; set; }
-        public ContactModel Customer { get; set; }
-        public ContactModel LoadAddress { get; set; }
-        public ContactModel DeliveryAddress { get; set; }
+        public Guid? CustomerId { get; set; }
+        public Guid? LoadAddressId { get; set; }
+        public Guid? DeliveryAddressId { get; set; }
 
         public DateRangeModel LoadDate { get; set; }
         public DateRangeModel DeliveryDate { get; set; }
