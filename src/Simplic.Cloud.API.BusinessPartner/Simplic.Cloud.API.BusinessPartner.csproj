@@ -45,10 +45,13 @@
     <Compile Include="Model\AddressModel.cs" />
     <Compile Include="Model\Enum\AddressType.cs" />
     <Compile Include="Model\Enum\ContactCategory.cs" />
-    <Compile Include="Model\ContactDocument.cs" />
+    <Compile Include="Model\ContactModel.cs" />
     <Compile Include="Model\Enum\ContactType.cs" />
+    <Compile Include="Model\GeoFenceModel.cs" />
+    <Compile Include="Model\GeoLocationModel.cs" />
     <Compile Include="Model\MailAddress.cs" />
     <Compile Include="Model\Enum\MailAddressType.cs" />
+    <Compile Include="Model\OpeningHourModel.cs" />
     <Compile Include="Model\PhoneNumber.cs" />
     <Compile Include="Model\Enum\PhoneNumberType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
