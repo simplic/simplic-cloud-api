@@ -56,6 +56,7 @@
     <Compile Include="Model\Configuration\DependencyConfigurationModel.cs" />
     <Compile Include="Model\ResourceScheduler\Account\JoinSessionModel.cs" />
     <Compile Include="Model\ResourceScheduler\Account\LeaveSessionModel.cs" />
+    <Compile Include="Model\ResourceScheduler\Appointment\AddressModel.cs" />
     <Compile Include="Model\ResourceScheduler\Appointment\Base\AppointmentBaseModel.cs" />
     <Compile Include="Model\ResourceScheduler\Appointment\Base\AppointmentDistance.cs" />
     <Compile Include="Model\ResourceScheduler\Appointment\Base\AppointmentDuration.cs" />
@@ -122,10 +123,6 @@
     <Compile Include="VehicleClient.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Simplic.Cloud.API.BusinessPartner\Simplic.Cloud.API.BusinessPartner.csproj">
-      <Project>{9D10DF79-53D7-4D6F-8A04-AF12A789604C}</Project>
-      <Name>Simplic.Cloud.API.BusinessPartner</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Simplic.Cloud.API\Simplic.Cloud.API.csproj">
       <Project>{a2cf02ac-4c6f-4fe5-bcbb-3c9cb6d1bfca}</Project>
       <Name>Simplic.Cloud.API</Name>

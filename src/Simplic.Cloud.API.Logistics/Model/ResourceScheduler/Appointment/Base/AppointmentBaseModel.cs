@@ -1,5 +1,4 @@
-﻿using Simplic.Cloud.API.BusinessPartner;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 

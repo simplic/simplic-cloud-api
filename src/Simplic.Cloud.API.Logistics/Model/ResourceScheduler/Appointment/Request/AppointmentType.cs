@@ -3,9 +3,8 @@
     public enum AppointmentType
     {
         Tour = 0,
-
         EmptyTour = 1,
-
-        DriverRest = 2
+        DriverRest = 2,
+        Shipment = 3
     }
 }

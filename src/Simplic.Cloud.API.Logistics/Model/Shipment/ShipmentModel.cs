@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using MongoDB.Bson.Serialization.Attributes;
-using Simplic.Cloud.API.BusinessPartner;
 
 namespace Simplic.Cloud.API.Logistics
 {
