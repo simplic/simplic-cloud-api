@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Simplic.Cloud.HR.Document
+namespace Simplic.Cloud.API.HR
 {
     /// <summary>
     /// Represents a telematic system

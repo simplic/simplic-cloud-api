@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Simplic.Cloud.HR.Document
+namespace Simplic.Cloud.API.HR
 {
     public class EmploymentModel
     {
