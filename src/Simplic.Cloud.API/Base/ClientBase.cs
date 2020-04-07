@@ -116,7 +116,9 @@ namespace Simplic.Cloud.API
                 }
                 else
                 {
-                    throw new ApiException("Error in post.", api, controller, action, response.StatusCode);
+                    var obj = JsonConvert.SerializeObject(model);
+
+                    throw new ApiException($"Error in put: {obj}", api, controller, action, response.StatusCode);
                 }
             }
             catch (Exception ex)
@@ -152,7 +154,9 @@ namespace Simplic.Cloud.API
                 }
                 else
                 {
-                    throw new ApiException("Error in post.", api, controller, action, response.StatusCode);
+                    var obj = JsonConvert.SerializeObject(model);
+
+                    throw new ApiException($"Error in put: {obj}", api, controller, action, response.StatusCode);
                 }
             }
             catch (Exception ex)
