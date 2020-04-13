@@ -38,10 +38,20 @@ namespace Test
             Console.WriteLine("User login: " + result.UserName);
 
             var logisticClient = new ResourceSchedulerConfigurationClient(client);
+            Guid configurationId = Guid.Empty;
+
             foreach (var configuration in await logisticClient.GetAllAsync())
             {
+                configurationId = configuration.Id;
                 Console.WriteLine(configuration.ConfigurationName);
             }
+
+            var hub = new CLIResourceSchedulerHub(client);
+            await hub.StartAsync();
+            await hub.JoinSessionAsync(new JoinSessionModel { ConfigurationId = configurationId });
+            await hub.RequestResourceGroupsAsync(new GetResourceGroupsModel { ConfigurationId = configurationId });
+
+            await hub.RequestResourcesAsync(new GetResourceModel { ConfigurationId = configurationId });
 
             // var hrClient = new EmployeeClient(client);
             // await hrClient.CreateAsync(new Employee
