@@ -10,6 +10,7 @@ namespace Simplic.Cloud.API.Logistics
         public bool IsDeleted { get; set; }
         public string MatchCode { get; set; }
         public string RegistrationIdentifier { get; set; }
+        public string PhoneNumber { get; set; }
         public VehicleType Type { get; set; }
         public VehicleStatus Status { get; set; }
         public DateTime? ConstructionDate { get; set; }
