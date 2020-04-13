@@ -5,6 +5,7 @@
     /// </summary>
     public enum ScheduleAppointmentType
     {
-        Tour = 0
+        Tour = 0,
+        Shipment = 1
     }
 }
