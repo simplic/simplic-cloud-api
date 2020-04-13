@@ -12,14 +12,19 @@ namespace Simplic.Cloud.API.Logistics
         public Guid Id { get; set; }
 
         /// <summary>
-        /// Gets or sets the appointment type
+        /// Gets or sets the appointment type to schedule
         /// </summary>
-        public AppointmentType Type { get; set; }
+        public ScheduleAppointmentType Type { get; set; }
+
+        /// <summary>
+        /// Gets or sets the appointment item id
+        /// </summary>
+        public IList<ScheduleAppointmentItem> Items { get; set; } = new List<ScheduleAppointmentItem>();
 
         /// <summary>
         /// Gets or sets the attached resource
         /// </summary>
-        public IList<Guid> Resources { get; set; }
+        public IList<Guid> Resources { get; set; } = new List<Guid>();
 
         /// <summary>
         /// Gets or sets the start datetime

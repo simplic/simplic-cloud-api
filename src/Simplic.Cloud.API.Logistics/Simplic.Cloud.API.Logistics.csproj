@@ -57,6 +57,7 @@
     <Compile Include="Model\ResourceScheduler\Account\JoinSessionModel.cs" />
     <Compile Include="Model\ResourceScheduler\Account\LeaveSessionModel.cs" />
     <Compile Include="Model\ResourceScheduler\Appointment\AddressModel.cs" />
+    <Compile Include="Model\ResourceScheduler\Appointment\AppointmentItem.cs" />
     <Compile Include="Model\ResourceScheduler\Appointment\Base\AppointmentBaseModel.cs" />
     <Compile Include="Model\ResourceScheduler\Appointment\Base\AppointmentDistance.cs" />
     <Compile Include="Model\ResourceScheduler\Appointment\Base\AppointmentDuration.cs" />
@@ -64,11 +65,15 @@
     <Compile Include="Model\ResourceScheduler\Appointment\DriverRestAppointmentModel.cs" />
     <Compile Include="Model\ResourceScheduler\Appointment\DriverWorkAppointmentModel.cs" />
     <Compile Include="Model\ResourceScheduler\Appointment\EmptyTourAppointmentModel.cs" />
+    <Compile Include="Model\ResourceScheduler\Appointment\Request\AppointmentItemType.cs" />
     <Compile Include="Model\ResourceScheduler\Appointment\Request\AppointmentType.cs" />
     <Compile Include="Model\ResourceScheduler\Appointment\Request\LoadDataModel.cs" />
     <Compile Include="Model\ResourceScheduler\Appointment\Request\RemoveAppointmentModel.cs" />
+    <Compile Include="Model\ResourceScheduler\Appointment\Request\ScheduleAppointmentItem.cs" />
     <Compile Include="Model\ResourceScheduler\Appointment\Request\ScheduleAppointmentModel.cs" />
+    <Compile Include="Model\ResourceScheduler\Appointment\Request\ScheduleAppointmentType.cs" />
     <Compile Include="Model\ResourceScheduler\Appointment\Request\StartDateType.cs" />
+    <Compile Include="Model\ResourceScheduler\Appointment\ShipmentAppointmentItem.cs" />
     <Compile Include="Model\ResourceScheduler\Appointment\TourAppointmentModel.cs" />
     <Compile Include="Model\ResourceScheduler\BaseClass.cs" />
     <Compile Include="Model\ResourceScheduler\Base\RuntimeCommand.cs" />
