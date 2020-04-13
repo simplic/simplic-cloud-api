@@ -12,6 +12,11 @@ namespace Simplic.Cloud.API.Logistics
         public Guid Id { get; set; }
 
         /// <summary>
+        /// Gets or sets the appointment number
+        /// </summary>
+        public string Number { get; set; }
+
+        /// <summary>
         /// Gets or sets the resource ids
         /// </summary>
         public IList<Guid> Resources { get; set; }
