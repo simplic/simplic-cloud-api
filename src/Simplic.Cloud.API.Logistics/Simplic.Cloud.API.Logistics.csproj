@@ -81,6 +81,7 @@
     <Compile Include="Model\ResourceScheduler\Conflict\ConflictModel.cs" />
     <Compile Include="Model\ResourceScheduler\Conflict\ConflictType.cs" />
     <Compile Include="Model\ResourceScheduler\Enum\ResourceType.cs" />
+    <Compile Include="Model\ResourceScheduler\Resource\AddResourcesModel.cs" />
     <Compile Include="Model\ResourceScheduler\Resource\Request\AddResourceModel.cs" />
     <Compile Include="Model\ResourceScheduler\Resource\Request\GetResourceGroupsModel.cs" />
     <Compile Include="Model\ResourceScheduler\Resource\Request\GetResourceModel.cs" />

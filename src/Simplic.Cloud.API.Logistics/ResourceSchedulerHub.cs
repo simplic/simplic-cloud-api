@@ -19,10 +19,8 @@ namespace Simplic.Cloud.API.Logistics
         /// <param name="clientBase"></param>
         public ResourceSchedulerHub(ClientBase clientBase) : base("resource-scheduler", "resource-scheduler", clientBase)
         {
-            receiver.Add(Connection.On<IList<DriverResourceModel>>("PushAddDriverResourcesAsync", OnAddDriverResourcesAsync));
             receiver.Add(Connection.On<IList<ResourceGroup>>("PushAddResourceGroupsAsync", OnAddResourceGroupsAsync));
-            receiver.Add(Connection.On<IList<TractorUnitResourceModel>>("PushAddTractorUnitResourcesAsync", OnAddTractorUnitResourcesAsync));
-            receiver.Add(Connection.On<IList<TrailerResourceModel>>("PushAddTrailerResourcesAsync", OnAddTrailerResourcesAsync));
+            receiver.Add(Connection.On<AddResourcesModel>("PushAddResourcesAsync", OnAddResourcesAsync));
             receiver.Add(Connection.On<Guid>("PushRemoveResourceAsync", OnRemoveResourceAsync));
             receiver.Add(Connection.On<DriverResourceModel>("PushUpdateDriverResourceAsync", OnUpdateDriverResourceAsync));
             receiver.Add(Connection.On<TractorUnitResourceModel>("PushUpdateTractorUnitResourceAsync", OnUpdateTractorUnitResourceAsync));
@@ -175,19 +173,7 @@ namespace Simplic.Cloud.API.Logistics
         /// Pushes a list of resources
         /// </summary>
         /// <param name="resources">Resources</param>
-        protected abstract Task OnAddDriverResourcesAsync(IList<DriverResourceModel> resources);
-
-        /// <summary>
-        /// Pushes a list of resources
-        /// </summary>
-        /// <param name="resources">Resources</param>
-        protected abstract Task OnAddTractorUnitResourcesAsync(IList<TractorUnitResourceModel> resources);
-
-        /// <summary>
-        /// Pushes a list of resources
-        /// </summary>
-        /// <param name="resources">Resources</param>
-        protected abstract Task OnAddTrailerResourcesAsync(IList<TrailerResourceModel> resources);
+        protected abstract Task OnAddResourcesAsync(AddResourcesModel resources);
 
         /// <summary>
         /// Push update resource

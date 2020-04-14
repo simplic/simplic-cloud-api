@@ -26,30 +26,24 @@ namespace Test
             }
         }
 
-        protected override async Task OnAddDriverResourcesAsync(IList<DriverResourceModel> resources)
+        protected override async Task OnAddResourcesAsync(AddResourcesModel resources)
         {
             Console.WriteLine("---- ---- ----");
-            foreach (var resource in resources)
+            foreach (var resource in resources.Drivers)
             {
                 _resources.Add(resource);
                 Console.WriteLine($"Add driver: {GetResourceText(resource)}");
             }
-        }
 
-        protected override async Task OnAddTractorUnitResourcesAsync(IList<TractorUnitResourceModel> resources)
-        {
             Console.WriteLine("---- ---- ----");
-            foreach (var resource in resources)
+            foreach (var resource in resources.TractorUnits)
             {
                 _resources.Add(resource);
                 Console.WriteLine($"Add tractor unit: {GetResourceText(resource)}");
             }
-        }
 
-        protected override async Task OnAddTrailerResourcesAsync(IList<TrailerResourceModel> resources)
-        {
             Console.WriteLine("---- ---- ----");
-            foreach (var resource in resources)
+            foreach (var resource in resources.TractorUnits)
             {
                 _resources.Add(resource);
                 Console.WriteLine($"Add trailer: {GetResourceText(resource)}");
