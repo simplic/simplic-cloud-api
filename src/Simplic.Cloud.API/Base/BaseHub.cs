@@ -32,6 +32,43 @@ namespace Simplic.Cloud.API
                 })
                 .WithAutomaticReconnect()
                 .Build();
+
+            Connection.ServerTimeout = TimeSpan.FromSeconds(30);
+            Connection.KeepAliveInterval = TimeSpan.FromMilliseconds(100);
+
+            Connection.Closed += ConnectionClosedEventHandler;
+            Connection.Reconnected += ConnectionReconnectedEventHandler;
+            Connection.Reconnecting += ConnectionReconnectingEventHandler;
+        }
+
+        private async Task ConnectionReconnectingEventHandler(Exception arg)
+        {
+            await ConnectionReconnecting(arg);
+        }
+
+        private async Task ConnectionReconnectedEventHandler(string arg)
+        {
+            await ConnectionReconnected(arg);
+        }
+
+        private async Task ConnectionClosedEventHandler(Exception arg)
+        {
+            await ConnectionClosed(arg);
+        }
+
+        public virtual async Task ConnectionReconnecting(Exception ex)
+        { 
+            
+        }
+
+        public virtual async Task ConnectionReconnected(string arg)
+        {
+
+        }
+
+        public virtual async Task ConnectionClosed(Exception ex)
+        {
+
         }
 
         /// <summary>

@@ -12,6 +12,7 @@ namespace Simplic.Cloud.API.Logistics
     public abstract class ResourceSchedulerHub : BaseHub
     {
         private readonly IList<IDisposable> receiver = new List<IDisposable>();
+        private Guid? configurationId = null;
 
         /// <summary>
         /// Resource hub
@@ -41,6 +42,20 @@ namespace Simplic.Cloud.API.Logistics
             receiver.Add(Connection.On<TimelineSeparatorModel>("PushAddTimelineSeparatorAsync", OnAddTimelineSeparatorAsync));
             receiver.Add(Connection.On<Guid>("PushRemoveTimelineSeparatorAsync", OnRemoveTimelineSeparatorAsync));
         }
+
+        #region Connection
+        public override async Task ConnectionReconnected(string arg)
+        {
+            // Join session
+            if (configurationId != null)
+            {
+                await JoinSessionAsync(new JoinSessionModel
+                {
+                    ConfigurationId = configurationId.Value
+                });
+            }
+        }
+        #endregion
 
         #region [Request]
         /// <summary>
@@ -130,6 +145,7 @@ namespace Simplic.Cloud.API.Logistics
         /// <param name="request">Request object</param>
         public async Task JoinSessionAsync(JoinSessionModel request)
         {
+            configurationId = request.ConfigurationId;
             await Connection.SendAsync(nameof(JoinSessionAsync), request);
         }
 
