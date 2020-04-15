@@ -52,7 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\Tour\RegistrationPlate.cs" />
+    <Compile Include="Model\Tour\TourRegistrationPlateModel.cs" />
     <Compile Include="Model\Tour\TourEmployee.cs" />
     <Compile Include="Model\Tour\TourModel.cs" />
     <Compile Include="Model\Tour\TourModelResult.cs" />
