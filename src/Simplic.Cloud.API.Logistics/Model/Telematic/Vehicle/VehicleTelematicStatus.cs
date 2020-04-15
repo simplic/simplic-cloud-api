@@ -3,7 +3,7 @@
     /// <summary>
     /// Represents the vehicle status
     /// </summary>
-    public enum VehicleStatus
+    public enum VehicleTelematicStatus
     {
         None = 0,
         Loading = 1,

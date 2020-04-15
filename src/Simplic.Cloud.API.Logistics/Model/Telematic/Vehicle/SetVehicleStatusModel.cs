@@ -12,7 +12,7 @@ namespace Simplic.Cloud.API.Logistics
         /// <summary>
         /// Gets or sets the vehicle status
         /// </summary>
-        public VehicleStatus Status { get; set; }
+        public VehicleTelematicStatus Status { get; set; }
 
         /// <summary>
         /// Gets or sets the vehicle location

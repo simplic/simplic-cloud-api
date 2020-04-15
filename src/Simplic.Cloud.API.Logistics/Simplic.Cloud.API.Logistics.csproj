@@ -58,6 +58,7 @@
     <Compile Include="Model\Tour\TourModelResult.cs" />
     <Compile Include="Model\Tour\TourShipment.cs" />
     <Compile Include="Model\Tour\TourVehicle.cs" />
+    <Compile Include="Model\Vehicle\VehicleStatus.cs" />
     <Compile Include="TourClient.cs" />
     <Compile Include="VehicleTelematicClient.cs" />
     <Compile Include="Model\Configuration\ConfigurationModel.cs" />
@@ -124,7 +125,7 @@
     <Compile Include="Model\Telematic\Vehicle\SetVehicleStatusModel.cs" />
     <Compile Include="Model\Telematic\Vehicle\VehicleBaseModel.cs" />
     <Compile Include="Model\Telematic\Vehicle\VehicleLocation.cs" />
-    <Compile Include="Model\Telematic\Vehicle\VehicleStatus.cs" />
+    <Compile Include="Model\Telematic\Vehicle\VehicleTelematicStatus.cs" />
     <Compile Include="Model\Telematic\Vehicle\VehicleTelematicResult.cs" />
     <Compile Include="Model\Vehicle\RegistrationPlateModel.cs" />
     <Compile Include="Model\Vehicle\VehicleModel.cs" />
