@@ -52,6 +52,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Tour\RegistrationPlate.cs" />
+    <Compile Include="Model\Tour\TourEmployee.cs" />
+    <Compile Include="Model\Tour\TourModel.cs" />
+    <Compile Include="Model\Tour\TourModelResult.cs" />
+    <Compile Include="Model\Tour\TourShipment.cs" />
+    <Compile Include="Model\Tour\TourVehicle.cs" />
+    <Compile Include="TourClient.cs" />
     <Compile Include="VehicleTelematicClient.cs" />
     <Compile Include="Model\Configuration\ConfigurationModel.cs" />
     <Compile Include="Model\Configuration\DependencyConfigurationModel.cs" />
