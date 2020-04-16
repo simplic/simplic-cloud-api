@@ -46,6 +46,12 @@ namespace Test
                 Console.WriteLine(configuration.ConfigurationName);
             }
 
+            var profileApi = new ProfileClient(client);
+            foreach (var org in (await profileApi.GetProfile()).Organizations)
+            {
+                Console.WriteLine($"Organization: {org.Id}: {org.Name}");
+            }
+
             var hub = new CLIResourceSchedulerHub(client);
             await hub.StartAsync();
             await hub.JoinSessionAsync(new JoinSessionModel { ConfigurationId = configurationId });

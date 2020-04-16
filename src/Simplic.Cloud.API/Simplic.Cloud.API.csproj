@@ -55,6 +55,9 @@
     <Compile Include="Model\CRUDResponseModel.cs" />
     <Compile Include="Model\EchoModel.cs" />
     <Compile Include="Model\LoginModel.cs" />
+    <Compile Include="Model\OrganizationModel.cs" />
+    <Compile Include="Model\ProfileModel.cs" />
+    <Compile Include="ProfileClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
