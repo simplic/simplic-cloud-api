@@ -35,7 +35,7 @@ namespace Simplic.Cloud.API
 
             Connection.ServerTimeout = TimeSpan.FromSeconds(30);
             Connection.KeepAliveInterval = TimeSpan.FromMilliseconds(100);
-
+            
             Connection.Closed += ConnectionClosedEventHandler;
             Connection.Reconnected += ConnectionReconnectedEventHandler;
             Connection.Reconnecting += ConnectionReconnectingEventHandler;
