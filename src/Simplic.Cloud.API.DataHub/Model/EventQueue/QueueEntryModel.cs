@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Simplic.Cloud.API.DataHub.Model
+namespace Simplic.Cloud.API.DataHub
 {
     /// <summary>
     /// Queue entry

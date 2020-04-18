@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Simplic.Cloud.API.DataHub.Model
+namespace Simplic.Cloud.API.DataHub
 {
     /// <summary>
     /// Enqueue model
