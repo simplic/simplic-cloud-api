@@ -175,6 +175,15 @@ namespace Simplic.Cloud.API.Logistics
         {
             await Connection.SendAsync(nameof(UnlockResourceAsync), request);
         }
+
+        /// <summary>
+        /// Set warning comment
+        /// </summary>
+        /// <param name="request">Request instance</param>
+        public async Task SetWarningDataAsync(SetWarningDataModel request)
+        {
+            await Connection.SendAsync(nameof(SetWarningDataAsync), request);
+        }
         #endregion
 
         #region [Response]
