@@ -53,6 +53,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\ResourceScheduler\Warning\SetWarningDataModel.cs" />
+    <Compile Include="Model\Shift\ShiftTour.cs" />
+    <Compile Include="Model\Shift\ShiftDriver.cs" />
+    <Compile Include="Model\Shift\ShiftModel.cs" />
     <Compile Include="Model\Tour\TourRegistrationPlateModel.cs" />
     <Compile Include="Model\Tour\TourEmployee.cs" />
     <Compile Include="Model\Tour\TourModel.cs" />
@@ -60,6 +63,8 @@
     <Compile Include="Model\Tour\TourShipment.cs" />
     <Compile Include="Model\Tour\TourVehicle.cs" />
     <Compile Include="Model\Vehicle\VehicleStatus.cs" />
+    <Compile Include="ShiftClient.cs" />
+    <Compile Include="Model\Shift\ShiftResponseModel.cs" />
     <Compile Include="TourClient.cs" />
     <Compile Include="VehicleTelematicClient.cs" />
     <Compile Include="Model\Configuration\ConfigurationModel.cs" />
