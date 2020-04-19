@@ -9,6 +9,8 @@ namespace Simplic.Cloud.API.Logistics
         public ShiftDriver Driver { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
+        public DateTime? ActualStartDate { get; set; }
+        public DateTime? ActualEndDate { get; set; }
         public IList<ShiftTour> Tours { get; set; }
     }
 }
