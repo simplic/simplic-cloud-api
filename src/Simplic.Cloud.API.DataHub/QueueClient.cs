@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Simplic.Cloud.API.DataHub
 {
@@ -34,6 +36,11 @@ namespace Simplic.Cloud.API.DataHub
             : base(client)
         {
 
+        }
+
+        public virtual async Task<IList<QueueModel>> GetAllAsync()
+        {
+            return await base.GetAsync<IList<QueueModel>>(Api, Controller, "get-all", new Dictionary<string, string> { });
         }
 
         /// <summary>
