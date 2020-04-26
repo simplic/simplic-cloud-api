@@ -17,6 +17,24 @@ namespace Test
 
         }
 
+        public override Task ConnectionClosed(Exception ex)
+        {
+            Console.WriteLine("Closed!!!");
+            return base.ConnectionClosed(ex);
+        }
+
+        public override Task ConnectionReconnected(string arg)
+        {
+            Console.WriteLine("Reconnected!!!");
+            return base.ConnectionReconnected(arg);
+        }
+
+        public override Task ConnectionReconnecting(Exception ex)
+        {
+            Console.WriteLine("Recibbecting!!");
+            return base.ConnectionReconnecting(ex);
+        }
+
         protected override async Task OnAddResourceGroupsAsync(IList<ResourceGroup> resourceGroups)
         {
             Console.WriteLine("---- ---- ----");
