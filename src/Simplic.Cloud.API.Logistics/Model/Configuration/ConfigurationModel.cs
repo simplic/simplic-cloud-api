@@ -62,5 +62,10 @@ namespace Simplic.Cloud.API.Logistics
         {
 
         };
+
+        /// <summary>
+        /// Defines the number of days after which scheduler's appointments are readonly
+        /// </summary>
+        public int OperationalDays { get; set; }
     }
 }
