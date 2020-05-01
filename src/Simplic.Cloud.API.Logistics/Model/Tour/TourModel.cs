@@ -5,7 +5,7 @@ namespace Simplic.Cloud.API.Logistics
 {
     public class TourModel
     {
-        Guid Id { get; set; }
+        public Guid Id { get; set; }
         public Guid? DriverId { get; set; }
         public Guid? TractorUnitId { get; set; }
         public Guid? TrailerId { get; set; }

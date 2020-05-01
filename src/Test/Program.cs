@@ -38,6 +38,8 @@ namespace Test
             Console.WriteLine("User login: " + result.UserName);
 
             var logisticClient = new ResourceSchedulerConfigurationClient(client);
+            logisticClient.Url = "http://localhost:49248";
+
             Guid configurationId = Guid.Empty;
 
             foreach (var configuration in await logisticClient.GetAllAsync())
@@ -52,12 +54,19 @@ namespace Test
                 Console.WriteLine($"Organization: {org.Id}: {org.Name}");
             }
 
-            var hub = new CLIResourceSchedulerHub(client);
+            var hub = new CLIResourceSchedulerHub(logisticClient);
             await hub.StartAsync();
             await hub.JoinSessionAsync(new JoinSessionModel { ConfigurationId = configurationId });
             await hub.RequestResourceGroupsAsync(new GetResourceGroupsModel { ConfigurationId = configurationId });
 
-            await hub.RequestResourcesAsync(new GetResourceModel { ConfigurationId = configurationId });
+            // await hub.RequestResourcesAsync(new GetResourceModel { ConfigurationId = configurationId });
+            await hub.RequestDataAsync(new LoadDataModel
+            {
+                ConfigurationId = configurationId,
+                StartDate = new DateTime(2020, 4, 20),
+                EndDate = new DateTime(2020, 4, 28)
+            });
+
 
             // var hrClient = new EmployeeClient(client);
             // await hrClient.CreateAsync(new Employee
