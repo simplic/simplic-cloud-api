@@ -10,5 +10,6 @@ namespace Simplic.Cloud.API.Logistics
         public DateTime ToDate { get; set; }
         public TimeSpan FromTime { get; set; }
         public TimeSpan ToTime { get; set; }
+        public DateRangeType Type { get; set; }
     }
 }
