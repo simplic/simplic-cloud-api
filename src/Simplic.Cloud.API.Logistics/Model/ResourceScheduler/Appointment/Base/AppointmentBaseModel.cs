@@ -27,5 +27,9 @@ namespace Simplic.Cloud.API.Logistics
         public AddressModel StartAddress { get; set; }
         public AddressModel EndAddress { get; set; }
         public AddressModel CustomerAddress { get; set; }
+        public IList<AppointmentConflict> Conflicts { get; set; }
+
+        public int DurationInMinutes { get; set; }
+        public int CalculatedDurationInMinutes { get; set; }
     }
 }

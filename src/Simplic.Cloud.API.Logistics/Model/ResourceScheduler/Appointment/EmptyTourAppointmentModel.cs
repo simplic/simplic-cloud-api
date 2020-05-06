@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Simplic.Cloud.API.Logistics
 {
-    public class EmptyTourAppointmentModel : AppointmentBaseModel
+    public class EmptyTourAppointmentModel : TripAppointmentModel
     {
     }
 }
