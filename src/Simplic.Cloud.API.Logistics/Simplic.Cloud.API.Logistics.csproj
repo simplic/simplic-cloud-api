@@ -52,6 +52,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\DTCO\DtcoActicityModel.cs" />
+    <Compile Include="Model\DTCO\DtcoDailyDrivingTimeModel.cs" />
+    <Compile Include="Model\DTCO\DtcoDailyRestForDrivingTimeModel.cs" />
+    <Compile Include="Model\DTCO\DtcoDailyRestTimeModel.cs" />
+    <Compile Include="Model\DTCO\DtcoDailyWorkTimeModel.cs" />
+    <Compile Include="Model\DTCO\DtcoDateModel.cs" />
+    <Compile Include="Model\DTCO\DtcoDetectedReducedWeeklyRestsToCompensateModel.cs" />
+    <Compile Include="Model\DTCO\DtcoDoubleWeekDrivingTimeModel.cs" />
+    <Compile Include="Model\DTCO\DtcoDrivingPauseTimeModel.cs" />
+    <Compile Include="Model\DTCO\DtcoObjectModel.cs" />
+    <Compile Include="Model\DTCO\DtcoReportModel.cs" />
+    <Compile Include="Model\DTCO\DtcoWeeklyDrivingTimeModel.cs" />
+    <Compile Include="Model\DTCO\DtcoWeeklyRestTimeModel.cs" />
+    <Compile Include="Model\DTCO\DtcoWeeklyWorkTimeModel.cs" />
+    <Compile Include="Model\DTCO\DtcoWeekRestActivityInfoModel.cs" />
+    <Compile Include="Model\DTCO\DtcoWorkingPauseTimeModel.cs" />
     <Compile Include="Model\ResourceScheduler\Appointment\AppointmentConflict.cs" />
     <Compile Include="Model\ResourceScheduler\Appointment\Base\TripAppointmentModel.cs" />
     <Compile Include="Model\ResourceScheduler\Appointment\Shipment\TourShipmentItem.cs" />
