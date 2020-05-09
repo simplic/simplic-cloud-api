@@ -138,15 +138,15 @@ namespace Test
         private string GetAppointmentText(AppointmentBaseModel appointmentBaseModel)
         {
             var builder = new StringBuilder();
-            if (appointmentBaseModel.Start.Type == DateObjectType.Fixed)
+            if (appointmentBaseModel.StartDateType == DateObjectType.Fixed)
                 builder.Append("!");
 
-            builder.Append($"{appointmentBaseModel.Start.ScheduledDate.ToString(@"dd.MM.yyyy hh\:mm")}[{appointmentBaseModel.StartAddress?.City}]");
+            builder.Append($"{appointmentBaseModel.StartDate.ToString(@"dd.MM.yyyy hh\:mm")}[{appointmentBaseModel.StartAddress?.City}]");
 
-            if (appointmentBaseModel.End.Type == DateObjectType.Fixed)
+            if (appointmentBaseModel.EndDateType == DateObjectType.Fixed)
                 builder.Append("!");
 
-            builder.Append($"{appointmentBaseModel.End.ScheduledDate.ToString(@"dd.MM.yyyy hh\:mm")}[{appointmentBaseModel.EndAddress?.City}]@");
+            builder.Append($"{appointmentBaseModel.EndDate.ToString(@"dd.MM.yyyy hh\:mm")}[{appointmentBaseModel.EndAddress?.City}]@");
             builder.Append(string.Join(";", appointmentBaseModel.Resources.Select(x => _resources.FirstOrDefault(y => y.Id == x)?.DisplayName)));
 
             return builder.ToString();

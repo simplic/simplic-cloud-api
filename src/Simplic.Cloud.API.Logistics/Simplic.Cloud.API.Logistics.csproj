@@ -96,7 +96,6 @@
     <Compile Include="Model\ResourceScheduler\Appointment\Base\AppointmentBaseModel.cs" />
     <Compile Include="Model\ResourceScheduler\Appointment\Base\AppointmentDistance.cs" />
     <Compile Include="Model\ResourceScheduler\Appointment\Base\AppointmentDuration.cs" />
-    <Compile Include="Model\ResourceScheduler\Appointment\Base\Date.cs" />
     <Compile Include="Model\ResourceScheduler\Appointment\DriverRestAppointmentModel.cs" />
     <Compile Include="Model\ResourceScheduler\Appointment\DriverWorkAppointmentModel.cs" />
     <Compile Include="Model\ResourceScheduler\Appointment\EmptyTourAppointmentModel.cs" />

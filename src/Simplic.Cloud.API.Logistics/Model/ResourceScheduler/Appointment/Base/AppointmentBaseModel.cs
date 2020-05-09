@@ -21,8 +21,23 @@ namespace Simplic.Cloud.API.Logistics
         /// </summary>
         public IList<Guid> Resources { get; set; }
 
-        public DateObject Start { get; set; }
-        public DateObject End { get; set; }
+        #region [Date/Time]
+        public DateTime StartDate { get; set; }
+
+        public DateTime StartPlannedDate { get; set; }
+
+        public DateTime StartActualDate { get; set; }
+
+        public DateObjectType StartDateType { get; set; }
+
+        public DateTime EndDate { get; set; }
+
+        public DateTime EndPlannedDate { get; set; }
+
+        public DateTime EndActualDate { get; set; }
+
+        public DateObjectType EndDateType { get; set; }
+        #endregion
 
         public AddressModel StartAddress { get; set; }
         public AddressModel EndAddress { get; set; }
