@@ -45,5 +45,10 @@ namespace Simplic.Cloud.API.Logistics
         /// Gets or sets the end object type
         /// </summary>
         public DateObjectType EndDateType { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether the appointment needs to be rescheduled
+        /// </summary>
+        public bool Reschedule { get; set; }
     }
 }

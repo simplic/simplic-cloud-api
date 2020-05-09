@@ -141,12 +141,12 @@ namespace Test
             if (appointmentBaseModel.Start.Type == DateObjectType.Fixed)
                 builder.Append("!");
 
-            builder.Append($"{appointmentBaseModel.Start.Date.ToString(@"dd.MM.yyyy hh\:mm")}[{appointmentBaseModel.StartAddress?.City}]");
+            builder.Append($"{appointmentBaseModel.Start.ScheduledDate.ToString(@"dd.MM.yyyy hh\:mm")}[{appointmentBaseModel.StartAddress?.City}]");
 
             if (appointmentBaseModel.End.Type == DateObjectType.Fixed)
                 builder.Append("!");
 
-            builder.Append($"{appointmentBaseModel.End.Date.ToString(@"dd.MM.yyyy hh\:mm")}[{appointmentBaseModel.EndAddress?.City}]@");
+            builder.Append($"{appointmentBaseModel.End.ScheduledDate.ToString(@"dd.MM.yyyy hh\:mm")}[{appointmentBaseModel.EndAddress?.City}]@");
             builder.Append(string.Join(";", appointmentBaseModel.Resources.Select(x => _resources.FirstOrDefault(y => y.Id == x)?.DisplayName)));
 
             return builder.ToString();

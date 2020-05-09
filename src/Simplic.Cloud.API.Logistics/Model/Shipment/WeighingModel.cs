@@ -6,6 +6,5 @@ namespace Simplic.Cloud.API.Logistics
     {
         public double Weight { get; set; }
         public DateTime Date { get; set; }
-        public TimeSpan Time { get; set; }
     }
 }
