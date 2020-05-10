@@ -97,30 +97,46 @@ namespace Test
             Console.WriteLine($"Remove resource: {resourceId}");
         }
 
+        public IList<AppointmentBaseModel> Appointments { get; set; } = new List<AppointmentBaseModel>();
+
         protected override async Task OnAddTourAppointmentAsync(IList<TourAppointmentModel> appointments)
         {
             Console.WriteLine("---- ---- ----");
             foreach (var tour in appointments)
+            {
+                Appointments.Add(tour);
                 Console.WriteLine($"Add shipment: {GetAppointmentText(tour)}");
+            }
         }
 
         protected override async Task OnUpdateTourAppointmentAsync(TourAppointmentModel appointment)
         {
             Console.WriteLine("---- ---- ----");
             Console.WriteLine($"Update shipment: {GetAppointmentText(appointment)}");
+
+            var toRemove = Appointments.FirstOrDefault(x => x.Id == appointment.Id);
+            Appointments.Remove(toRemove);
+            Appointments.Add(appointment);
         }
 
         protected override async Task OnAddEmptyTourAppointmentAsync(IList<EmptyTourAppointmentModel> appointments)
         {
             Console.WriteLine("---- ---- ----");
             foreach (var tour in appointments)
+            {
+                Appointments.Add(tour);
                 Console.WriteLine($"Add empty tour: {GetAppointmentText(tour)}");
+            }
         }
 
         protected override async Task OnUpdateEmptyTourAppointmentAsync(EmptyTourAppointmentModel appointment)
         {
             Console.WriteLine("---- ---- ----");
             Console.WriteLine($"Update empty tour: {GetAppointmentText(appointment)}");
+
+            var toRemove = Appointments.FirstOrDefault(x => x.Id == appointment.Id);
+            Appointments.Remove(toRemove);
+            Appointments.Add(appointment);
         }
 
         protected override async Task OnAddDriverRestAppointmentAsync(DriverRestAppointmentModel appointment)
@@ -135,7 +151,7 @@ namespace Test
             Console.WriteLine($"Update driver rest: {GetAppointmentText(appointment)}");
         }
 
-        private string GetAppointmentText(AppointmentBaseModel appointmentBaseModel)
+        public string GetAppointmentText(AppointmentBaseModel appointmentBaseModel)
         {
             var builder = new StringBuilder();
             if (appointmentBaseModel.StartDateType == DateObjectType.Fixed)
@@ -148,6 +164,7 @@ namespace Test
 
             builder.Append($"{appointmentBaseModel.EndDate.ToString(@"dd.MM.yyyy hh\:mm")}[{appointmentBaseModel.EndAddress?.City}]@");
             builder.Append(string.Join(";", appointmentBaseModel.Resources.Select(x => _resources.FirstOrDefault(y => y.Id == x)?.DisplayName)));
+            builder.Append($"S: {appointmentBaseModel.Status}");
 
             return builder.ToString();
         }

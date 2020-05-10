@@ -54,6 +54,10 @@ namespace Test
                 Console.WriteLine($"Organization: {org.Id}: {org.Name}");
             }
 
+            var vehicleTelematicApi = new VehicleTelematicClient(client);
+            vehicleTelematicApi.Url = "http://localhost:49248";
+
+
             var hub = new CLIResourceSchedulerHub(logisticClient);
             await hub.StartAsync();
             await hub.JoinSessionAsync(new JoinSessionModel { ConfigurationId = configurationId });
@@ -63,11 +67,76 @@ namespace Test
             await hub.RequestDataAsync(new LoadDataModel
             {
                 ConfigurationId = configurationId,
-                StartDate = new DateTime(2020, 4, 20),
-                EndDate = new DateTime(2020, 6, 28)
+                StartDate = new DateTime(2020, 5, 1),
+                EndDate = new DateTime(2020, 5, 19)
             });
 
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("");
 
+            Guid tractorUnitResourceGroupId = Guid.Parse("1609765a-4d81-46c4-a23d-530f7fde2da6");
+
+            await Task.Factory.StartNew(async () =>
+            {
+                double percent = 0d;
+                AppointmentBaseModel lastRunningAppointment = null;
+                while (true)
+                {
+                    Console.WriteLine("");
+                    Console.WriteLine("----");
+
+                    foreach (var appointment in hub.Appointments.OrderBy(x => x.StartDate))
+                    {
+                        Console.WriteLine(hub.GetAppointmentText(appointment));
+                    }
+
+                    var runningAppointment = hub.Appointments.FirstOrDefault(x => x.Status == AppointmentStatus.Running);
+                    if (runningAppointment != null)
+                    {
+                        if (lastRunningAppointment?.Id != runningAppointment?.Id)
+                            percent = 0;
+
+                        var startLat = runningAppointment.StartAddress.Latitude;
+                        var startLong = runningAppointment.StartAddress.Longitude;
+
+                        var endLat = runningAppointment.EndAddress.Latitude;
+                        var endLong = runningAppointment.EndAddress.Longitude;
+
+                        var dLat = endLat - startLat;
+                        var dLong = endLong - startLong;
+
+                        var vehiclePosLat = startLat + (dLat * percent);
+                        var vehiclePosLong = startLong + (dLong * percent);
+
+                        Console.WriteLine($"Distance: {endLat - vehiclePosLat}/{endLong - vehiclePosLong}");
+                        
+                        foreach (var resource in runningAppointment.Resources)
+                            await vehicleTelematicApi.SetLocationAsync(new SetVehicleLocationModel
+                            {
+                                ConfigurationId = configurationId,
+                                Id = resource,
+                                Location = new VehicleLocationModel
+                                {
+                                    Latitude = vehiclePosLat,
+                                    Longitude = vehiclePosLong
+                                }
+                            });
+
+                        lastRunningAppointment = runningAppointment;
+                    }
+
+                    percent += 0.1;
+
+                    if (percent >= 1)
+                    {
+                        percent = 1;
+                    }
+
+                    await Task.Delay(6000);
+                }
+            });
 
             // var hrClient = new EmployeeClient(client);
             // await hrClient.CreateAsync(new Employee

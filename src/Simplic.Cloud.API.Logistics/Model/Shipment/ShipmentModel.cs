@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using MongoDB.Bson.Serialization.Attributes;
+using Simplic.Cloud.API.Logistics.Model;
 
 namespace Simplic.Cloud.API.Logistics
 {
@@ -29,5 +30,7 @@ namespace Simplic.Cloud.API.Logistics
         public DateRangeModel ScheduledDeliveryDate { get; set; }
 
         public bool IsTemplate { get; set; }
+        public AggregatedPriceModel AggregatedPrice { get; set; }
+        public ShipmentStatusModel AggregatedStatus { get; set; }
     }
 }

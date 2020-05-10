@@ -77,7 +77,9 @@
     <Compile Include="Model\Shift\ShiftTour.cs" />
     <Compile Include="Model\Shift\ShiftDriver.cs" />
     <Compile Include="Model\Shift\ShiftModel.cs" />
+    <Compile Include="Model\Shipment\AggregatedPriceModel.cs" />
     <Compile Include="Model\Shipment\DateRangeType.cs" />
+    <Compile Include="Model\Shipment\ShipmentStatusModel.cs" />
     <Compile Include="Model\Tour\TourRegistrationPlateModel.cs" />
     <Compile Include="Model\Tour\TourEmployee.cs" />
     <Compile Include="Model\Tour\TourModel.cs" />
