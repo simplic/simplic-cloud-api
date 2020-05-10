@@ -37,6 +37,11 @@ namespace Simplic.Cloud.API.Logistics
         public DateTime EndActualDate { get; set; }
 
         public DateObjectType EndDateType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the appointment status
+        /// </summary>
+        public AppointmentStatus Status { get; set; }
         #endregion
 
         public AddressModel StartAddress { get; set; }

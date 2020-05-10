@@ -70,6 +70,7 @@
     <Compile Include="Model\DTCO\DtcoWorkingPauseTimeModel.cs" />
     <Compile Include="Model\ResourceScheduler\Appointment\AppointmentConflict.cs" />
     <Compile Include="Model\ResourceScheduler\Appointment\Base\TripAppointmentModel.cs" />
+    <Compile Include="Model\ResourceScheduler\Appointment\Request\AppointmentStatus.cs" />
     <Compile Include="Model\ResourceScheduler\Appointment\Shipment\TourShipmentItem.cs" />
     <Compile Include="Model\ResourceScheduler\Warning\SetWarningDataModel.cs" />
     <Compile Include="Model\Shift\ShiftTour.cs" />
@@ -106,7 +107,7 @@
     <Compile Include="Model\ResourceScheduler\Appointment\Request\ScheduleAppointmentItem.cs" />
     <Compile Include="Model\ResourceScheduler\Appointment\Request\ScheduleAppointmentModel.cs" />
     <Compile Include="Model\ResourceScheduler\Appointment\Request\ScheduleAppointmentType.cs" />
-    <Compile Include="Model\ResourceScheduler\Appointment\Request\StartDateType.cs" />
+    <Compile Include="Model\ResourceScheduler\Appointment\Request\DateObjectType.cs" />
     <Compile Include="Model\ResourceScheduler\Appointment\ShipmentAppointmentItem.cs" />
     <Compile Include="Model\ResourceScheduler\Appointment\TourAppointmentModel.cs" />
     <Compile Include="Model\ResourceScheduler\BaseClass.cs" />
