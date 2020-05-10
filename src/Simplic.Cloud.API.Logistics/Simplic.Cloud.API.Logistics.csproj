@@ -71,6 +71,7 @@
     <Compile Include="Model\ResourceScheduler\Appointment\AppointmentConflict.cs" />
     <Compile Include="Model\ResourceScheduler\Appointment\Base\TripAppointmentModel.cs" />
     <Compile Include="Model\ResourceScheduler\Appointment\Request\AppointmentStatus.cs" />
+    <Compile Include="Model\ResourceScheduler\Appointment\Request\SetAppointmentStatusRequest.cs" />
     <Compile Include="Model\ResourceScheduler\Appointment\Shipment\TourShipmentItem.cs" />
     <Compile Include="Model\ResourceScheduler\Warning\SetWarningDataModel.cs" />
     <Compile Include="Model\Shift\ShiftTour.cs" />

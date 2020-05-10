@@ -64,8 +64,9 @@ namespace Test
             {
                 ConfigurationId = configurationId,
                 StartDate = new DateTime(2020, 4, 20),
-                EndDate = new DateTime(2020, 4, 28)
+                EndDate = new DateTime(2020, 6, 28)
             });
+
 
 
             // var hrClient = new EmployeeClient(client);

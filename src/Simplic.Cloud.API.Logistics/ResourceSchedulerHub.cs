@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.SignalR.Client;
 using Simplic.Cloud.API.Logistics;
+using Simplic.Cloud.API.Logistics.Model;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -99,6 +100,16 @@ namespace Simplic.Cloud.API.Logistics
         public async Task ScheduleAppointmentAsync(ScheduleAppointmentModel request)
         {
             await Connection.SendAsync(nameof(ScheduleAppointmentAsync), request);
+        }
+
+        /// <summary>
+        /// Set appointment status
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public async Task SetAppointmentStatusAsync(SetAppointmentStatusRequest request)
+        {
+            await Connection.SendAsync(nameof(SetAppointmentStatusAsync), request);
         }
 
         /// <summary>
