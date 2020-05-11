@@ -10,5 +10,7 @@ namespace Simplic.Cloud.API.Logistics
         public AddressModel LoadAddress { get; set; }
         public AddressModel UnloadAddress { get; set; }
         public IList<TourShipmentItemModel> Items { get; set; } = new List<TourShipmentItemModel>();
+        public Model.AggregatedPriceModel AggregatedPrice { get; set; }
+        public ShipmentStatusModel AggregatedStatus { get; set; }
     }
 }
