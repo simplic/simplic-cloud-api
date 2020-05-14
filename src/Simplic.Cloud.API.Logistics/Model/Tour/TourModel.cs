@@ -9,7 +9,6 @@ namespace Simplic.Cloud.API.Logistics
         public Guid? DriverId { get; set; }
         public Guid? TractorUnitId { get; set; }
         public Guid? TrailerId { get; set; }
-        public bool SyncResourceScheduler { get; set; }
-        public IList<Guid> ShipmentIds { get; set; } = new List<Guid>();
+        public IList<TourShipmentModel> Shipments { get; set; } = new List<TourShipmentModel>();
     }
 }
