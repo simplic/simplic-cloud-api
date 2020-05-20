@@ -31,9 +31,10 @@ namespace Test
             Console.WriteLine("Create test application.");
 
             var client = new Client();
+            client.Url = "https://dev-cloud.simplic.io";
             // await client.PingAsync();
 
-            var result = await client.LoginAsync("benedikt4@simplic.biz", "123456");
+            var result = await client.LoginAsync("benedikt.eggers@simplic.biz", ";capreolus2020");
 
             Console.WriteLine("User login: " + result.UserName);
 
@@ -134,7 +135,7 @@ namespace Test
                         percent = 1;
                     }
 
-                    await Task.Delay(6000);
+                    await Task.Delay(7000);
                 }
             });
 
