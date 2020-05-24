@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NotificationClient.cs" />
     <Compile Include="Model\DTCO\DtcoActicityModel.cs" />
     <Compile Include="Model\DTCO\DtcoDailyDrivingTimeModel.cs" />
     <Compile Include="Model\DTCO\DtcoDailyRestForDrivingTimeModel.cs" />

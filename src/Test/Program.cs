@@ -34,9 +34,15 @@ namespace Test
             client.Url = "https://dev-cloud.simplic.io";
             // await client.PingAsync();
 
-            var result = await client.LoginAsync("benedikt.eggers@simplic.biz", "123456");
+            var result = await client.LoginAsync("benedikt.eggers@simplic.biz", "");
 
             Console.WriteLine("User login: " + result.UserName);
+
+            var notificationClient = new NotificationClient(client);
+            foreach (var notificationType in await notificationClient.GetTypesAsync())
+            {
+                Console.WriteLine($"Add type: {notificationType.Name}");
+            }
 
             var logisticClient = new ResourceSchedulerConfigurationClient(client);
             logisticClient.Url = "http://localhost:49248";
@@ -116,17 +122,17 @@ namespace Test
 
                         foreach (var resource in currentAppointment.Resources)
                         {
-                            await vehicleTelematicApi.SetLocationAsync(new SetVehicleLocationModel
-                            {
-                                ConfigurationId = configurationId,
-                                Id = resource,
-                                Location = new VehicleLocationModel
-                                {
-                                    Latitude = vehiclePosLat,
-                                    Longitude = vehiclePosLong
-                                },
-                                DateTime = startDt
-                            });
+                            /// await vehicleTelematicApi.SetLocationAsync(new SetVehicleLocationModel
+                            /// {
+                            ///     ConfigurationId = configurationId,
+                            ///     Id = resource,
+                            ///     Location = new VehicleLocationModel
+                            ///     {
+                            ///         Latitude = vehiclePosLat,
+                            ///         Longitude = vehiclePosLong
+                            ///     },
+                            ///     DateTime = startDt
+                            /// });
                         }
 
                         if (percent == 1)
