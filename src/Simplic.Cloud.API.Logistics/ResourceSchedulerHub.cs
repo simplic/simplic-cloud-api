@@ -42,6 +42,8 @@ namespace Simplic.Cloud.API.Logistics
 
             receiver.Add(Connection.On<TimelineSeparatorModel>("PushAddTimelineSeparatorAsync", OnAddTimelineSeparatorAsync));
             receiver.Add(Connection.On<Guid>("PushRemoveTimelineSeparatorAsync", OnRemoveTimelineSeparatorAsync));
+            
+            receiver.Add(Connection.On<IList<NotificationModel>>("PushAddNotificationAsync", OnAddNotificationAsync));
         }
 
         #region Connection
@@ -306,6 +308,12 @@ namespace Simplic.Cloud.API.Logistics
         /// </summary>
         /// <param name="separatorId">Separator id</param>
         protected abstract Task OnRemoveTimelineSeparatorAsync(Guid separatorId);
+
+        /// <summary>
+        /// Pushes a list of notifications
+        /// </summary>
+        /// <param name="notifications">List of notifications</param>
+        protected abstract Task OnAddNotificationAsync(IList<NotificationModel> notifications);
         #endregion
 
         #region Public Methods

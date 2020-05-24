@@ -202,5 +202,15 @@ namespace Test
         {
             Console.WriteLine($"Remove timeline separator: {separatorId}");
         }
+
+        /// <summary>
+        /// Pushes a list of notifications
+        /// </summary>
+        /// <param name="notifications">List of notifications</param>
+        protected override async Task OnAddNotificationAsync(IList<NotificationModel> notifications)
+        {
+            foreach (var notification in notifications)
+                Console.WriteLine($"NOTIFICATION: {notification.Message}");
+        }
     }
 }
