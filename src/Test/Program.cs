@@ -69,7 +69,7 @@ namespace Test
             {
                 ConfigurationId = configurationId,
                 StartDate = new DateTime(2020, 5, 1),
-                EndDate = new DateTime(2020, 5, 19)
+                EndDate = new DateTime(2020, 5, 23)
             });
 
             Console.WriteLine("");
@@ -79,31 +79,30 @@ namespace Test
 
             Guid tractorUnitResourceGroupId = Guid.Parse("1609765a-4d81-46c4-a23d-530f7fde2da6");
 
+            var startDt = DateTime.UtcNow;
+            var rnd = new Random();
+
+            int appointmentIndex = 0;
+
             await Task.Factory.StartNew(async () =>
             {
                 double percent = 0d;
-                AppointmentBaseModel lastRunningAppointment = null;
+                AppointmentBaseModel currentAppointment = null;
                 while (true)
                 {
                     Console.WriteLine("");
                     Console.WriteLine("----");
 
-                    foreach (var appointment in hub.Appointments.OrderBy(x => x.StartDate))
+                    if (currentAppointment == null)
+                        currentAppointment = hub.Appointments.OrderBy(x => x.StartDate).Skip(appointmentIndex).FirstOrDefault();
+
+                    if (currentAppointment != null)
                     {
-                        Console.WriteLine(hub.GetAppointmentText(appointment));
-                    }
+                        var startLat = currentAppointment.StartAddress.Latitude;
+                        var startLong = currentAppointment.StartAddress.Longitude;
 
-                    var runningAppointment = hub.Appointments.FirstOrDefault(x => x.Status == AppointmentStatus.Running);
-                    if (runningAppointment != null)
-                    {
-                        if (lastRunningAppointment?.Id != runningAppointment?.Id)
-                            percent = 0;
-
-                        var startLat = runningAppointment.StartAddress.Latitude;
-                        var startLong = runningAppointment.StartAddress.Longitude;
-
-                        var endLat = runningAppointment.EndAddress.Latitude;
-                        var endLong = runningAppointment.EndAddress.Longitude;
+                        var endLat = currentAppointment.EndAddress.Latitude;
+                        var endLong = currentAppointment.EndAddress.Longitude;
 
                         var dLat = endLat - startLat;
                         var dLong = endLong - startLong;
@@ -112,8 +111,11 @@ namespace Test
                         var vehiclePosLong = startLong + (dLong * percent);
 
                         Console.WriteLine($"Distance: {endLat - vehiclePosLat}/{endLong - vehiclePosLong}");
-                        
-                        foreach (var resource in runningAppointment.Resources)
+
+                        startDt = startDt.AddMinutes(rnd.Next(3, 15));
+
+                        foreach (var resource in currentAppointment.Resources)
+                        {
                             await vehicleTelematicApi.SetLocationAsync(new SetVehicleLocationModel
                             {
                                 ConfigurationId = configurationId,
@@ -122,10 +124,18 @@ namespace Test
                                 {
                                     Latitude = vehiclePosLat,
                                     Longitude = vehiclePosLong
-                                }
+                                },
+                                DateTime = startDt
                             });
+                        }
 
-                        lastRunningAppointment = runningAppointment;
+                        if (percent == 1)
+                        {
+                            currentAppointment = null;
+                            percent = 0;
+                            appointmentIndex++;
+
+                        }
                     }
 
                     percent += 0.1;
@@ -135,7 +145,7 @@ namespace Test
                         percent = 1;
                     }
 
-                    await Task.Delay(7000);
+                    await Task.Delay(6000);
                 }
             });
 
