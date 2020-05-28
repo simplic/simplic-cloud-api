@@ -42,6 +42,11 @@ namespace Simplic.Cloud.API.Logistics
         /// Gets or sets the appointment status
         /// </summary>
         public AppointmentStatus Status { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether the appointment is in time or not
+        /// </summary>
+        public AppointmentInTimeStatus InTimeStatus { get; set; }
         #endregion
 
         public AddressModel StartAddress { get; set; }

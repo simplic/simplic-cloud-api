@@ -52,6 +52,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\ResourceScheduler\Appointment\AppointmentInTimeStatus.cs" />
+    <Compile Include="Model\ResourceScheduler\Resource\AdditionalInformationTypeModel.cs" />
+    <Compile Include="ResourceClient.cs" />
     <Compile Include="NotificationClient.cs" />
     <Compile Include="Model\DTCO\DtcoActicityModel.cs" />
     <Compile Include="Model\DTCO\DtcoDailyDrivingTimeModel.cs" />

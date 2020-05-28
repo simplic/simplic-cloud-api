@@ -31,7 +31,7 @@ namespace Test
 
         public override Task ConnectionReconnecting(Exception ex)
         {
-            Console.WriteLine("Recibbecting!!");
+            Console.WriteLine("Reconnecting!!");
             return base.ConnectionReconnecting(ex);
         }
 
@@ -139,10 +139,13 @@ namespace Test
             Appointments.Add(appointment);
         }
 
-        protected override async Task OnAddDriverRestAppointmentAsync(DriverRestAppointmentModel appointment)
+        protected override async Task OnAddDriverRestAppointmentAsync(IList<DriverRestAppointmentModel> appointments)
         {
             Console.WriteLine("---- ---- ----");
-            Console.WriteLine($"Add driver rest: {GetAppointmentText(appointment)}");
+            foreach (var appointment in appointments)
+            {
+                Console.WriteLine($"Add driver rest: {GetAppointmentText(appointment)}");
+            }
         }
 
         protected override async Task OnUpdateDriverRestAppointmentAsync(DriverRestAppointmentModel appointment)

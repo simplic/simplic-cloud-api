@@ -32,7 +32,7 @@ namespace Simplic.Cloud.API.Logistics
             receiver.Add(Connection.On<TourAppointmentModel>("PushUpdateTourAppointmentAsync", OnUpdateTourAppointmentAsync));
             receiver.Add(Connection.On<IList<EmptyTourAppointmentModel>>("PushAddEmptyTourAppointmentAsync", OnAddEmptyTourAppointmentAsync));
             receiver.Add(Connection.On<EmptyTourAppointmentModel>("PushUpdateEmptyTourAppointmentAsync", OnUpdateEmptyTourAppointmentAsync));
-            receiver.Add(Connection.On<DriverRestAppointmentModel>("PushAddDriverRestAppointmentAsync", OnAddDriverRestAppointmentAsync));
+            receiver.Add(Connection.On<IList<DriverRestAppointmentModel>>("PushAddDriverRestAppointmentAsync", OnAddDriverRestAppointmentAsync));
             receiver.Add(Connection.On<DriverRestAppointmentModel>("PushUpdateDriverRestAppointmentAsync", OnUpdateDriverRestAppointmentAsync));
             receiver.Add(Connection.On<Guid>("PushRemoveAppointmentAsync", OnRemoveAppointmentAsync));
             receiver.Add(Connection.On<Guid>("PushAppointmentNotFoundAsync", OnAppointmentNotFoundAsync));
@@ -44,6 +44,7 @@ namespace Simplic.Cloud.API.Logistics
             receiver.Add(Connection.On<Guid>("PushRemoveTimelineSeparatorAsync", OnRemoveTimelineSeparatorAsync));
             
             receiver.Add(Connection.On<IList<NotificationModel>>("PushAddNotificationAsync", OnAddNotificationAsync));
+
         }
 
         #region Connection
@@ -265,7 +266,7 @@ namespace Simplic.Cloud.API.Logistics
         /// Pushes a driver rest appointment
         /// </summary>
         /// <param name="appointment">Appointment</param>
-        protected abstract Task OnAddDriverRestAppointmentAsync(DriverRestAppointmentModel appointment);
+        protected abstract Task OnAddDriverRestAppointmentAsync(IList<DriverRestAppointmentModel> appointment);
 
         /// <summary>
         /// Pushes a driver rest appointment

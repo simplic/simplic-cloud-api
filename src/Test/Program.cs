@@ -34,7 +34,7 @@ namespace Test
             client.Url = "https://dev-cloud.simplic.io";
             // await client.PingAsync();
 
-            var result = await client.LoginAsync("benedikt.eggers@simplic.biz", "");
+            var result = await client.LoginAsync("benedikt.eggers@simplic.biz", ";capreolus2020");
 
             Console.WriteLine("User login: " + result.UserName);
 
@@ -42,6 +42,12 @@ namespace Test
             foreach (var notificationType in await notificationClient.GetTypesAsync())
             {
                 Console.WriteLine($"Add type: {notificationType.Name}");
+            }
+
+            var resourceClient = new ResourceClient(client);
+            foreach (var notificationType in await resourceClient.GetAdditionalInformationTypesAsync())
+            {
+                Console.WriteLine($"Add additional information type: {notificationType.Name}:{notificationType.ValueType}");
             }
 
             var logisticClient = new ResourceSchedulerConfigurationClient(client);
@@ -74,8 +80,8 @@ namespace Test
             await hub.RequestDataAsync(new LoadDataModel
             {
                 ConfigurationId = configurationId,
-                StartDate = new DateTime(2020, 5, 1),
-                EndDate = new DateTime(2020, 5, 23)
+                StartDate = new DateTime(2020, 5, 23),
+                EndDate = new DateTime(2020, 5, 27)
             });
 
             Console.WriteLine("");
@@ -118,22 +124,22 @@ namespace Test
 
                         Console.WriteLine($"Distance: {endLat - vehiclePosLat}/{endLong - vehiclePosLong}");
 
-                        startDt = startDt.AddMinutes(rnd.Next(3, 15));
+                        startDt = startDt.AddMinutes(rnd.Next(15, 30));
 
-                        foreach (var resource in currentAppointment.Resources)
-                        {
-                            /// await vehicleTelematicApi.SetLocationAsync(new SetVehicleLocationModel
-                            /// {
-                            ///     ConfigurationId = configurationId,
-                            ///     Id = resource,
-                            ///     Location = new VehicleLocationModel
-                            ///     {
-                            ///         Latitude = vehiclePosLat,
-                            ///         Longitude = vehiclePosLong
-                            ///     },
-                            ///     DateTime = startDt
-                            /// });
-                        }
+                        // foreach (var resource in currentAppointment.Resources)
+                        // {
+                        //     await vehicleTelematicApi.SetLocationAsync(new SetVehicleLocationModel
+                        //     {
+                        //         ConfigurationId = configurationId,
+                        //         Id = resource,
+                        //         Location = new VehicleLocationModel
+                        //         {
+                        //             Latitude = vehiclePosLat,
+                        //             Longitude = vehiclePosLong
+                        //         },
+                        //         DateTime = startDt
+                        //     });
+                        // }
 
                         if (percent == 1)
                         {
