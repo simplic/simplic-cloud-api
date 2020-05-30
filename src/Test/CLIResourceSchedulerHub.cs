@@ -154,6 +154,22 @@ namespace Test
             Console.WriteLine($"Update driver rest: {GetAppointmentText(appointment)}");
         }
 
+
+        protected override async Task OnAddDriverShiftAppointmentAsync(IList<DriverShiftAppointmentModel> appointments)
+        {
+            Console.WriteLine("---- ---- ----");
+            foreach (var appointment in appointments)
+            {
+                Console.WriteLine($"Add driver shoft: {GetAppointmentText(appointment)}");
+            }
+        }
+
+        protected override async Task OnUpdateDriverShiftAppointmentAsync(DriverShiftAppointmentModel appointment)
+        {
+            Console.WriteLine("---- ---- ----");
+            Console.WriteLine($"Update driver shoft: {GetAppointmentText(appointment)}");
+        }
+
         public string GetAppointmentText(AppointmentBaseModel appointmentBaseModel)
         {
             var builder = new StringBuilder();

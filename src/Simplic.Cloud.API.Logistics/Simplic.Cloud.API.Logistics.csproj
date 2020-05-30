@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\ResourceScheduler\Appointment\AppointmentInTimeStatus.cs" />
+    <Compile Include="Model\ResourceScheduler\Appointment\DriverShiftAppointmentModel.cs" />
     <Compile Include="Model\ResourceScheduler\Resource\AdditionalInformationTypeModel.cs" />
     <Compile Include="ResourceClient.cs" />
     <Compile Include="NotificationClient.cs" />

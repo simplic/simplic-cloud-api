@@ -34,6 +34,8 @@ namespace Simplic.Cloud.API.Logistics
             receiver.Add(Connection.On<EmptyTourAppointmentModel>("PushUpdateEmptyTourAppointmentAsync", OnUpdateEmptyTourAppointmentAsync));
             receiver.Add(Connection.On<IList<DriverRestAppointmentModel>>("PushAddDriverRestAppointmentAsync", OnAddDriverRestAppointmentAsync));
             receiver.Add(Connection.On<DriverRestAppointmentModel>("PushUpdateDriverRestAppointmentAsync", OnUpdateDriverRestAppointmentAsync));
+            receiver.Add(Connection.On<IList<DriverShiftAppointmentModel>>("PushAddDriverShiftAppointmentAsync", OnAddDriverShiftAppointmentAsync));
+            receiver.Add(Connection.On<DriverShiftAppointmentModel>("PushUpdateDriverShiftAppointmentAsync", OnUpdateDriverShiftAppointmentAsync));
             receiver.Add(Connection.On<Guid>("PushRemoveAppointmentAsync", OnRemoveAppointmentAsync));
             receiver.Add(Connection.On<Guid>("PushAppointmentNotFoundAsync", OnAppointmentNotFoundAsync));
 
@@ -273,6 +275,18 @@ namespace Simplic.Cloud.API.Logistics
         /// </summary>
         /// <param name="appointment">Appointment</param>
         protected abstract Task OnUpdateDriverRestAppointmentAsync(DriverRestAppointmentModel appointment);
+
+        /// <summary>
+        /// Pushes a driver shift appointment
+        /// </summary>
+        /// <param name="appointment">Appointment</param>
+        protected abstract Task OnAddDriverShiftAppointmentAsync(IList<DriverShiftAppointmentModel> appointment);
+
+        /// <summary>
+        /// Pushes a driver shift appointment
+        /// </summary>
+        /// <param name="appointment">Appointment</param>
+        protected abstract Task OnUpdateDriverShiftAppointmentAsync(DriverShiftAppointmentModel appointment);
 
         /// <summary>
         /// Push remove appointment
