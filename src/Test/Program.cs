@@ -34,7 +34,7 @@ namespace Test
             client.Url = "https://dev-cloud.simplic.io";
             // await client.PingAsync();
 
-            var result = await client.LoginAsync("benedikt.eggers@simplic.biz", ";capreolus2020");
+            var result = await client.LoginAsync("benedikt.eggers@simplic.biz", "");
 
             Console.WriteLine("User login: " + result.UserName);
 
@@ -68,7 +68,7 @@ namespace Test
             }
 
             var vehicleTelematicApi = new VehicleTelematicClient(client);
-            vehicleTelematicApi.Url = "http://localhost:49248";
+            // vehicleTelematicApi.Url = "http://localhost:49248";
 
 
             var hub = new CLIResourceSchedulerHub(logisticClient);
