@@ -51,6 +51,26 @@ namespace Test
             {
                 _resources.Add(resource);
                 Console.WriteLine($"Add driver: {GetResourceText(resource)}");
+
+                if (resource.AdditionalInformation != null)
+                {
+                    Console.WriteLine("Additional information:");
+                    if (resource.AdditionalInformation.TextValues != null)
+                    {
+                        foreach (var ai in resource.AdditionalInformation.TextValues)
+                        {
+                            Console.WriteLine($" {ai.Type}: {ai.Text}");
+                        }
+                    }
+
+                    if (resource.AdditionalInformation.RangeValues != null)
+                    {
+                        foreach (var ai in resource.AdditionalInformation.RangeValues)
+                        {
+                            Console.WriteLine($" {ai.Type}: min {ai.Min} max {ai.Max} current {ai.Current}");
+                        }
+                    }
+                }
             }
 
             Console.WriteLine("---- ---- ----");

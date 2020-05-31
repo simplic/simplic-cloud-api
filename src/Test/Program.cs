@@ -75,6 +75,7 @@ namespace Test
             await hub.StartAsync();
             await hub.JoinSessionAsync(new JoinSessionModel { ConfigurationId = configurationId });
             await hub.RequestResourceGroupsAsync(new GetResourceGroupsModel { ConfigurationId = configurationId });
+            await hub.RequestResourcesAsync(new GetResourceModel { ConfigurationId = configurationId });
 
             // await hub.RequestResourcesAsync(new GetResourceModel { ConfigurationId = configurationId });
             await hub.RequestDataAsync(new LoadDataModel

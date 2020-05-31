@@ -34,5 +34,10 @@ namespace Simplic.Cloud.API.Logistics
         /// Gets or sets the default dependencies
         /// </summary>
         public IList<Guid> DefaultDependingResources { get; set; }
+
+        /// <summary>
+        /// Gets or sets all additional information
+        /// </summary>
+        public AdditionalResourceInformationModel AdditionalInformation { get; set; } = new AdditionalResourceInformationModel();
     }
 }
