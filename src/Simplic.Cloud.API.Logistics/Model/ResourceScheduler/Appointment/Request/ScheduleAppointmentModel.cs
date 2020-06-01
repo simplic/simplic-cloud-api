@@ -27,6 +27,11 @@ namespace Simplic.Cloud.API.Logistics
         public IList<Guid> Resources { get; set; } = new List<Guid>();
 
         /// <summary>
+        /// Gets or sets the main resource id. This should be part of <see cref="Resources"/>
+        /// </summary>
+        public Guid MainResource { get; set; }
+
+        /// <summary>
         /// Gets or sets the start datetime
         /// </summary>
         public DateTime StartDate { get; set; }

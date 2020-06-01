@@ -34,7 +34,7 @@ namespace Test
             client.Url = "https://dev-cloud.simplic.io";
             // await client.PingAsync();
 
-            var result = await client.LoginAsync("benedikt.eggers@simplic.biz", "");
+            var result = await client.LoginAsync("benedikt.eggers@simplic.biz", ";capreolus2020");
 
             Console.WriteLine("User login: " + result.UserName);
 
