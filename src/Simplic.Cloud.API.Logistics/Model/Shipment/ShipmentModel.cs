@@ -15,6 +15,8 @@ namespace Simplic.Cloud.API.Logistics
         public IList<ShipmentItemModel> Items { get; set; } = new List<ShipmentItemModel>();
         public string ShipmentNr { get; set; }
         public string ExtShipmentNr { get; set; }
+        public string LoadNumber { get; set; }
+        public string UnloadNumber { get; set; }
         public string Notes { get; set; }
         public Guid? CustomerId { get; set; }
         public Guid? LoadAddressId { get; set; }
