@@ -56,5 +56,6 @@ namespace Simplic.Cloud.API.Logistics
 
         public int DurationInMinutes { get; set; }
         public int CalculatedDurationInMinutes { get; set; }
+        public int RemainingDurationInMinutes { get; set; }
     }
 }

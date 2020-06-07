@@ -12,7 +12,6 @@ namespace Simplic.Cloud.API.Logistics
         public int TollDistance { get; set; }
         public int RemainingDistanceInMeter { get; set; }
         public int RemainingTollDistance { get; set; }
-        public int RemainingDurationInMinutes { get; set; }
         public int Toll { get; set; }
     }
 }
