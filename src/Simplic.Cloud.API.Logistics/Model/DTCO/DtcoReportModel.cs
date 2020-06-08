@@ -1,9 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Simplic.Cloud.API.Logistics
 {
     public class DtcoReportModel : BaseModel
     {
+        /// <summary>
+        /// Gets or sets the employee id
+        /// </summary>
+        public Guid EmployeeId { get; set; }
+
         /// <summary>
         /// Gets or sets the last dtco activity
         /// </summary>
@@ -12,7 +18,7 @@ namespace Simplic.Cloud.API.Logistics
         /// <summary>
         /// Gets or sets the dtco activities
         /// </summary>
-        public List<DtcoActicityModel> DtcoActicities { get; set; }
+        public List<DtcoActicityModel> DtcoActivities { get; set; }
 
         /// <summary>
         /// Gest or sets the daily driving time

@@ -9,6 +9,14 @@ namespace Simplic.Cloud.API.Logistics
     /// </summary>
     public class GetResourceModel : BaseModel
     {
+        /// <summary>
+        /// Gets or sets the start date
+        /// </summary>
+        public DateTime StartDate { get; set; }
 
+        /// <summary>
+        /// Gets or sets the end date
+        /// </summary>
+        public DateTime EndDate { get; set; }
     }
 }
