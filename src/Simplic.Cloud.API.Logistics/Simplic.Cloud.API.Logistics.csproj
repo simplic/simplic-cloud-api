@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Model\ResourceScheduler\Appointment\AppointmentInTimeStatus.cs" />
     <Compile Include="Model\ResourceScheduler\Appointment\DriverShiftAppointmentModel.cs" />
+    <Compile Include="Model\ResourceScheduler\Resource\Request\ConnectResourcesModel.cs" />
     <Compile Include="Model\ResourceScheduler\Resource\Response\AdditionalInformation\AdditionalInformationTypeModel.cs" />
     <Compile Include="Model\ResourceScheduler\Resource\Response\AdditionalInformation\AdditionalResourceInformationModel.cs" />
     <Compile Include="Model\ResourceScheduler\Resource\Response\AdditionalInformation\AdditionalResourceInformationRangeValueModel.cs" />

@@ -30,6 +30,11 @@ namespace Simplic.Cloud.API.Logistics
             return await base.GetAsync<IList<AdditionalInformationTypeModel>>(Api, Controller, "get-additional-information-types", new Dictionary<string, string> { });
         }
 
+        public virtual async Task<object> ConnectResourcesAsync(ConnectResourcesModel model)
+        {
+            return await PostAsync<object, ConnectResourcesModel>(Api, Controller, "connect-resources", model);
+        }
+
         protected string Api => "resource-scheduler";
 
         protected string Controller => "resource";
