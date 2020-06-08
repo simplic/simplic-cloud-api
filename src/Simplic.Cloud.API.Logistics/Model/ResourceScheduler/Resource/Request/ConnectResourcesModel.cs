@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Simplic.Cloud.API.Logistics
 {
-    public class ConnectResourcesModel
+    public class ConnectResourcesModel : BaseModel
     {
         /// <summary>
         /// Gets or sets the valid from date/time
