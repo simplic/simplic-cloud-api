@@ -8,6 +8,7 @@ namespace Simplic.Cloud.API.Logistics
 {
     public class AddressModel
     {
+        public Guid AddressId { get; set; }
         public string Name { get; set; }
         public string Street { get; set; }
         public string HouseNr { get; set; }
