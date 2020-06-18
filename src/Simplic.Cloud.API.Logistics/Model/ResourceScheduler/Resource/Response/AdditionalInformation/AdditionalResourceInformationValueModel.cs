@@ -15,5 +15,10 @@ namespace Simplic.Cloud.API.Logistics
         /// Gets or sets the type name
         /// </summary>
         public string Type { get; set; }
+
+        /// <summary>
+        /// Gets or sets the display type
+        /// </summary>
+        public string DisplayType { get; set; }
     }
 }
