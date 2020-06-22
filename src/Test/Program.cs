@@ -34,7 +34,7 @@ namespace Test
             client.Url = "https://dev-cloud.simplic.io";
             // await client.PingAsync();
 
-            var result = await client.LoginAsync("benedikt.eggers@simplic.biz", ";capreolus2020");
+            var result = await client.LoginAsync("benedikt.eggers@simplic.biz", "");
 
             Console.WriteLine("User login: " + result.UserName);
 
@@ -68,7 +68,7 @@ namespace Test
             }
 
             var vehicleTelematicApi = new VehicleTelematicClient(client);
-            // vehicleTelematicApi.Url = "http://localhost:49248";
+            vehicleTelematicApi.Url = "http://localhost:49248";
 
 
             var hub = new CLIResourceSchedulerHub(logisticClient);
@@ -81,8 +81,8 @@ namespace Test
             await hub.RequestDataAsync(new LoadDataModel
             {
                 ConfigurationId = configurationId,
-                StartDate = new DateTime(2020, 5, 23),
-                EndDate = new DateTime(2020, 5, 27)
+                StartDate = new DateTime(2020, 6, 21),
+                EndDate = new DateTime(2020, 6, 23)
             });
 
             Console.WriteLine("");
@@ -100,14 +100,14 @@ namespace Test
             await Task.Factory.StartNew(async () =>
             {
                 double percent = 0d;
-                AppointmentBaseModel currentAppointment = null;
+                TripAppointmentModel currentAppointment = null;
                 while (true)
                 {
                     Console.WriteLine("");
                     Console.WriteLine("----");
 
                     if (currentAppointment == null)
-                        currentAppointment = hub.Appointments.OrderBy(x => x.StartDate).Skip(appointmentIndex).FirstOrDefault();
+                        currentAppointment = hub.Appointments.OfType<TripAppointmentModel>().OrderBy(x => x.StartDate).Skip(appointmentIndex).FirstOrDefault();
 
                     if (currentAppointment != null)
                     {
@@ -127,20 +127,20 @@ namespace Test
 
                         startDt = startDt.AddMinutes(rnd.Next(15, 30));
 
-                        // foreach (var resource in currentAppointment.Resources)
-                        // {
-                        //     await vehicleTelematicApi.SetLocationAsync(new SetVehicleLocationModel
-                        //     {
-                        //         ConfigurationId = configurationId,
-                        //         Id = resource,
-                        //         Location = new VehicleLocationModel
-                        //         {
-                        //             Latitude = vehiclePosLat,
-                        //             Longitude = vehiclePosLong
-                        //         },
-                        //         DateTime = startDt
-                        //     });
-                        // }
+                        foreach (var resource in currentAppointment.Resources)
+                        {
+                            await vehicleTelematicApi.SetLocationAsync(new SetVehicleLocationModel
+                            {
+                                ConfigurationId = configurationId,
+                                Id = resource,
+                                Location = new VehicleLocationModel
+                                {
+                                    Latitude = vehiclePosLat,
+                                    Longitude = vehiclePosLong
+                                },
+                                DateTime = startDt
+                            });
+                        }
 
                         if (percent == 1)
                         {
