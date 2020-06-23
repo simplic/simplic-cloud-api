@@ -20,5 +20,10 @@ namespace Simplic.Cloud.API.Logistics
         /// Gets or sets the display type
         /// </summary>
         public string DisplayType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the additional information status
+        /// </summary>
+        public AdditionalInformationStatus Status { get; set; }
     }
 }

@@ -60,6 +60,7 @@
     <Compile Include="Model\ResourceScheduler\Resource\Response\AdditionalInformation\AdditionalResourceInformationRangeValueModel.cs" />
     <Compile Include="Model\ResourceScheduler\Resource\Response\AdditionalInformation\AdditionalResourceInformationTextValueModel.cs" />
     <Compile Include="Model\ResourceScheduler\Resource\Response\AdditionalInformation\AdditionalResourceInformationValueModel.cs" />
+    <Compile Include="Model\ResourceScheduler\Resource\Response\AdditionalInformation\Class1.cs" />
     <Compile Include="ResourceClient.cs" />
     <Compile Include="NotificationClient.cs" />
     <Compile Include="Model\DTCO\DtcoActicityModel.cs" />
