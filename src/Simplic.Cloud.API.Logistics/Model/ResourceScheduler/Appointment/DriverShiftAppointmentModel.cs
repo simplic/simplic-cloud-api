@@ -7,6 +7,11 @@ namespace Simplic.Cloud.API.Logistics
     public class DriverShiftAppointmentModel : AppointmentBaseModel
     {
         /// <summary>
+        /// Gets or sets a list of shift activities
+        /// </summary>
+        public IList<ShiftActivityModel> Activities { get; set; } = new List<ShiftActivityModel>();
+
+        /// <summary>
         /// Gets or sets the aggregated sales price
         /// </summary>
         public double AggregatedSalesPrices
