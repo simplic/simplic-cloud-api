@@ -20,8 +20,13 @@ namespace Simplic.Cloud.API.Logistics
         public VehicleLocationModel Location { get; set; }
 
         /// <summary>
-        /// Gets or sets the current tour id
+        /// Gets or sets a list of drivers
         /// </summary>
-        public Guid? TourId { get; set; }
+        public IList<Guid> DriverIds { get; set; } = new List<Guid>();
+
+        /// <summary>
+        /// Gets or sets a list of trailers
+        /// </summary>
+        public IList<Guid> TrailerIds { get; set; } = new List<Guid>();
     }
 }
