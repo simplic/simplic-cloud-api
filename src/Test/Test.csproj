@@ -45,6 +45,12 @@
     <Reference Include="RestSharp, Version=106.0.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
       <HintPath>..\packages\RestSharp.106.10.1\lib\net452\RestSharp.dll</HintPath>
     </Reference>
+    <Reference Include="Simplic.Cloud.API.HR, Version=2.0.620.329, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Simplic.Cloud.API.HR.2.0.620.329\lib\net48\Simplic.Cloud.API.HR.dll</HintPath>
+    </Reference>
+    <Reference Include="Simplic.Cloud.API.Logistics, Version=2.0.7820.41, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Simplic.Cloud.API.Logistics.2.0.7820.41\lib\net48\Simplic.Cloud.API.Logistics.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ComponentModel.Annotations.4.7.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
@@ -75,21 +81,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Simplic.Cloud.API.BusinessPartner\Simplic.Cloud.API.BusinessPartner.csproj">
-      <Project>{9d10df79-53d7-4d6f-8a04-af12a789604c}</Project>
-      <Name>Simplic.Cloud.API.BusinessPartner</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Simplic.Cloud.API.DataPort\Simplic.Cloud.API.DataPort.csproj">
       <Project>{519d07a5-5bf1-4cdd-b950-f579c710ee81}</Project>
       <Name>Simplic.Cloud.API.DataPort</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Simplic.Cloud.API.HR\Simplic.Cloud.API.HR.csproj">
-      <Project>{4f12d2a1-2e44-4115-8efb-5769ca59b43e}</Project>
-      <Name>Simplic.Cloud.API.HR</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Simplic.Cloud.API.Logistics\Simplic.Cloud.API.Logistics.csproj">
-      <Project>{c76335a8-d1aa-4741-8265-bddb60e968a4}</Project>
-      <Name>Simplic.Cloud.API.Logistics</Name>
     </ProjectReference>
     <ProjectReference Include="..\Simplic.Cloud.API\Simplic.Cloud.API.csproj">
       <Project>{a2cf02ac-4c6f-4fe5-bcbb-3c9cb6d1bfca}</Project>
