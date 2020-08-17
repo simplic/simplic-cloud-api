@@ -9,17 +9,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simplic.Cloud.API.DataPort"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simplic.Cloud.CLI", "Simplic.Cloud.CLI\Simplic.Cloud.CLI.csproj", "{381FE878-0C7C-476D-8133-690AEA5B73D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simplic.Cloud.API.Logistics", "Simplic.Cloud.API.Logistics\Simplic.Cloud.API.Logistics.csproj", "{C76335A8-D1AA-4741-8265-BDDB60E968A4}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ENV", "ENV", "{2CD89222-4537-4300-A5EE-EC1F32C84418}"
 	ProjectSection(SolutionItems) = preProject
 		..\azure-pipelines.yml = ..\azure-pipelines.yml
 		..\README.md = ..\README.md
 	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simplic.Cloud.API.BusinessPartner", "Simplic.Cloud.API.BusinessPartner\Simplic.Cloud.API.BusinessPartner.csproj", "{9D10DF79-53D7-4D6F-8A04-AF12A789604C}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simplic.Cloud.API.HR", "Simplic.Cloud.API.HR\Simplic.Cloud.API.HR.csproj", "{4F12D2A1-2E44-4115-8EFB-5769CA59B43E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{55F88F7B-6B4E-4446-8A6D-339B865D7B8F}"
 EndProject
@@ -43,18 +37,6 @@ Global
 		{381FE878-0C7C-476D-8133-690AEA5B73D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{381FE878-0C7C-476D-8133-690AEA5B73D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{381FE878-0C7C-476D-8133-690AEA5B73D2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C76335A8-D1AA-4741-8265-BDDB60E968A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C76335A8-D1AA-4741-8265-BDDB60E968A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C76335A8-D1AA-4741-8265-BDDB60E968A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C76335A8-D1AA-4741-8265-BDDB60E968A4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9D10DF79-53D7-4D6F-8A04-AF12A789604C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9D10DF79-53D7-4D6F-8A04-AF12A789604C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9D10DF79-53D7-4D6F-8A04-AF12A789604C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9D10DF79-53D7-4D6F-8A04-AF12A789604C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4F12D2A1-2E44-4115-8EFB-5769CA59B43E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4F12D2A1-2E44-4115-8EFB-5769CA59B43E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4F12D2A1-2E44-4115-8EFB-5769CA59B43E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4F12D2A1-2E44-4115-8EFB-5769CA59B43E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{55F88F7B-6B4E-4446-8A6D-339B865D7B8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{55F88F7B-6B4E-4446-8A6D-339B865D7B8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55F88F7B-6B4E-4446-8A6D-339B865D7B8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
