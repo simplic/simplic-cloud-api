@@ -62,8 +62,7 @@ namespace Simplic.Cloud.API.DataHub
 
         public async Task CommitAsync(CommitModel model)
         {
-
-            await PostAsync<Guid, CommitModel>(Api, Controller, "commit", model);
+            await PostAsync<object, CommitModel>(Api, Controller, "commit", model);
         }
 
         /// <summary>

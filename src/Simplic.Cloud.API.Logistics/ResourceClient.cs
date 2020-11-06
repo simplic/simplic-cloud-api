@@ -35,6 +35,11 @@ namespace Simplic.Cloud.API.Logistics
             return await PostAsync<object, ConnectResourcesModel>(Api, Controller, "connect-resources", model);
         }
 
+        public virtual async Task<object> ConnectResourcesAsync(RequestConnectedResourcesModel model)
+        {
+            return await PostAsync<object, ConnectedResourcesResponseModel>(Api, Controller, "connect-resources", model);
+        }
+
         protected string Api => "resource-scheduler";
 
         protected string Controller => "resource";
