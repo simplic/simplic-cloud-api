@@ -64,23 +64,17 @@
     <PackageReference Include="Newtonsoft.Json">
       <Version>12.0.3</Version>
     </PackageReference>
+    <PackageReference Include="Simplic.Cloud.API.BusinessPartner">
+      <Version>2.1.420.329</Version>
+    </PackageReference>
+    <PackageReference Include="Simplic.Cloud.API.Logistics">
+      <Version>2.0.7820.41</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Simplic.Cloud.API.BusinessPartner\Simplic.Cloud.API.BusinessPartner.csproj">
-      <Project>{9d10df79-53d7-4d6f-8a04-af12a789604c}</Project>
-      <Name>Simplic.Cloud.API.BusinessPartner</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Simplic.Cloud.API.DataPort\Simplic.Cloud.API.DataPort.csproj">
       <Project>{519d07a5-5bf1-4cdd-b950-f579c710ee81}</Project>
       <Name>Simplic.Cloud.API.DataPort</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Simplic.Cloud.API.HR\Simplic.Cloud.API.HR.csproj">
-      <Project>{4f12d2a1-2e44-4115-8efb-5769ca59b43e}</Project>
-      <Name>Simplic.Cloud.API.HR</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Simplic.Cloud.API.Logistics\Simplic.Cloud.API.Logistics.csproj">
-      <Project>{c76335a8-d1aa-4741-8265-bddb60e968a4}</Project>
-      <Name>Simplic.Cloud.API.Logistics</Name>
     </ProjectReference>
     <ProjectReference Include="..\Simplic.Cloud.API\Simplic.Cloud.API.csproj">
       <Project>{a2cf02ac-4c6f-4fe5-bcbb-3c9cb6d1bfca}</Project>
