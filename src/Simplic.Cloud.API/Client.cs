@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 namespace Simplic.Cloud.API
 {
     /// <summary>
-    /// Cloud api client. Login should be done before calling any other endpoint.
+    /// Cloud api client. Login should be done before calling any other endpoint. 
     /// </summary>
     public class Client : ClientBase, IClient
     {
