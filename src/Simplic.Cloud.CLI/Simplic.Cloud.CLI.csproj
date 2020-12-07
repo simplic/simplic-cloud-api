@@ -56,7 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Colorful.Console">
-      <Version>1.2.10</Version>
+      <Version>1.2.11</Version>
     </PackageReference>
     <PackageReference Include="CommandLineParser">
       <Version>2.7.82</Version>
@@ -65,10 +65,10 @@
       <Version>12.0.3</Version>
     </PackageReference>
     <PackageReference Include="Simplic.Cloud.API.BusinessPartner">
-      <Version>2.1.420.329</Version>
+      <Version>2.1.620.812</Version>
     </PackageReference>
     <PackageReference Include="Simplic.Cloud.API.Logistics">
-      <Version>2.0.7820.41</Version>
+      <Version>2.1.20.1001</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
